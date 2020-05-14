@@ -21,7 +21,7 @@ public class PlanetService {
 		planetRepository.save(planet);
 	}
 	
-	public Optional<Planet> getPlanet(long id) {
+	public Optional<Planet> getPlanet(Long id) {
 		return planetRepository.findById(id);
 	}
 	
@@ -29,7 +29,7 @@ public class PlanetService {
 		planetRepository.save(planet);
 	}	
 	
-	public void deletePlanet(long id) {
+	public void deletePlanet(Long id) {
 		planetRepository.deleteById(id);
 	}
 }

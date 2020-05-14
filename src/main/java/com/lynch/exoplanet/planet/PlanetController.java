@@ -46,7 +46,7 @@ public class PlanetController {
 	}
 	
 	@RequestMapping("/planets/{id}")
-	public Optional<Planet> getPlanet(@PathVariable long id){
+	public Optional<Planet> getPlanet(@PathVariable Long id){
 		return planetService.getPlanet(id);
 	}
 	
@@ -61,7 +61,7 @@ public class PlanetController {
 	}
 	
 	@RequestMapping(value="/planets/{id}", method=RequestMethod.DELETE)
-	public void deletePlanet(@PathVariable long id) {
+	public void deletePlanet(@PathVariable Long id) {
 		planetService.deletePlanet(id);
 	}
 }
