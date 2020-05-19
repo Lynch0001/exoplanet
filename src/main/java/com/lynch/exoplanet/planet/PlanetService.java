@@ -32,4 +32,8 @@ public class PlanetService {
 	public void deletePlanet(Long id) {
 		planetRepository.deleteById(id);
 	}
+
+	public List<Planet> getPlanetsWithin100Parsecs(){
+		return planetRepository.getPlanetsWithin100Parsecs();
+	}
 }

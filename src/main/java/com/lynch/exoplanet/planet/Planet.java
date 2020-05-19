@@ -9,7 +9,7 @@ import java.util.Date;
 
 @SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
-@Table(name="planettable")
+@Table(name = "planettable")
 public class Planet {
 
 	@Id
