@@ -163,4 +163,4 @@ Project Link: [https://github.com/lynch0001/exoplanet](https://github.com/lynch0
 [license-url]: https://github.com/lynch0001/exoplanet/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/timothy-j-lynch/
-[product-screenshot]: https://user-images.githubusercontent.com/35854692/89041019-a6d3ec80-d312-11ea-97fc-092001b9546c.png
+[product-screenshot]: https://user-images.githubusercontent.com/35854692/89050448-c4a84e00-d320-11ea-9b8e-0d50bbee69f4.PNG
