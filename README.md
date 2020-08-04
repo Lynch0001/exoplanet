@@ -12,7 +12,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/lynch0001/exoplanet">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://user-images.githubusercontent.com/35854692/89293317-b95c6780-d62b-11ea-9943-737a8bb4746a.jpeg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Exoplanet Data Explorer</h3>
