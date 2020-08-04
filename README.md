@@ -138,7 +138,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Tim Lynch - [@twitter_handle](https://twitter.com/twitter_handle) - Lynch0001@gmail.com
+Tim Lynch 
+* LinkedIn [timothy-j-lynch](https://www.linkedin.com/in/timothy-j-lynch/)
+* Medium [@lynch0001](https://medium.com/@lynch0001) 
+* Dev [@lynch0001](https://dev.to/lynch0001) 
+* Stackoverflow [tim-lynch](https://stackoverflow.com/users/11063468/tim-lynch)
+* Email Lynch0001@gmail.com
 
 Project Link: [https://github.com/lynch0001/exoplanet](https://github.com/lynch0001/exoplanet)
 
@@ -148,8 +153,10 @@ Project Link: [https://github.com/lynch0001/exoplanet](https://github.com/lynch0
 ## Acknowledgements
 
 * []() NASA Exoplanet Data Archive
-* []()
-* []()
+* []() John Thompson at https://springframework.guru/
+* []() Koushik Kothagal at https://javabrains.io/
+* []() Angular University at https://angular-university.io/
+* []() Jason Watmore at https://jasonwatmore.com/
 
 
 
