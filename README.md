@@ -153,6 +153,7 @@ Project Link: [https://github.com/lynch0001/exoplanet](https://github.com/lynch0
 ## Acknowledgements
 
 * []() NASA Exoplanet Data Archive
+* []() Aladin Lite from the Université de Strasbourg at https://aladin.u-strasbg.fr/AladinLite/
 * []() John Thompson at https://springframework.guru/
 * []() Koushik Kothagal at https://javabrains.io/
 * []() Angular University at https://angular-university.io/
