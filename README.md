@@ -63,7 +63,7 @@
 * []() Java 8
 * []() Spring Boot 2.3.0
 * []() Angular 8.3.4
-* []() MySQL
+* []() PostgreSQL
 * []() Maven
 
 
