@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+  <div class="container-queries col-lg-2 col-md-2 col-sm-12">
+  <h4 align="center">Queries</h4>
+  <button class="button-query button-sm rounded" (click)=getQuery(1)>Closest(w/i 5 pc)</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(2)>Rocky Planets</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(3)>Planets w/i 1-2 AU of Star</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(4)>Earth Sized Planets</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(5)>Multiple Planet Systems</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(6)>KEPLER Planets</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(7)>TRAPPIST Planets</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(8)>Super Earths</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(9)>NASA Interesting List</button>
+  <button class="button-query button-sm rounded"(click)=getPlanets()>Full List</button>
+</div>
+  <div class="container-table col-lg-10 col-md-10 col-sm-12">
+  <h2 align="center">ExoSolar Planets and Select Characteristics</h2>
+  <hr><p>Records: {{this.records}}</p>
+  <table class="table table-sm table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Record</th>
+      <th scope="col">Name</th>
+      <th scope="col">Size</th>
+      <th scope="col">Temp</th>
+      <th scope="col">Density</th>
+      <th scope="col">Star Type</th>
+      <th scope="col">Distance from Star</th>
+      <th scope="col">Discovered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let planet of planets">
+      <th scope="row" ><a [routerLink]="['/api/planet/', planet.id]">{{planet.id}}</a></th>
+      <td>{{planet.pl_name}}</td>
+      <td [ngSwitch]="true">
+        <span *ngSwitchCase="planet.pl_rade > 15"><button class="button-sj button-sm rounded">Super Jupiter</button></span>
+        <span *ngSwitchCase="planet.pl_rade > 6.00 && planet.pl_rade <= 15.00"><button class="button-jl button-sm rounded">Jupiter-Sized</button></span>
+        <span *ngSwitchCase="planet.pl_rade > 2.00 && planet.pl_rade <= 6.00"><button class="button-nl button-sm rounded">Neptune-Sized</button></span>
+        <span *ngSwitchCase="planet.pl_rade > 1.25 && planet.pl_rade <= 2.00"><button class="button-se button-sm rounded">Super Earth</button></span>
+        <span *ngSwitchCase="planet.pl_rade && planet.pl_rade <= 1.25"><button class="button-el button-sm rounded">Earth-Sized</button></span>
+        <span *ngSwitchDefault>{{planet.pl_rade  | number : '.0-0'}}</span>
+      </td>
+      <td [ngSwitch]="true">
+        <span *ngSwitchCase="planet.pl_eqt > 338"><button class="button-hot button-sm rounded">Very Hot</button></span>
+        <span *ngSwitchCase="planet.pl_eqt >=200 && planet.pl_eqt <= 338"><button class="button-gl button-sm rounded">Temperate</button></span>
+        <span *ngSwitchCase="planet.pl_eqt && planet.pl_eqt < 200"><button class="button-cold button-sm rounded">Very Cold</button></span>
+        <span *ngSwitchDefault>{{planet.pl_eqt  | number : '.0-0'}}</span>
+      </td>
+      <td [ngSwitch]="true">
+        <span *ngSwitchCase="planet.pl_dens >=25 && planet.pl_dens < 34"><button class="button-met button-sm rounded">Degenerate</button></span>
+        <span *ngSwitchCase="planet.pl_dens >=3.6 && planet.pl_dens < 13.4"><button class="button-ice button-sm rounded">Iron/Rock</button></span>
+        <span *ngSwitchCase="planet.pl_dens && planet.pl_dens < .7"><button class="button-gas button-sm rounded">Ice/Gas</button></span>
+        <span *ngSwitchDefault>{{planet.pl_dens  | number : '.0-0'}}</span>
+      </td>
+      <td [ngSwitch]="true">
+        <span *ngSwitchCase="planet.st_spstr.startsWith('T')"><button class="button-rs button-sm rounded">Red Star</button></span>
+        <span *ngSwitchCase="planet.st_spstr.startsWith('L')"><button class="button-br button-sm rounded">Brown Star</button></span>
+        <span *ngSwitchCase="planet.st_spstr.startsWith('M')"><button class="button-os button-sm rounded">Orange Star</button></span>
+        <span *ngSwitchCase="planet.st_spstr.startsWith('K')"><button class="button-ys button-sm rounded">Yellow Star</button></span>
+        <span *ngSwitchCase="planet.st_spstr.startsWith('G')"><button class="button-ws button-sm rounded">White Star</button></span>
+        <span *ngSwitchCase="planet.st_spstr.startsWith('F')"><button class="button-ws button-sm rounded">White Star</button></span>
+        <span *ngSwitchCase="planet.st_spstr.startsWith('A')"><button class="button-bl1 button-sm rounded">Blue Star</button></span>
+        <span *ngSwitchCase="planet.st_spstr.startsWith('B')"><button class="button-bl2 button-sm rounded">Blue Star</button></span>
+        <span *ngSwitchCase="planet.st_spstr.startsWith('O')"><button class="button-bl3 button-sm rounded">Blue Star</button></span>
+        <span *ngSwitchDefault>{{planet.st_spstr  | number : '.0-0'}}</span>
+      </td>
+      <td [ngSwitch]="true">
+        <span *ngSwitchCase="planet.pl_orbsmax > 2"><button class="button-cold button-sm rounded">>2 AU</button></span>
+        <span *ngSwitchCase="planet.pl_orbsmax >=1 && planet.pl_orbsmax <= 2"><button class="button-gl button-sm rounded">1-2 AU</button></span>
+        <span *ngSwitchCase="planet.pl_orbsmax && planet.pl_orbsmax < 1"><button class="button-hot button-sm rounded"><1 AU</button></span>
+        <span *ngSwitchDefault>{{planet.pl_orbsmax | number : '.2-2'}}</span>
+      </td>
+      <td  align="center">{{planet.pl_disc}}</td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+  </div>
+</div>
+
+

@@ -4,12 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin
@@ -63,7 +58,33 @@ public class PlanetController {
 		planetService.deletePlanet(id);
 	}
 
-	@RequestMapping(value = "/planetswithin100parsecs")
-	public List<Planet> getNearestPlanets() { return planetService.getPlanetsWithin100Parsecs(); }
+	@RequestMapping(value = "/planets/query/1")
+	public List<Planet> getNearestPlanets() { return planetService.getPlanetsWithin5Parsecs(); }
+
+	@GetMapping(value = "/planets/query/2")
+	public List<Planet> getRockyPlanets() { return planetService.getRockyPlanets(); }
+
+	@GetMapping(value = "/planets/query/3")
+	public List<Planet> get12AuPlanets() { return planetService.get12AuPlanets(); }
+
+
+	@GetMapping(value = "/planets/query/4")
+	public List<Planet> getEarthSizePlanets() { return planetService.getEarthSizePlanets(); }
+
+	@GetMapping(value = "/planets/query/5")
+	public List<Planet> getMultiPlanetSystems() { return planetService.getMultiPlanetSystems(); }
+
+	@GetMapping(value = "/planets/query/6")
+	public List<Planet> getKeplerPlanets() { return planetService.getKeplerPlanets(); }
+
+	@GetMapping(value = "/planets/query/7")
+	public List<Planet> getTrappistPlanets() { return planetService.getTrappistPlanets(); }
+
+	@GetMapping(value = "/planets/query/8")
+	public List<Planet> getSuperEarthSizePlanets() { return planetService.getSuperEarthSizePlanets(); }
+
+	@GetMapping(value = "/planets/query/9")
+	public List<Planet> getNasaInterestingPlanets() { return planetService.getNasaInterestingPlanets(); }
+
 
 }

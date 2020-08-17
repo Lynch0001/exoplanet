@@ -1,0 +1,99 @@
+.container-fluid{
+  background: lightgray;
+}
+.upper-left{
+  border: thin solid #605F61;
+  display: inline-block;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.system-planets{
+  font-size: small;
+}
+.stname-hdhip{
+  font-size: small;
+}
+.detail-table-name{
+  float: left;
+  color: #285e8e;
+  font-weight: bold;
+}
+
+.aladin-ack{
+  font-size: small;
+}
+.selector{
+  display: inline-block;
+}
+.record-info{
+  float:right;
+  font-size: small;
+}
+.record-number{
+  text-align: right;
+}
+.record-update{
+  text-align: right;
+}
+.record-selector{
+
+  border: black 1px solid;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-right: 10px;
+  width: 6pc;
+  font-size: small;
+  text-align: center;
+}
+.record-selector:hover {
+  background-color: #000;
+  color: white;
+}
+h2{
+  display: inline-block;
+}
+h6{
+  float: right;
+}
+.upper-right{
+  border: thin solid #605F61;
+  float: right;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.lower-left{
+  border: thin solid #605F61;
+  display: inline-block;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.lower-right{
+  border: thin solid #605F61;
+  float: right;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+svg{
+  border: darkgray solid 1px;
+}
+th{
+  font-weight: normal;
+}
+.link-external{
+  margin-left: 5pc;
+}
+
+.supsub {position: absolute}
+.subscript {display:block; position:relative; left:2px; top: 19px}
+.superscript {display:block; position:relative; left:2px; top: 5px}

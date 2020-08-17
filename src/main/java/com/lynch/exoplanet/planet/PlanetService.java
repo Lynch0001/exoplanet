@@ -33,7 +33,42 @@ public class PlanetService {
 		planetRepository.deleteById(id);
 	}
 
-	public List<Planet> getPlanetsWithin100Parsecs(){
-		return planetRepository.getPlanetsWithin100Parsecs();
+	public List<Planet> getPlanetsWithin5Parsecs(){
+		return planetRepository.getPlanetsWithin5Parsecs();
 	}
+
+	public List<Planet> getRockyPlanets(){
+		return planetRepository.getRockyPlanets();
+	}
+
+	public List<Planet> get12AuPlanets(){
+		return planetRepository.get12AuPlanets();
+	}
+
+	public List<Planet> getEarthSizePlanets(){
+		return planetRepository.getEarthSizePlanets();
+	}
+
+	public List<Planet> getMultiPlanetSystems(){
+		return planetRepository.getMultiPlanetSystems();
+	}
+
+	public List<Planet> getKeplerPlanets(){
+		return planetRepository.getKeplerPlanets();
+	}
+
+	public List<Planet> getTrappistPlanets(){
+		return planetRepository.getTrappistPlanets();
+	}
+
+	public List<Planet> getSuperEarthSizePlanets(){
+		return planetRepository.getSuperEarthSizePlanets();
+	}
+
+	public List<Planet> getNasaInterestingPlanets(){
+		return planetRepository.getNasaInterestingPlanets();
+	}
+
+
+
 }

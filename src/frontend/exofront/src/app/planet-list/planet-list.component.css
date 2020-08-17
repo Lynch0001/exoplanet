@@ -1,0 +1,125 @@
+body{
+  background-color: red;
+}
+
+
+.container-queries{
+  display: inline-block;
+  align-self: center;
+  font-size: .75em;
+}
+
+.container-table{
+  display: block;
+  float: right;
+  align-self: center;
+
+}
+
+table{
+  horiz-align: center;
+}
+
+th{
+  font-size: .75em;
+}
+
+td{
+  font-size: .75em;
+
+}
+
+.button-query{
+  text-align: center;
+  width: 90%;
+}
+
+.button-se{
+  background: #ffe8a1;
+}
+
+
+.button-el{
+  background: #8fd19e;
+}
+
+.button-nl{
+  background: #9fcdff;
+  border: #000000 1px solid;
+}
+
+.button-jl{
+  background: #ffc107;
+}
+
+.button-sj{
+  background: #fd7e14;
+}
+
+.button-hot{
+  background: #ed969e;
+}
+
+.button-gl{
+  background: #8fd19e;
+}
+
+.button-cold{
+  background: white;
+}
+
+.button-ws{
+  background: white;
+}
+
+.button-rs{
+  background: #ed969e;
+}
+
+.button-os{
+  background: #ffb84d;
+}
+
+.button-ys{
+  background: #ffff66;
+}
+
+.button-bl1{
+  background: #9fcdff;
+}
+
+.button-bl2{
+  background: #7abaff;
+}
+
+.button-bl3{
+  background: #428bca;
+}
+
+.button-br{
+  background: #cc9900;
+}
+
+
+
+
+
+.button-met{
+  background: silver;
+}
+
+.button-rock{
+  background: #cc9900;
+}
+
+.button-ri{
+  background: #ffdf7e;
+}
+
+.button-ice{
+  background: white;
+}
+
+.button-gas{
+  background: #9fcdff;
+}

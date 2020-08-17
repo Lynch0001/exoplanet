@@ -53,11 +53,11 @@ public class Planet {
 	@Column(name = "pl_eqt")
 	private Double pl_eqt;
 
-	@Column(name = "pl_massj")
-	private Double pl_massj;
+	@Column(name = "pl_bmassj")
+	private Double pl_bmassj;
 
-	@Column(name = "pl_masse")
-	private Double pl_masse;
+	@Column(name = "pl_bmasse")
+	private Double pl_bmasse;
 
 	@Column(name = "pl_rade")
 	private Double pl_rade;
@@ -97,6 +97,9 @@ public class Planet {
 
 	@Column(name = "pl_publ_date")
 	private String pl_publ_date;
+
+	@Column(name = "pl_bmassprov")
+	private String pl_bmassprov;
 
 	// Star Entity integration Starts
 
@@ -173,63 +176,146 @@ public class Planet {
 	@Column(name = "st_actlx")
 	private Double st_actlx;
 
+	@Column(name = "st_spstr")
+	private String st_spstr;
+
+	@Column(name = "st_disterr1")
+	private String st_disterr1;
+
+	@Column(name = "st_disterr2")
+	private String st_disterr2;
+
+	@Column(name = "st_tefferr1")
+	private String st_tefferr1;
+
+	@Column(name = "st_tefferr2")
+	private String st_tefferr2;
+
+	@Column(name = "st_masserr1")
+	private String st_masserr1;
+
+	@Column(name = "st_masserr2")
+	private String st_masserr2;
+
+	@Column(name = "st_raderr1")
+	private String st_raderr1;
+
+	@Column(name = "st_raderr2")
+	private String st_raderr2;
+
+	@Column(name = "st_loggerr1")
+	private String st_loggerr1;
+
+	@Column(name = "st_loggerr2")
+	private String st_loggerr2;
+
+	@Column(name = "st_denserr1")
+	private String st_denserr1;
+
+	@Column(name = "st_denserr2")
+	private String st_denserr2;
+
+
+	@Column(name = "pl_eqterr1")
+	private String pl_eqterr1;
+
+	@Column(name = "pl_eqterr2")
+	private String pl_eqterr2;
+
+	@Column(name = "pl_bmasseerr1")
+	private String pl_bmasseerr1;
+
+	@Column(name = "pl_bmasseerr2")
+	private String pl_bmasseerr2;
+
+	@Column(name = "pl_bmassjerr1")
+	private String pl_bmassjerr1;
+
+	@Column(name = "pl_bmassjerr2")
+	private String pl_bmassjerr2;
+
+	@Column(name = "pl_denserr1")
+	private String pl_denserr1;
+
+	@Column(name = "pl_denserr2")
+	private String pl_denserr2;
+
+	@Column(name = "pl_radeerr1")
+	private String pl_radeerr1;
+
+	@Column(name = "pl_radeerr2")
+	private String pl_radeerr2;
+
+	@Column(name = "pl_radjerr1")
+	private String pl_radjerr1;
+
+	@Column(name = "pl_radjerr2")
+	private String pl_radjerr2;
+
+	@Column(name = "pl_radserr1")
+	private String pl_radserr1;
+
+	@Column(name = "pl_radserr2")
+	private String pl_radserr2;
+
+	@Column(name = "pl_orbeccenerr1")
+	private String pl_orbeccenerr1;
+
+	@Column(name = "pl_orbeccenerr2")
+	private String pl_orbeccenerr2;
+
+
+	@Column(name = "pl_orbinclerr1")
+	private String pl_orbinclerr1;
+
+	@Column(name = "pl_orbinclerr2")
+	private String pl_orbinclerr2;
+
+
+	@Column(name = "pl_orbsmaxerr1")
+	private String pl_orbsmaxerr1;
+
+	@Column(name = "pl_orbsmaxerr2")
+	private String pl_orbsmaxerr2;
+
+
+	@Column(name = "pl_orbpererr1")
+	private String pl_orbpererr1;
+
+	@Column(name = "pl_orbpererr2")
+	private String pl_orbpererr2;
+
+	@Column(name = "st_radverr1")
+	private String st_radverr1;
+
+	@Column(name = "st_radverr2")
+	private String st_radverr2;
+
+
+	@Column(name = "st_vsinierr1")
+	private String st_vsinierr1;
+
+	@Column(name = "st_vsinierr2")
+	private String st_vsinierr2;
+
+	@Column(name = "st_metfeerr1")
+	private String st_metfeerr1;
+
+	@Column(name = "st_metfeerr2")
+	private String st_metfeerr2;
+
+
+
+	/*
+	 *  Constructor
+	 */
+
 	public Planet() {
 	}
 
-	public Planet(Long id, String pl_hostname, String pl_letter, String pl_name, String pl_discmethod, Double pl_orbper, Double pl_orbsmax, Double pl_orbeccen, Double pl_orbincl, Double pl_radj, Double pl_dens, Date rowupdate, Double pl_eqt, Double pl_massj, Double pl_masse, Double pl_rade, Double pl_rads, Double pl_trandur, Double pl_ratdor, Double pl_ratror, Integer pl_disc, String pl_disc_reflink, String pl_locale, String pl_facility, String pl_telescope, String pl_pelink, String pl_edelink, String pl_publ_date, Integer pl_pnum, Double ra, Double dec, Double st_dist, Double st_optmag, Double st_teff, Double st_mass, Double st_rad, String hd_name, String hip_name, Double st_rah, Double st_glon, Double st_glat, Double st_radv, Double st_logg, Double st_lum, Double st_dens, Double st_metfe, String st_metratio, Double st_age, Double st_vsini, Double st_acts, Double st_actr, Double st_actlx) {
-		this.id = id;
-		this.pl_hostname = pl_hostname;
-		this.pl_letter = pl_letter;
-		this.pl_name = pl_name;
-		this.pl_discmethod = pl_discmethod;
-		this.pl_orbper = pl_orbper;
-		this.pl_orbsmax = pl_orbsmax;
-		this.pl_orbeccen = pl_orbeccen;
-		this.pl_orbincl = pl_orbincl;
-		this.pl_radj = pl_radj;
-		this.pl_dens = pl_dens;
-		this.rowupdate = rowupdate;
-		this.pl_eqt = pl_eqt;
-		this.pl_massj = pl_massj;
-		this.pl_masse = pl_masse;
-		this.pl_rade = pl_rade;
-		this.pl_rads = pl_rads;
-		this.pl_trandur = pl_trandur;
-		this.pl_ratdor = pl_ratdor;
-		this.pl_ratror = pl_ratror;
-		this.pl_disc = pl_disc;
-		this.pl_disc_reflink = pl_disc_reflink;
-		this.pl_locale = pl_locale;
-		this.pl_facility = pl_facility;
-		this.pl_telescope = pl_telescope;
-		this.pl_pelink = pl_pelink;
-		this.pl_edelink = pl_edelink;
-		this.pl_publ_date = pl_publ_date;
-		this.pl_pnum = pl_pnum;
-		this.ra = ra;
-		this.dec = dec;
-		this.st_dist = st_dist;
-		this.st_optmag = st_optmag;
-		this.st_teff = st_teff;
-		this.st_mass = st_mass;
-		this.st_rad = st_rad;
-		this.hd_name = hd_name;
-		this.hip_name = hip_name;
-		this.st_rah = st_rah;
-		this.st_glon = st_glon;
-		this.st_glat = st_glat;
-		this.st_radv = st_radv;
-		this.st_logg = st_logg;
-		this.st_lum = st_lum;
-		this.st_dens = st_dens;
-		this.st_metfe = st_metfe;
-		this.st_metratio = st_metratio;
-		this.st_age = st_age;
-		this.st_vsini = st_vsini;
-		this.st_acts = st_acts;
-		this.st_actr = st_actr;
-		this.st_actlx = st_actlx;
-	}
+	/*
+	 * Getters and Setters
+	 */
 
 	public Long getId() {
 		return id;
@@ -335,20 +421,20 @@ public class Planet {
 		this.pl_eqt = pl_eqt;
 	}
 
-	public Double getPl_massj() {
-		return pl_massj;
+	public Double getPl_bmassj() {
+		return pl_bmassj;
 	}
 
-	public void setPl_massj(Double pl_massj) {
-		this.pl_massj = pl_massj;
+	public void setPl_bmassj(Double pl_bmassj) {
+		this.pl_bmassj = pl_bmassj;
 	}
 
-	public Double getPl_masse() {
-		return pl_masse;
+	public Double getPl_bmasse() {
+		return pl_bmasse;
 	}
 
-	public void setPl_masse(Double pl_masse) {
-		this.pl_masse = pl_masse;
+	public void setPl_bmasse(Double pl_bmasse) {
+		this.pl_bmasse = pl_bmasse;
 	}
 
 	public Double getPl_rade() {
@@ -645,5 +731,352 @@ public class Planet {
 
 	public void setSt_actlx(Double st_actlx) {
 		this.st_actlx = st_actlx;
+	}
+
+	public String getSt_spstr() {
+		return st_spstr;
+	}
+
+	public void setSt_spstr(String st_spstr) {
+		this.st_spstr = st_spstr;
+	}
+
+	public String getPl_bmassprov() {
+		return pl_bmassprov;
+	}
+
+	public void setPl_bmassprov(String pl_bmassprov) {
+		this.pl_bmassprov = pl_bmassprov;
+	}
+
+	public String getSt_disterr1() {
+		return st_disterr1;
+	}
+
+	public void setSt_disterr1(String st_disterr1) {
+		this.st_disterr1 = st_disterr1;
+	}
+
+	public String getSt_disterr2() {
+		return st_disterr2;
+	}
+
+	public void setSt_disterr2(String st_disterr2) {
+		this.st_disterr2 = st_disterr2;
+	}
+
+	public String getSt_tefferr1() {
+		return st_tefferr1;
+	}
+
+	public void setSt_tefferr1(String st_tefferr1) {
+		this.st_tefferr1 = st_tefferr1;
+	}
+
+	public String getSt_tefferr2() {
+		return st_tefferr2;
+	}
+
+	public void setSt_tefferr2(String st_tefferr2) {
+		this.st_tefferr2 = st_tefferr2;
+	}
+
+	public String getSt_masserr1() {
+		return st_masserr1;
+	}
+
+	public void setSt_masserr1(String st_masserr1) {
+		this.st_masserr1 = st_masserr1;
+	}
+
+	public String getSt_masserr2() {
+		return st_masserr2;
+	}
+
+	public void setSt_masserr2(String st_masserr2) {
+		this.st_masserr2 = st_masserr2;
+	}
+
+	public String getSt_raderr1() {
+		return st_raderr1;
+	}
+
+	public void setSt_raderr1(String st_raderr1) {
+		this.st_raderr1 = st_raderr1;
+	}
+
+	public String getSt_raderr2() {
+		return st_raderr2;
+	}
+
+	public void setSt_raderr2(String st_raderr2) {
+		this.st_raderr2 = st_raderr2;
+	}
+
+	public String getSt_loggerr1() {
+		return st_loggerr1;
+	}
+
+	public void setSt_loggerr1(String st_loggerr1) {
+		this.st_loggerr1 = st_loggerr1;
+	}
+
+	public String getSt_loggerr2() {
+		return st_loggerr2;
+	}
+
+	public void setSt_loggerr2(String st_loggerr2) {
+		this.st_loggerr2 = st_loggerr2;
+	}
+
+	public String getSt_denserr1() {
+		return st_denserr1;
+	}
+
+	public void setSt_denserr1(String st_denserr1) {
+		this.st_denserr1 = st_denserr1;
+	}
+
+	public String getSt_denserr2() {
+		return st_denserr2;
+	}
+
+	public void setSt_denserr2(String st_denserr2) {
+		this.st_denserr2 = st_denserr2;
+	}
+
+	public String getPl_eqterr1() {
+		return pl_eqterr1;
+	}
+
+	public void setPl_eqterr1(String pl_eqterr1) {
+		this.pl_eqterr1 = pl_eqterr1;
+	}
+
+	public String getPl_eqterr2() {
+		return pl_eqterr2;
+	}
+
+	public void setPl_eqterr2(String pl_eqterr2) {
+		this.pl_eqterr2 = pl_eqterr2;
+	}
+
+	public String getPl_bmasseerr1() {
+		return pl_bmasseerr1;
+	}
+
+	public void setPl_bmasseerr1(String pl_bmasseerr1) {
+		this.pl_bmasseerr1 = pl_bmasseerr1;
+	}
+
+	public String getPl_bmasseerr2() {
+		return pl_bmasseerr2;
+	}
+
+	public void setPl_bmasseerr2(String pl_bmasseerr2) {
+		this.pl_bmasseerr2 = pl_bmasseerr2;
+	}
+
+	public String getPl_bmassjerr1() {
+		return pl_bmassjerr1;
+	}
+
+	public void setPl_bmassjerr1(String pl_bmassjerr1) {
+		this.pl_bmassjerr1 = pl_bmassjerr1;
+	}
+
+	public String getPl_bmassjerr2() {
+		return pl_bmassjerr2;
+	}
+
+	public void setPl_bmassjerr2(String pl_bmassjerr2) {
+		this.pl_bmassjerr2 = pl_bmassjerr2;
+	}
+
+	public String getPl_denserr1() {
+		return pl_denserr1;
+	}
+
+	public void setPl_denserr1(String pl_denserr1) {
+		this.pl_denserr1 = pl_denserr1;
+	}
+
+	public String getPl_denserr2() {
+		return pl_denserr2;
+	}
+
+	public void setPl_denserr2(String pl_denserr2) {
+		this.pl_denserr2 = pl_denserr2;
+	}
+
+	public String getPl_radeerr1() {
+		return pl_radeerr1;
+	}
+
+	public void setPl_radeerr1(String pl_radeerr1) {
+		this.pl_radeerr1 = pl_radeerr1;
+	}
+
+	public String getPl_radeerr2() {
+		return pl_radeerr2;
+	}
+
+	public void setPl_radeerr2(String pl_radeerr2) {
+		this.pl_radeerr2 = pl_radeerr2;
+	}
+
+	public String getPl_radjerr1() {
+		return pl_radjerr1;
+	}
+
+	public void setPl_radjerr1(String pl_radjerr1) {
+		this.pl_radjerr1 = pl_radjerr1;
+	}
+
+	public String getPl_radjerr2() {
+		return pl_radjerr2;
+	}
+
+	public void setPl_radjerr2(String pl_radjerr2) {
+		this.pl_radjerr2 = pl_radjerr2;
+	}
+
+	public String getPl_radserr1() {
+		return pl_radserr1;
+	}
+
+	public void setPl_radserr1(String pl_radserr1) {
+		this.pl_radserr1 = pl_radserr1;
+	}
+
+	public String getPl_radserr2() {
+		return pl_radserr2;
+	}
+
+	public void setPl_radserr2(String pl_radserr2) {
+		this.pl_radserr2 = pl_radserr2;
+	}
+
+	public String getPl_orbeccenerr1() {
+		return pl_orbeccenerr1;
+	}
+
+	public void setPl_orbeccenerr1(String pl_orbeccenerr1) {
+		this.pl_orbeccenerr1 = pl_orbeccenerr1;
+	}
+
+	public String getPl_orbeccenerr2() {
+		return pl_orbeccenerr2;
+	}
+
+	public void setPl_orbeccenerr2(String pl_orbeccenerr2) {
+		this.pl_orbeccenerr2 = pl_orbeccenerr2;
+	}
+
+	public String getPl_orbinclerr1() {
+		return pl_orbinclerr1;
+	}
+
+	public void setPl_orbinclerr1(String pl_orbinclerr1) {
+		this.pl_orbinclerr1 = pl_orbinclerr1;
+	}
+
+	public String getPl_orbinclerr2() {
+		return pl_orbinclerr2;
+	}
+
+	public void setPl_orbinclerr2(String pl_orbinclerr2) {
+		this.pl_orbinclerr2 = pl_orbinclerr2;
+	}
+
+	public String getPl_orbsmaxerr1() {
+		return pl_orbsmaxerr1;
+	}
+
+	public void setPl_orbsmaxerr1(String pl_orbsmaxerr1) {
+		this.pl_orbsmaxerr1 = pl_orbsmaxerr1;
+	}
+
+	public String getPl_orbsmaxerr2() {
+		return pl_orbsmaxerr2;
+	}
+
+	public void setPl_orbsmaxerr2(String pl_orbsmaxerr2) {
+		this.pl_orbsmaxerr2 = pl_orbsmaxerr2;
+	}
+
+	public String getPl_orbpererr1() {
+		return pl_orbpererr1;
+	}
+
+	public void setPl_orbpererr1(String pl_orbpererr1) {
+		this.pl_orbpererr1 = pl_orbpererr1;
+	}
+
+	public String getPl_orbpererr2() {
+		return pl_orbpererr2;
+	}
+
+	public void setPl_orbpererr2(String pl_orbpererr2) {
+		this.pl_orbpererr2 = pl_orbpererr2;
+	}
+
+	public String getSt_radverr1() {
+		return st_radverr1;
+	}
+
+	public void setSt_radverr1(String st_radverr1) {
+		this.st_radverr1 = st_radverr1;
+	}
+
+	public String getSt_radverr2() {
+		return st_radverr2;
+	}
+
+	public void setSt_radverr2(String st_radverr2) {
+		this.st_radverr2 = st_radverr2;
+	}
+
+	public String getSt_vsinierr1() {
+		return st_vsinierr1;
+	}
+
+	public void setSt_vsinierr1(String st_vsinierr1) {
+		this.st_vsinierr1 = st_vsinierr1;
+	}
+
+	public String getSt_vsinierr2() {
+		return st_vsinierr2;
+	}
+
+	public void setSt_vsinierr2(String st_vsinierr2) {
+		this.st_vsinierr2 = st_vsinierr2;
+	}
+
+	public String getSt_metfeerr1() {
+		return st_metfeerr1;
+	}
+
+	public void setSt_metfeerr1(String st_metfeerr1) {
+		this.st_metfeerr1 = st_metfeerr1;
+	}
+
+	public String getSt_metfeerr2() {
+		return st_metfeerr2;
+	}
+
+	public void setSt_metfeerr2(String st_metfeerr2) {
+		this.st_metfeerr2 = st_metfeerr2;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Planet{" +
+						"id=" + id +
+						", pl_name='" + pl_name + '\'' +
+						", pl_disc=" + pl_disc +
+						'}';
 	}
 }
