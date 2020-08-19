@@ -3,30 +3,97 @@ package com.lynch.exoplanet.planet;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Date;
 
+/**
+ * Data from NASA Planetary Systems Composite Parameters Table
+ *
+ *
+ *
+ */
+
 @SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
-@Table(name = "planettable")
+@Table(name = "planetarysystemstable")
 public class Planet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "pl_hostname")
-	private String pl_hostname;
-
-	@Column(name = "pl_letter")
-	private String pl_letter;
+	/*
+	 * Names (Verified 8/18/20)
+	 */
 
 	@Column(name = "pl_name")
 	private String pl_name;
 
-	@Column(name = "pl_discmethod")
-	private String pl_discmethod;
+	@Column(name = "hostname")
+	private String hostname;
+
+	@Column(name = "pl_letter")
+	private String pl_letter;
+
+	@Column(name = "hd_name")
+	private String hd_name;
+
+	@Column(name = "hip_name")
+	private String hip_name;
+
+	@Column(name = "tic_id")
+	private String tic_id;
+
+	@Column(name = "gaia_id")
+	private String gaia_id;
+
+	/*
+	 * System Composition (Verified 8/18/20)
+	 */
+
+	@Column(name = "sy_snum")
+	private Integer sy_snum;
+
+	@Column(name = "sy_pnum")
+	private Integer sy_pnum;
+
+	@Column(name = "cb_flag")
+	private Integer cb_flag;
+
+
+	/*
+	 * Planet Discovery (Verified 8/18/20)
+	 */
+
+	@Column(name = "discoverymethod")
+	private String discoverymethod;
+
+	@Column(name = "disc_year")
+	private Integer disc_year;
+
+	@Column(name = "disc_locale")
+	private String disc_locale;
+
+	@Column(name = "disc_facility")
+	private String disc_facility;
+
+	@Column(name = "disc_telescope")
+	private String disc_telescope;
+
+	@Column(name = "disc_instrument")
+	private String disc_instrument;
+
+
+	/*
+	 * Detections (Verified 8/18/20)
+	 */
+
+	@Column(name = "ima_flag")
+	private Integer ima_flag;
+
+	/*
+	 * Planet Parameters (Verified 8/18/20)
+	 */
 
 	@Column(name = "pl_orbper")
 	private Double pl_orbper;
@@ -34,36 +101,59 @@ public class Planet {
 	@Column(name = "pl_orbsmax")
 	private Double pl_orbsmax;
 
-	@Column(name = "pl_orbeccen")
-	private Double pl_orbeccen;
-
-	@Column(name = "pl_orbincl")
-	private Double pl_orbincl;
+	@Column(name = "pl_rade")
+	private Double pl_rade;
 
 	@Column(name = "pl_radj")
 	private Double pl_radj;
 
-	@Column(name = "pl_dens")
-	private Double pl_dens;
+	@Column(name = "pl_masse")
+	private Double pl_masse;
 
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@Column(name = "rowupdate")
-	private Date rowupdate;
+	@Column(name = "pl_massj")
+	private Double pl_massj;
 
-	@Column(name = "pl_eqt")
-	private Double pl_eqt;
+	@Column(name = "pl_msinie")
+	private Double pl_msinie;
 
-	@Column(name = "pl_bmassj")
-	private Double pl_bmassj;
+	@Column(name = "pl_msinij")
+	private Double pl_msinij;
+
+	@Column(name = "pl_cmasse")
+	private Double pl_cmasse;
+
+	@Column(name = "pl_cmassj")
+	private Double pl_cmassj;
 
 	@Column(name = "pl_bmasse")
 	private Double pl_bmasse;
 
-	@Column(name = "pl_rade")
-	private Double pl_rade;
+	@Column(name = "pl_bmassj")
+	private Double pl_bmassj;
 
-	@Column(name = "pl_rads")
-	private Double pl_rads;
+	@Column(name = "pl_bmassprov")
+	private String pl_bmassprov;
+
+	@Column(name = "pl_dens")
+	private Double pl_dens;
+
+	@Column(name = "pl_orbeccen")
+	private Double pl_orbeccen;
+
+	@Column(name = "pl_insol")
+	private Double pl_insol;
+
+	@Column(name = "pl_eqt")
+	private Double pl_eqt;
+
+	@Column(name = "pl_orbincl")
+	private Double pl_orbincl;
+
+	@Column(name = "pl_tranmid")
+	private Double pl_tranmid;
+
+	@Column(name = "pl_trandep")
+	private Double pl_trandep;
 
 	@Column(name = "pl_trandur")
 	private Double pl_trandur;
@@ -74,37 +164,62 @@ public class Planet {
 	@Column(name = "pl_ratror")
 	private Double pl_ratror;
 
-	@Column(name = "pl_disc")
-	private Integer pl_disc;
+	/*
+	 * Stellar Data (Verified 8/18/20)
+	 */
 
-	@Column(name = "pl_disc_reflink")
-	private String pl_disc_reflink;
+	@Column(name = "st_spectype")
+	private String st_spectype;
 
-	@Column(name = "pl_locale")
-	private String pl_locale;
+	@SuppressWarnings("JpaDataSourceORMInspection")
+	@Column(name = "st_teff")
+	private Double st_teff;
 
-	@Column(name = "pl_facility")
-	private String pl_facility;
+	@Column(name = "st_rad")
+	private Double st_rad;
 
-	@Column(name = "pl_telescope")
-	private String pl_telescope;
+	@Column(name = "st_mass")
+	private Double st_mass;
 
-	@Column(name = "pl_pelink")
-	private String pl_pelink;
+	@Column(name = "st_met")
+	private Double st_met;
 
-	@Column(name = "pl_edelink")
-	private String pl_edelink;
+	@Column(name = "st_metratio")
+	private String st_metratio;
 
-	@Column(name = "pl_publ_date")
-	private String pl_publ_date;
+	@Column(name = "st_lum")
+	private Double st_lum;
 
-	@Column(name = "pl_bmassprov")
-	private String pl_bmassprov;
+	@Column(name = "st_logg")
+	private Double st_logg;
 
-	// Star Entity integration Starts
+	@Column(name = "st_age")
+	private Double st_age;
 
-	@Column(name = "pl_pnum")
-	private Integer pl_pnum;
+	@Column(name = "st_dens")
+	private Double st_dens;
+
+	@Column(name = "st_vsin")
+	private Double st_vsin;
+
+	@Column(name = "st_rotp")
+	private Double st_rotp;
+
+	@Column(name = "st_radv")
+	private Double st_radv;
+
+
+	/*
+	 * System Data (Verified 8/19/20)
+	 */
+
+	@Column(name = "sy_dist")
+	private Double sy_dist;
+
+
+	/*
+	 * Position Data (Verified 8/19/20)
+	 */
 
 	@Column(name = "ra")
 	private Double ra;
@@ -112,78 +227,40 @@ public class Planet {
 	@Column(name = "dec")
 	private Double dec;
 
-	@Column(name = "st_dist")
-	private Double st_dist;
+	@Column(name = "glon")
+	private Double glon;
 
-	@Column(name = "st_optmag")
-	private Double st_optmag;
+	@Column(name = "glat")
+	private Double glat;
 
-	@SuppressWarnings("JpaDataSourceORMInspection")
-	@Column(name = "st_teff")
-	private Double st_teff;
 
-	@Column(name = "st_mass")
-	private Double st_mass;
+	/*
+	 * Photometry
+	 */
 
-	@Column(name = "st_rad")
-	private Double st_rad;
 
-	@Column(name = "hd_name")
-	private String hd_name;
+	/*
+	 * Dates (Verified 8/19/20)
+	 */
 
-	@Column(name = "hip_name")
-	private String hip_name;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	@Column(name = "rowupdate")
+	private Date rowupdate;
 
-	@Column(name = "st_rah")
-	private Double st_rah;
 
-	@Column(name = "st_glon")
-	private Double st_glon;
+	/*
+	 * System Error Fields
+	 */
 
-	@Column(name = "st_glat")
-	private Double st_glat;
+	@Column(name = "sy_disterr1")
+	private String sy_disterr1;
 
-	@Column(name = "st_radv")
-	private Double st_radv;
+	@Column(name = "sy_disterr2")
+	private String sy_disterr2;
 
-	@Column(name = "st_logg")
-	private Double st_logg;
-
-	@Column(name = "st_lum")
-	private Double st_lum;
-
-	@Column(name = "st_dens")
-	private Double st_dens;
-
-	@Column(name = "st_metfe")
-	private Double st_metfe;
-
-	@Column(name = "st_metratio")
-	private String st_metratio;
-
-	@Column(name = "st_age")
-	private Double st_age;
-
-	@Column(name = "st_vsini")
-	private Double st_vsini;
-
-	@Column(name = "st_acts")
-	private Double st_acts;
-
-	@Column(name = "st_actr")
-	private Double st_actr;
-
-	@Column(name = "st_actlx")
-	private Double st_actlx;
-
-	@Column(name = "st_spstr")
-	private String st_spstr;
-
-	@Column(name = "st_disterr1")
-	private String st_disterr1;
-
-	@Column(name = "st_disterr2")
-	private String st_disterr2;
+	/*
+	 * Star Error Fields
+	 */
 
 	@Column(name = "st_tefferr1")
 	private String st_tefferr1;
@@ -215,6 +292,39 @@ public class Planet {
 	@Column(name = "st_denserr2")
 	private String st_denserr2;
 
+	@Column(name = "st_radverr1")
+	private String st_radverr1;
+
+	@Column(name = "st_radverr2")
+	private String st_radverr2;
+
+	@Column(name = "st_vsinerr1")
+	private String st_vsinerr1;
+
+	@Column(name = "st_vsinerr2")
+	private String st_vsinerr2;
+
+	@Column(name = "st_meterr1")
+	private String st_meterr1;
+
+	@Column(name = "st_meterr2")
+	private String st_meterr2;
+
+	@Column(name = "st_lumerr1")
+	private String st_lumerr1;
+
+	@Column(name = "st_lumerr2")
+	private String st_lumerr2;
+
+	@Column(name = "st_ageerr1")
+	private String st_ageerr1;
+
+	@Column(name = "st_ageerr2")
+	private String st_ageerr2;
+
+	/*
+	 * Planet Error Fields
+	 */
 
 	@Column(name = "pl_eqterr1")
 	private String pl_eqterr1;
@@ -252,18 +362,11 @@ public class Planet {
 	@Column(name = "pl_radjerr2")
 	private String pl_radjerr2;
 
-	@Column(name = "pl_radserr1")
-	private String pl_radserr1;
-
-	@Column(name = "pl_radserr2")
-	private String pl_radserr2;
-
 	@Column(name = "pl_orbeccenerr1")
 	private String pl_orbeccenerr1;
 
 	@Column(name = "pl_orbeccenerr2")
 	private String pl_orbeccenerr2;
-
 
 	@Column(name = "pl_orbinclerr1")
 	private String pl_orbinclerr1;
@@ -271,13 +374,11 @@ public class Planet {
 	@Column(name = "pl_orbinclerr2")
 	private String pl_orbinclerr2;
 
-
 	@Column(name = "pl_orbsmaxerr1")
 	private String pl_orbsmaxerr1;
 
 	@Column(name = "pl_orbsmaxerr2")
 	private String pl_orbsmaxerr2;
-
 
 	@Column(name = "pl_orbpererr1")
 	private String pl_orbpererr1;
@@ -285,32 +386,18 @@ public class Planet {
 	@Column(name = "pl_orbpererr2")
 	private String pl_orbpererr2;
 
-	@Column(name = "st_radverr1")
-	private String st_radverr1;
+	@Column(name = "pl_insolerr1")
+	private String pl_insolerr1;
 
-	@Column(name = "st_radverr2")
-	private String st_radverr2;
-
-
-	@Column(name = "st_vsinierr1")
-	private String st_vsinierr1;
-
-	@Column(name = "st_vsinierr2")
-	private String st_vsinierr2;
-
-	@Column(name = "st_metfeerr1")
-	private String st_metfeerr1;
-
-	@Column(name = "st_metfeerr2")
-	private String st_metfeerr2;
-
-
+	@Column(name = "pl_insolerr2")
+	private String pl_insolerr2;
 
 	/*
 	 *  Constructor
 	 */
 
 	public Planet() {
+		// No arg Constructor
 	}
 
 	/*
@@ -325,12 +412,20 @@ public class Planet {
 		this.id = id;
 	}
 
-	public String getPl_hostname() {
-		return pl_hostname;
+	public String getPl_name() {
+		return pl_name;
 	}
 
-	public void setPl_hostname(String pl_hostname) {
-		this.pl_hostname = pl_hostname;
+	public void setPl_name(String pl_name) {
+		this.pl_name = pl_name;
+	}
+
+	public String getHostname() {
+		return hostname;
+	}
+
+	public void setHostname(String hostname) {
+		this.hostname = hostname;
 	}
 
 	public String getPl_letter() {
@@ -341,20 +436,116 @@ public class Planet {
 		this.pl_letter = pl_letter;
 	}
 
-	public String getPl_name() {
-		return pl_name;
+	public String getHd_name() {
+		return hd_name;
 	}
 
-	public void setPl_name(String pl_name) {
-		this.pl_name = pl_name;
+	public void setHd_name(String hd_name) {
+		this.hd_name = hd_name;
 	}
 
-	public String getPl_discmethod() {
-		return pl_discmethod;
+	public String getHip_name() {
+		return hip_name;
 	}
 
-	public void setPl_discmethod(String pl_discmethod) {
-		this.pl_discmethod = pl_discmethod;
+	public void setHip_name(String hip_name) {
+		this.hip_name = hip_name;
+	}
+
+	public String getTic_id() {
+		return tic_id;
+	}
+
+	public void setTic_id(String tic_id) {
+		this.tic_id = tic_id;
+	}
+
+	public String getGaia_id() {
+		return gaia_id;
+	}
+
+	public void setGaia_id(String gaia_id) {
+		this.gaia_id = gaia_id;
+	}
+
+	public Integer getSy_snum() {
+		return sy_snum;
+	}
+
+	public void setSy_snum(Integer sy_snum) {
+		this.sy_snum = sy_snum;
+	}
+
+	public Integer getSy_pnum() {
+		return sy_pnum;
+	}
+
+	public void setSy_pnum(Integer sy_pnum) {
+		this.sy_pnum = sy_pnum;
+	}
+
+	public Integer getCb_flag() {
+		return cb_flag;
+	}
+
+	public void setCb_flag(Integer cb_flag) {
+		this.cb_flag = cb_flag;
+	}
+
+	public String getDiscoverymethod() {
+		return discoverymethod;
+	}
+
+	public void setDiscoverymethod(String discoverymethod) {
+		this.discoverymethod = discoverymethod;
+	}
+
+	public Integer getDisc_year() {
+		return disc_year;
+	}
+
+	public void setDisc_year(Integer disc_year) {
+		this.disc_year = disc_year;
+	}
+
+	public String getDisc_locale() {
+		return disc_locale;
+	}
+
+	public void setDisc_locale(String disc_locale) {
+		this.disc_locale = disc_locale;
+	}
+
+	public String getDisc_facility() {
+		return disc_facility;
+	}
+
+	public void setDisc_facility(String disc_facility) {
+		this.disc_facility = disc_facility;
+	}
+
+	public String getDisc_telescope() {
+		return disc_telescope;
+	}
+
+	public void setDisc_telescope(String disc_telescope) {
+		this.disc_telescope = disc_telescope;
+	}
+
+	public String getDisc_instrument() {
+		return disc_instrument;
+	}
+
+	public void setDisc_instrument(String disc_instrument) {
+		this.disc_instrument = disc_instrument;
+	}
+
+	public Integer getIma_flag() {
+		return ima_flag;
+	}
+
+	public void setIma_flag(Integer ima_flag) {
+		this.ima_flag = ima_flag;
 	}
 
 	public Double getPl_orbper() {
@@ -373,20 +564,12 @@ public class Planet {
 		this.pl_orbsmax = pl_orbsmax;
 	}
 
-	public Double getPl_orbeccen() {
-		return pl_orbeccen;
+	public Double getPl_rade() {
+		return pl_rade;
 	}
 
-	public void setPl_orbeccen(Double pl_orbeccen) {
-		this.pl_orbeccen = pl_orbeccen;
-	}
-
-	public Double getPl_orbincl() {
-		return pl_orbincl;
-	}
-
-	public void setPl_orbincl(Double pl_orbincl) {
-		this.pl_orbincl = pl_orbincl;
+	public void setPl_rade(Double pl_rade) {
+		this.pl_rade = pl_rade;
 	}
 
 	public Double getPl_radj() {
@@ -397,36 +580,52 @@ public class Planet {
 		this.pl_radj = pl_radj;
 	}
 
-	public Double getPl_dens() {
-		return pl_dens;
+	public Double getPl_masse() {
+		return pl_masse;
 	}
 
-	public void setPl_dens(Double pl_dens) {
-		this.pl_dens = pl_dens;
+	public void setPl_masse(Double pl_masse) {
+		this.pl_masse = pl_masse;
 	}
 
-	public Date getRowupdate() {
-		return rowupdate;
+	public Double getPl_massj() {
+		return pl_massj;
 	}
 
-	public void setRowupdate(Date rowupdate) {
-		this.rowupdate = rowupdate;
+	public void setPl_massj(Double pl_massj) {
+		this.pl_massj = pl_massj;
 	}
 
-	public Double getPl_eqt() {
-		return pl_eqt;
+	public Double getPl_msinie() {
+		return pl_msinie;
 	}
 
-	public void setPl_eqt(Double pl_eqt) {
-		this.pl_eqt = pl_eqt;
+	public void setPl_msinie(Double pl_msinie) {
+		this.pl_msinie = pl_msinie;
 	}
 
-	public Double getPl_bmassj() {
-		return pl_bmassj;
+	public Double getPl_msinij() {
+		return pl_msinij;
 	}
 
-	public void setPl_bmassj(Double pl_bmassj) {
-		this.pl_bmassj = pl_bmassj;
+	public void setPl_msinij(Double pl_msinij) {
+		this.pl_msinij = pl_msinij;
+	}
+
+	public Double getPl_cmasse() {
+		return pl_cmasse;
+	}
+
+	public void setPl_cmasse(Double pl_cmasse) {
+		this.pl_cmasse = pl_cmasse;
+	}
+
+	public Double getPl_cmassj() {
+		return pl_cmassj;
+	}
+
+	public void setPl_cmassj(Double pl_cmassj) {
+		this.pl_cmassj = pl_cmassj;
 	}
 
 	public Double getPl_bmasse() {
@@ -437,20 +636,76 @@ public class Planet {
 		this.pl_bmasse = pl_bmasse;
 	}
 
-	public Double getPl_rade() {
-		return pl_rade;
+	public Double getPl_bmassj() {
+		return pl_bmassj;
 	}
 
-	public void setPl_rade(Double pl_rade) {
-		this.pl_rade = pl_rade;
+	public void setPl_bmassj(Double pl_bmassj) {
+		this.pl_bmassj = pl_bmassj;
 	}
 
-	public Double getPl_rads() {
-		return pl_rads;
+	public String getPl_bmassprov() {
+		return pl_bmassprov;
 	}
 
-	public void setPl_rads(Double pl_rads) {
-		this.pl_rads = pl_rads;
+	public void setPl_bmassprov(String pl_bmassprov) {
+		this.pl_bmassprov = pl_bmassprov;
+	}
+
+	public Double getPl_dens() {
+		return pl_dens;
+	}
+
+	public void setPl_dens(Double pl_dens) {
+		this.pl_dens = pl_dens;
+	}
+
+	public Double getPl_orbeccen() {
+		return pl_orbeccen;
+	}
+
+	public void setPl_orbeccen(Double pl_orbeccen) {
+		this.pl_orbeccen = pl_orbeccen;
+	}
+
+	public Double getPl_insol() {
+		return pl_insol;
+	}
+
+	public void setPl_insol(Double pl_insol) {
+		this.pl_insol = pl_insol;
+	}
+
+	public Double getPl_eqt() {
+		return pl_eqt;
+	}
+
+	public void setPl_eqt(Double pl_eqt) {
+		this.pl_eqt = pl_eqt;
+	}
+
+	public Double getPl_orbincl() {
+		return pl_orbincl;
+	}
+
+	public void setPl_orbincl(Double pl_orbincl) {
+		this.pl_orbincl = pl_orbincl;
+	}
+
+	public Double getPl_tranmid() {
+		return pl_tranmid;
+	}
+
+	public void setPl_tranmid(Double pl_tranmid) {
+		this.pl_tranmid = pl_tranmid;
+	}
+
+	public Double getPl_trandep() {
+		return pl_trandep;
+	}
+
+	public void setPl_trandep(Double pl_trandep) {
+		this.pl_trandep = pl_trandep;
 	}
 
 	public Double getPl_trandur() {
@@ -477,76 +732,116 @@ public class Planet {
 		this.pl_ratror = pl_ratror;
 	}
 
-	public Integer getPl_disc() {
-		return pl_disc;
+	public String getSt_spectype() {
+		return st_spectype;
 	}
 
-	public void setPl_disc(Integer pl_disc) {
-		this.pl_disc = pl_disc;
+	public void setSt_spectype(String st_spectype) {
+		this.st_spectype = st_spectype;
 	}
 
-	public String getPl_disc_reflink() {
-		return pl_disc_reflink;
+	public Double getSt_teff() {
+		return st_teff;
 	}
 
-	public void setPl_disc_reflink(String pl_disc_reflink) {
-		this.pl_disc_reflink = pl_disc_reflink;
+	public void setSt_teff(Double st_teff) {
+		this.st_teff = st_teff;
 	}
 
-	public String getPl_locale() {
-		return pl_locale;
+	public Double getSt_rad() {
+		return st_rad;
 	}
 
-	public void setPl_locale(String pl_locale) {
-		this.pl_locale = pl_locale;
+	public void setSt_rad(Double st_rad) {
+		this.st_rad = st_rad;
 	}
 
-	public String getPl_facility() {
-		return pl_facility;
+	public Double getSt_mass() {
+		return st_mass;
 	}
 
-	public void setPl_facility(String pl_facility) {
-		this.pl_facility = pl_facility;
+	public void setSt_mass(Double st_mass) {
+		this.st_mass = st_mass;
 	}
 
-	public String getPl_telescope() {
-		return pl_telescope;
+	public Double getSt_met() {
+		return st_met;
 	}
 
-	public void setPl_telescope(String pl_telescope) {
-		this.pl_telescope = pl_telescope;
+	public void setSt_met(Double st_met) {
+		this.st_met = st_met;
 	}
 
-	public String getPl_pelink() {
-		return pl_pelink;
+	public String getSt_metratio() {
+		return st_metratio;
 	}
 
-	public void setPl_pelink(String pl_pelink) {
-		this.pl_pelink = pl_pelink;
+	public void setSt_metratio(String st_metratio) {
+		this.st_metratio = st_metratio;
 	}
 
-	public String getPl_edelink() {
-		return pl_edelink;
+	public Double getSt_lum() {
+		return st_lum;
 	}
 
-	public void setPl_edelink(String pl_edelink) {
-		this.pl_edelink = pl_edelink;
+	public void setSt_lum(Double st_lum) {
+		this.st_lum = st_lum;
 	}
 
-	public String getPl_publ_date() {
-		return pl_publ_date;
+	public Double getSt_logg() {
+		return st_logg;
 	}
 
-	public void setPl_publ_date(String pl_publ_date) {
-		this.pl_publ_date = pl_publ_date;
+	public void setSt_logg(Double st_logg) {
+		this.st_logg = st_logg;
 	}
 
-	public Integer getPl_pnum() {
-		return pl_pnum;
+	public Double getSt_age() {
+		return st_age;
 	}
 
-	public void setPl_pnum(Integer pl_pnum) {
-		this.pl_pnum = pl_pnum;
+	public void setSt_age(Double st_age) {
+		this.st_age = st_age;
+	}
+
+	public Double getSt_dens() {
+		return st_dens;
+	}
+
+	public void setSt_dens(Double st_dens) {
+		this.st_dens = st_dens;
+	}
+
+	public Double getSt_vsin() {
+		return st_vsin;
+	}
+
+	public void setSt_vsin(Double st_vsin) {
+		this.st_vsin = st_vsin;
+	}
+
+	public Double getSt_rotp() {
+		return st_rotp;
+	}
+
+	public void setSt_rotp(Double st_rotp) {
+		this.st_rotp = st_rotp;
+	}
+
+	public Double getSt_radv() {
+		return st_radv;
+	}
+
+	public void setSt_radv(Double st_radv) {
+		this.st_radv = st_radv;
+	}
+
+	public Double getSy_dist() {
+		return sy_dist;
+	}
+
+	public void setSy_dist(Double sy_dist) {
+		this.sy_dist = sy_dist;
 	}
 
 	public Double getRa() {
@@ -565,204 +860,44 @@ public class Planet {
 		this.dec = dec;
 	}
 
-	public Double getSt_dist() {
-		return st_dist;
+	public Double getGlon() {
+		return glon;
 	}
 
-	public void setSt_dist(Double st_dist) {
-		this.st_dist = st_dist;
+	public void setGlon(Double glon) {
+		this.glon = glon;
 	}
 
-	public Double getSt_optmag() {
-		return st_optmag;
+	public Double getGlat() {
+		return glat;
 	}
 
-	public void setSt_optmag(Double st_optmag) {
-		this.st_optmag = st_optmag;
+	public void setGlat(Double glat) {
+		this.glat = glat;
 	}
 
-	public Double getSt_teff() {
-		return st_teff;
+	public Date getRowupdate() {
+		return rowupdate;
 	}
 
-	public void setSt_teff(Double st_teff) {
-		this.st_teff = st_teff;
+	public void setRowupdate(Date rowupdate) {
+		this.rowupdate = rowupdate;
 	}
 
-	public Double getSt_mass() {
-		return st_mass;
+	public String getSy_disterr1() {
+		return sy_disterr1;
 	}
 
-	public void setSt_mass(Double st_mass) {
-		this.st_mass = st_mass;
+	public void setSy_disterr1(String sy_disterr1) {
+		this.sy_disterr1 = sy_disterr1;
 	}
 
-	public Double getSt_rad() {
-		return st_rad;
+	public String getSy_disterr2() {
+		return sy_disterr2;
 	}
 
-	public void setSt_rad(Double st_rad) {
-		this.st_rad = st_rad;
-	}
-
-	public String getHd_name() {
-		return hd_name;
-	}
-
-	public void setHd_name(String hd_name) {
-		this.hd_name = hd_name;
-	}
-
-	public String getHip_name() {
-		return hip_name;
-	}
-
-	public void setHip_name(String hip_name) {
-		this.hip_name = hip_name;
-	}
-
-	public Double getSt_rah() {
-		return st_rah;
-	}
-
-	public void setSt_rah(Double st_rah) {
-		this.st_rah = st_rah;
-	}
-
-	public Double getSt_glon() {
-		return st_glon;
-	}
-
-	public void setSt_glon(Double st_glon) {
-		this.st_glon = st_glon;
-	}
-
-	public Double getSt_glat() {
-		return st_glat;
-	}
-
-	public void setSt_glat(Double st_glat) {
-		this.st_glat = st_glat;
-	}
-
-	public Double getSt_radv() {
-		return st_radv;
-	}
-
-	public void setSt_radv(Double st_radv) {
-		this.st_radv = st_radv;
-	}
-
-	public Double getSt_logg() {
-		return st_logg;
-	}
-
-	public void setSt_logg(Double st_logg) {
-		this.st_logg = st_logg;
-	}
-
-	public Double getSt_lum() {
-		return st_lum;
-	}
-
-	public void setSt_lum(Double st_lum) {
-		this.st_lum = st_lum;
-	}
-
-	public Double getSt_dens() {
-		return st_dens;
-	}
-
-	public void setSt_dens(Double st_dens) {
-		this.st_dens = st_dens;
-	}
-
-	public Double getSt_metfe() {
-		return st_metfe;
-	}
-
-	public void setSt_metfe(Double st_metfe) {
-		this.st_metfe = st_metfe;
-	}
-
-	public String getSt_metratio() {
-		return st_metratio;
-	}
-
-	public void setSt_metratio(String st_metratio) {
-		this.st_metratio = st_metratio;
-	}
-
-	public Double getSt_age() {
-		return st_age;
-	}
-
-	public void setSt_age(Double st_age) {
-		this.st_age = st_age;
-	}
-
-	public Double getSt_vsini() {
-		return st_vsini;
-	}
-
-	public void setSt_vsini(Double st_vsini) {
-		this.st_vsini = st_vsini;
-	}
-
-	public Double getSt_acts() {
-		return st_acts;
-	}
-
-	public void setSt_acts(Double st_acts) {
-		this.st_acts = st_acts;
-	}
-
-	public Double getSt_actr() {
-		return st_actr;
-	}
-
-	public void setSt_actr(Double st_actr) {
-		this.st_actr = st_actr;
-	}
-
-	public Double getSt_actlx() {
-		return st_actlx;
-	}
-
-	public void setSt_actlx(Double st_actlx) {
-		this.st_actlx = st_actlx;
-	}
-
-	public String getSt_spstr() {
-		return st_spstr;
-	}
-
-	public void setSt_spstr(String st_spstr) {
-		this.st_spstr = st_spstr;
-	}
-
-	public String getPl_bmassprov() {
-		return pl_bmassprov;
-	}
-
-	public void setPl_bmassprov(String pl_bmassprov) {
-		this.pl_bmassprov = pl_bmassprov;
-	}
-
-	public String getSt_disterr1() {
-		return st_disterr1;
-	}
-
-	public void setSt_disterr1(String st_disterr1) {
-		this.st_disterr1 = st_disterr1;
-	}
-
-	public String getSt_disterr2() {
-		return st_disterr2;
-	}
-
-	public void setSt_disterr2(String st_disterr2) {
-		this.st_disterr2 = st_disterr2;
+	public void setSy_disterr2(String sy_disterr2) {
+		this.sy_disterr2 = sy_disterr2;
 	}
 
 	public String getSt_tefferr1() {
@@ -843,6 +978,86 @@ public class Planet {
 
 	public void setSt_denserr2(String st_denserr2) {
 		this.st_denserr2 = st_denserr2;
+	}
+
+	public String getSt_radverr1() {
+		return st_radverr1;
+	}
+
+	public void setSt_radverr1(String st_radverr1) {
+		this.st_radverr1 = st_radverr1;
+	}
+
+	public String getSt_radverr2() {
+		return st_radverr2;
+	}
+
+	public void setSt_radverr2(String st_radverr2) {
+		this.st_radverr2 = st_radverr2;
+	}
+
+	public String getSt_vsinerr1() {
+		return st_vsinerr1;
+	}
+
+	public void setSt_vsinerr1(String st_vsinerr1) {
+		this.st_vsinerr1 = st_vsinerr1;
+	}
+
+	public String getSt_vsinerr2() {
+		return st_vsinerr2;
+	}
+
+	public void setSt_vsinerr2(String st_vsinerr2) {
+		this.st_vsinerr2 = st_vsinerr2;
+	}
+
+	public String getSt_meterr1() {
+		return st_meterr1;
+	}
+
+	public void setSt_meterr1(String st_meterr1) {
+		this.st_meterr1 = st_meterr1;
+	}
+
+	public String getSt_meterr2() {
+		return st_meterr2;
+	}
+
+	public void setSt_meterr2(String st_meterr2) {
+		this.st_meterr2 = st_meterr2;
+	}
+
+	public String getSt_lumerr1() {
+		return st_lumerr1;
+	}
+
+	public void setSt_lumerr1(String st_lumerr1) {
+		this.st_lumerr1 = st_lumerr1;
+	}
+
+	public String getSt_lumerr2() {
+		return st_lumerr2;
+	}
+
+	public void setSt_lumerr2(String st_lumerr2) {
+		this.st_lumerr2 = st_lumerr2;
+	}
+
+	public String getSt_ageerr1() {
+		return st_ageerr1;
+	}
+
+	public void setSt_ageerr1(String st_ageerr1) {
+		this.st_ageerr1 = st_ageerr1;
+	}
+
+	public String getSt_ageerr2() {
+		return st_ageerr2;
+	}
+
+	public void setSt_ageerr2(String st_ageerr2) {
+		this.st_ageerr2 = st_ageerr2;
 	}
 
 	public String getPl_eqterr1() {
@@ -941,22 +1156,6 @@ public class Planet {
 		this.pl_radjerr2 = pl_radjerr2;
 	}
 
-	public String getPl_radserr1() {
-		return pl_radserr1;
-	}
-
-	public void setPl_radserr1(String pl_radserr1) {
-		this.pl_radserr1 = pl_radserr1;
-	}
-
-	public String getPl_radserr2() {
-		return pl_radserr2;
-	}
-
-	public void setPl_radserr2(String pl_radserr2) {
-		this.pl_radserr2 = pl_radserr2;
-	}
-
 	public String getPl_orbeccenerr1() {
 		return pl_orbeccenerr1;
 	}
@@ -1021,62 +1220,28 @@ public class Planet {
 		this.pl_orbpererr2 = pl_orbpererr2;
 	}
 
-	public String getSt_radverr1() {
-		return st_radverr1;
+	public String getPl_insolerr1() {
+		return pl_insolerr1;
 	}
 
-	public void setSt_radverr1(String st_radverr1) {
-		this.st_radverr1 = st_radverr1;
+	public void setPl_insolerr1(String pl_insolerr1) {
+		this.pl_insolerr1 = pl_insolerr1;
 	}
 
-	public String getSt_radverr2() {
-		return st_radverr2;
+	public String getPl_insolerr2() {
+		return pl_insolerr2;
 	}
 
-	public void setSt_radverr2(String st_radverr2) {
-		this.st_radverr2 = st_radverr2;
+	public void setPl_insolerr2(String pl_insolerr2) {
+		this.pl_insolerr2 = pl_insolerr2;
 	}
-
-	public String getSt_vsinierr1() {
-		return st_vsinierr1;
-	}
-
-	public void setSt_vsinierr1(String st_vsinierr1) {
-		this.st_vsinierr1 = st_vsinierr1;
-	}
-
-	public String getSt_vsinierr2() {
-		return st_vsinierr2;
-	}
-
-	public void setSt_vsinierr2(String st_vsinierr2) {
-		this.st_vsinierr2 = st_vsinierr2;
-	}
-
-	public String getSt_metfeerr1() {
-		return st_metfeerr1;
-	}
-
-	public void setSt_metfeerr1(String st_metfeerr1) {
-		this.st_metfeerr1 = st_metfeerr1;
-	}
-
-	public String getSt_metfeerr2() {
-		return st_metfeerr2;
-	}
-
-	public void setSt_metfeerr2(String st_metfeerr2) {
-		this.st_metfeerr2 = st_metfeerr2;
-	}
-
-
 
 	@Override
 	public String toString() {
 		return "Planet{" +
 						"id=" + id +
 						", pl_name='" + pl_name + '\'' +
-						", pl_disc=" + pl_disc +
+						", disc_year=" + disc_year +
 						'}';
 	}
 }

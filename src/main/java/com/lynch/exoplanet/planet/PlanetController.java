@@ -3,6 +3,8 @@ package com.lynch.exoplanet.planet;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,79 +14,85 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class PlanetController {
 
+	private final Logger log = LoggerFactory.getLogger(PlanetController.class);
+
 	@Autowired
 	private PlanetService planetService;
 
-	@RequestMapping("/")
-	public String getLandingPage() {
-		return ("<h1>Landing</h1>");
-	}
-
-	@RequestMapping("/home")
-	public String getHomePage() {
-		return ("<h1>Welcome All</h1>");
-	}
-
-	@RequestMapping("/user")
-	public String getUserPage() {
-		return ("<h1>Welcome User</h1>");
-	}
-
-	@RequestMapping("/admin")
-	public String getAdminPage() {
-		return ("<h1>Welcome Admin</h1>");
-	}
-
-	@RequestMapping("/planets")
+	@GetMapping(value ="/planets")
 	public List<Planet> getAllPlanets() {
+		log.debug("Received REST request for All Planets");
 		return planetService.getAllPlanets();
 	}
 
-	@RequestMapping("/planets/{id}")
-	public Optional<Planet> getPlanet(@PathVariable Long id) { return planetService.getPlanet(id); }
+	@GetMapping(value ="/planets/{id}")
+	public Optional<Planet> getPlanet(@PathVariable Long id) {
+		log.debug("Received REST request for Planet: {}", id);
+		return planetService.getPlanet(id); }
 
-	@RequestMapping(value = "/planets", method = RequestMethod.POST)
+	@PostMapping(value = "/planets")
 	public void addPlanet(@RequestBody Planet planet) {
+		log.debug("Received REST request to add Planet: {}", planet);
 		planetService.addPlanet(planet);
 	}
 
-	@RequestMapping(value = "/planets", method = RequestMethod.PUT)
+	@PutMapping(value = "/planets")
 	public void editPlanet(@RequestBody Planet planet) {
+		log.debug("Received REST request to edit Planet: {}", planet);
 		planetService.editPlanet(planet);
 	}
 
-	@RequestMapping(value = "/planets/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/planets/{id}")
 	public void deletePlanet(@PathVariable Long id) {
+		log.debug("Received REST request to delete Planet: {}", id);
 		planetService.deletePlanet(id);
 	}
 
-	@RequestMapping(value = "/planets/query/1")
-	public List<Planet> getNearestPlanets() { return planetService.getPlanetsWithin5Parsecs(); }
+	@GetMapping(value = "/planets/query/1")
+	public List<Planet> getNearestPlanets() {
+		log.debug("Received REST SQL Query request to get nearest Planet");
+		return planetService.getPlanetsWithin5Parsecs(); }
 
 	@GetMapping(value = "/planets/query/2")
-	public List<Planet> getRockyPlanets() { return planetService.getRockyPlanets(); }
+	public List<Planet> getRockyPlanets() {
+		log.debug("Received REST SQL Query request to get rocky Planet");
+		return planetService.getRockyPlanets(); }
 
 	@GetMapping(value = "/planets/query/3")
-	public List<Planet> get12AuPlanets() { return planetService.get12AuPlanets(); }
+	public List<Planet> get12AuPlanets() {
+		log.debug("Received REST SQL Query request to get Planet between 1-2 AU from their Star");
+		return planetService.get12AuPlanets(); }
 
 
 	@GetMapping(value = "/planets/query/4")
-	public List<Planet> getEarthSizePlanets() { return planetService.getEarthSizePlanets(); }
+	public List<Planet> getEarthSizePlanets() {
+		log.debug("Received REST SQL Query request to get Earth-sized Planet");
+		return planetService.getEarthSizePlanets(); }
 
 	@GetMapping(value = "/planets/query/5")
-	public List<Planet> getMultiPlanetSystems() { return planetService.getMultiPlanetSystems(); }
+	public List<Planet> getMultiPlanetSystems() {
+		log.debug("Received REST SQL Query request to get known multi-Planet systems");
+		return planetService.getMultiPlanetSystems(); }
 
 	@GetMapping(value = "/planets/query/6")
-	public List<Planet> getKeplerPlanets() { return planetService.getKeplerPlanets(); }
+	public List<Planet> getKeplerPlanets() {
+		log.debug("Received REST SQL Query request to get Kepler Planet");
+		return planetService.getKeplerPlanets(); }
 
 	@GetMapping(value = "/planets/query/7")
-	public List<Planet> getTrappistPlanets() { return planetService.getTrappistPlanets(); }
+	public List<Planet> getTrappistPlanets() {
+		log.debug("Received REST SQL Query request to get TRAPPIST-1 Planet");
+		return planetService.getTrappistPlanets(); }
 
 	@GetMapping(value = "/planets/query/8")
-	public List<Planet> getSuperEarthSizePlanets() { return planetService.getSuperEarthSizePlanets(); }
+	public List<Planet> getSuperEarthSizePlanets() {
+		log.debug("Received REST SQL Query request to get super Earth-sized Planet");
+		return planetService.getSuperEarthSizePlanets(); }
 
 	@GetMapping(value = "/planets/query/9")
-	public List<Planet> getNasaInterestingPlanets() { return planetService.getNasaInterestingPlanets(); }
+	public List<Planet> getNasaInterestingPlanets() {
+		log.debug("Received REST SQL Query request to get NASA Interesting Planet List");
+		return planetService.getNasaInterestingPlanets(); }
 
 
 }
