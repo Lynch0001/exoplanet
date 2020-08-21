@@ -11,6 +11,8 @@
   <button class="button-query button-sm rounded"(click)=getQuery(7)>TRAPPIST Planets</button>
   <button class="button-query button-sm rounded"(click)=getQuery(8)>Super Earths</button>
   <button class="button-query button-sm rounded"(click)=getQuery(9)>NASA Interesting List</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(10)>Planets found by Imaging</button>
+  <button class="button-query button-sm rounded"(click)=getQuery(11)>Planets in Binary Systems</button>
   <button class="button-query button-sm rounded"(click)=getPlanets()>Full List</button>
 </div>
   <div class="container-table col-lg-10 col-md-10 col-sm-12">
@@ -54,16 +56,16 @@
         <span *ngSwitchDefault>{{planet.pl_dens  | number : '.0-0'}}</span>
       </td>
       <td [ngSwitch]="true">
-        <span *ngSwitchCase="planet.st_spstr.startsWith('T')"><button class="button-rs button-sm rounded">Red Star</button></span>
-        <span *ngSwitchCase="planet.st_spstr.startsWith('L')"><button class="button-br button-sm rounded">Brown Star</button></span>
-        <span *ngSwitchCase="planet.st_spstr.startsWith('M')"><button class="button-os button-sm rounded">Orange Star</button></span>
-        <span *ngSwitchCase="planet.st_spstr.startsWith('K')"><button class="button-ys button-sm rounded">Yellow Star</button></span>
-        <span *ngSwitchCase="planet.st_spstr.startsWith('G')"><button class="button-ws button-sm rounded">White Star</button></span>
-        <span *ngSwitchCase="planet.st_spstr.startsWith('F')"><button class="button-ws button-sm rounded">White Star</button></span>
-        <span *ngSwitchCase="planet.st_spstr.startsWith('A')"><button class="button-bl1 button-sm rounded">Blue Star</button></span>
-        <span *ngSwitchCase="planet.st_spstr.startsWith('B')"><button class="button-bl2 button-sm rounded">Blue Star</button></span>
-        <span *ngSwitchCase="planet.st_spstr.startsWith('O')"><button class="button-bl3 button-sm rounded">Blue Star</button></span>
-        <span *ngSwitchDefault>{{planet.st_spstr  | number : '.0-0'}}</span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('T')"><button class="button-rs button-sm rounded">Red Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('L')"><button class="button-br button-sm rounded">Brown Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('M')"><button class="button-os button-sm rounded">Orange Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('K')"><button class="button-ys button-sm rounded">Yellow Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('G')"><button class="button-ws button-sm rounded">White Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('F')"><button class="button-ws button-sm rounded">White Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('A')"><button class="button-bl1 button-sm rounded">Blue Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('B')"><button class="button-bl2 button-sm rounded">Blue Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('O')"><button class="button-bl3 button-sm rounded">Blue Star</button></span>
+        <span *ngSwitchDefault>{{planet.st_spectype  | number : '.0-0'}}</span>
       </td>
       <td [ngSwitch]="true">
         <span *ngSwitchCase="planet.pl_orbsmax > 2"><button class="button-cold button-sm rounded">>2 AU</button></span>
@@ -71,7 +73,7 @@
         <span *ngSwitchCase="planet.pl_orbsmax && planet.pl_orbsmax < 1"><button class="button-hot button-sm rounded"><1 AU</button></span>
         <span *ngSwitchDefault>{{planet.pl_orbsmax | number : '.2-2'}}</span>
       </td>
-      <td  align="center">{{planet.pl_disc}}</td>
+      <td  align="center">{{planet.disc_year}}</td>
     </tr>
   </tbody>
   </table>

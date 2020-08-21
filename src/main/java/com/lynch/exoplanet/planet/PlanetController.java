@@ -94,5 +94,13 @@ public class PlanetController {
 		log.debug("Received REST SQL Query request to get NASA Interesting Planet List");
 		return planetService.getNasaInterestingPlanets(); }
 
+	@GetMapping(value = "/planets/query/10")
+	public List<Planet> getPlanetsFoundByImaging() {
+		log.debug("Received REST SQL Query request to get planets found by imaging");
+		return planetService.getPlanetsFoundByImaging(); }
 
+	@GetMapping(value = "/planets/query/11")
+	public List<Planet> getPlanetsInBinarySystems() {
+		log.debug("Received REST SQL Query request to get planets in Binary Star systems");
+		return planetService.getPlanetsInBinarySystems(); }
 }

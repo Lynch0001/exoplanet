@@ -6,15 +6,65 @@
     <section class="col-md-6 col-sm-8 upper-left">
       <span class="planet-info">
         <span class="selector">
-          <h4 class="planet-name">Planet: {{planet.pl_name}} <span class="system-planets">[{{planet.pl_pnum}} known planet(s) in System]</span></h4>
+          <h4 class="planet-name">Planet: {{planet.pl_name}}</h4>
           <a (click)="getPreviousId(planet.id)" class="record-selector">&laquo; Previous</a>
           <a (click)="getNextId(planet.id)" class="record-selector">Next &raquo;</a>
         </span>
         <span class="record-info">
           <p class="record-number">Record: {{planet.id}}</p>
-          <p class="record-update">Last Update: {{planet.rowupdate}}</p></span>
+        </span>
       </span>
       <hr>
+
+      <!-- System Data -->
+
+      <h6 class="detail-table-name">System Data</h6>
+      <table class="table table-sm table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Stars</th>
+          <th scope="col">Planets</th>
+          <th scope="col">Binary System</th>
+          <th scope="col">Distance<sub>[pc]</sub></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+          <td *ngIf="planet.sy_snum==null; else sy_snumNotNull">UNK</td>
+          <ng-template #sy_snumNotNull>
+            <td>{{planet.sy_snum}}</td>
+          </ng-template>
+
+          <td *ngIf="planet.sy_pnum==null; else sy_pnumNotNull">UNK</td>
+          <ng-template #sy_pnumNotNull>
+            <td>{{planet.sy_pnum}}</td>
+          </ng-template>
+
+          <td *ngIf="planet.cb_flag==null; else cb_flagNotNull">UNK</td>
+          <ng-template #cb_flagNotNull>
+            <td *ngIf="planet.cb_flag==0; else cb_flagTrue">No</td>
+            <ng-template #cb_flagTrue>
+            <td>Yes</td>
+          </ng-template>
+          </ng-template>
+
+          <td *ngIf="planet.sy_dist==null; else sy_distNotNull">UNK</td>
+          <ng-template #sy_distNotNull>
+            <td *ngIf="planet.sy_disterr2==null && planet.sy_disterr1==null; else sy_distErr">
+              {{planet.sy_dist | number : '.2-2'}}</td>
+            <ng-template #sy_distErr>
+              <td>{{planet.sy_dist | number : '.2-2'}} &plusmn;
+                <span class="supsub">
+                <sup class="superscript">  {{planet.sy_disterr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.sy_disterr2*-1 | number : '.2-2'}}</sub>
+              </span></td>
+            </ng-template>
+          </ng-template>
+
+        </tr>
+        </tbody>
+      </table>
 
       <!-- Physical Planet Data -->
 
@@ -32,7 +82,7 @@
 
               <td *ngIf="planet.pl_bmasse==null; else pl_bmasseNotNull">UNK</td>
               <ng-template #pl_bmasseNotNull>
-              <td *ngIf="planet.pl_bmasseerr2==null && planet.pl_bmasseerr1==null; else pl_bmasseErr">
+              <td *ngIf="planet.pl_bmasseerr2==null || planet.pl_bmasseerr2=='' && planet.pl_bmasseerr1==null || planet.pl_bmasseerr1==''; else pl_bmasseErr">
                 {{planet.pl_bmasse | number : '.2-2'}}</td>
               <ng-template #pl_bmasseErr>
                 <td>{{planet.pl_bmasse | number : '.2-2'}} &plusmn;
@@ -45,7 +95,7 @@
 
               <td *ngIf="planet.pl_bmassj==null; else pl_bmassjNotNull">UNK</td>
               <ng-template #pl_bmassjNotNull>
-              <td *ngIf="planet.pl_bmassjerr2==null && planet.pl_bmassjerr1==null; else pl_bmassjErr">
+              <td *ngIf="planet.pl_bmassjerr2==null || planet.pl_bmassjerr2=='' && planet.pl_bmassjerr1==null || planet.pl_bmassjerr1==''; else pl_bmassjErr">
                 {{planet.pl_bmassj | number : '.2-2'}}</td>
               <ng-template #pl_bmassjErr>
                 <td>{{planet.pl_bmassj | number : '.2-2'}} &plusmn;
@@ -66,7 +116,7 @@
         <tr>
           <th scope="col">Radius<sub>[Rearth]</sub></th>
           <th scope="col">Radius<sub>[Rjupiter]</sub></th>
-          <th scope="col">Radius<sub>[Rsolar]</sub></th>
+          <th scope="col">Ratio<sub>[radius<sub>planet</sub>]/radius<sub>star</sub>]</sub></th>
         </tr>
         </thead>
         <tbody>
@@ -97,17 +147,10 @@
           </ng-template>
           </ng-template>
 
-          <td *ngIf="planet.pl_rads==null; else pl_radsNotNull">UNK</td>
-          <ng-template #pl_radsNotNull>
-          <td *ngIf="planet.pl_radserr2==null && planet.pl_radserr1==null; else pl_radsErr">
-            {{planet.pl_rads | number : '.2-2'}}</td>
-          <ng-template #pl_radsErr>
-            <td>{{planet.pl_rads | number : '.2-2'}} &plusmn;
-              <span class="supsub">
-                <sup class="superscript">  {{planet.pl_radserr1 | number : '.2-2'}}</sup>
-                <sub class="subscript">{{planet.pl_radserr2*-1 | number : '.2-2'}}</sub>
-              </span></td>
-          </ng-template>
+
+          <td *ngIf="planet.pl_ratror==null; else pl_ratrorNotNull">UNK</td>
+          <ng-template #pl_ratrorNotNull>
+            <td>{{planet.pl_ratror | number : '.2-2'}}</td>
           </ng-template>
 
         </tr>
@@ -119,6 +162,7 @@
         <tr>
           <th scope="col">Temp<sub>[K]</sub></th>
           <th scope="col">Temp<sub>[F]</sub></th>
+          <th scope="col">Insolation Flux<sub>[Earth Flux]</sub></th>
           <th scope="col">Density<sub>[g/cm<sup>3</sup>]</sub></th>
         </tr>
         </thead>
@@ -126,7 +170,7 @@
         <tr>
           <td *ngIf="planet.pl_eqt==null; else pl_eqtNotNull">UNK</td>
           <ng-template #pl_eqtNotNull>
-            <td *ngIf="planet.pl_eqterr2==null && planet.pl_eqterr1==null; else pl_eqtErr">
+            <td *ngIf="planet.pl_eqterr2==null || planet.pl_eqterr2=='' && planet.pl_eqterr1==null || planet.pl_eqterr2==''; else pl_eqtErr">
               {{planet.pl_eqt | number : '.2-2'}}</td>
             <ng-template #pl_eqtErr>
               <td>{{planet.pl_eqt | number : '.2-2'}} &plusmn;
@@ -139,7 +183,7 @@
 
           <td *ngIf="planet.pl_eqt==null; else pl_eqtFNotNull">UNK</td>
           <ng-template #pl_eqtFNotNull>
-            <td *ngIf="planet.pl_eqterr2==null && planet.pl_eqterr1==null; else pl_eqtFErr">
+            <td *ngIf="planet.pl_eqterr2==null || planet.pl_eqterr2=='' && planet.pl_eqterr1==null || planet.pl_eqterr2==''; else pl_eqtFErr">
               {{((planet.pl_eqt*9)/5)-459.67 | number : '.2-2'}}</td>
             <ng-template #pl_eqtFErr>
               <td>{{((planet.pl_eqt*9)/5)-459.67 | number : '.2-2'}} &plusmn;
@@ -149,6 +193,24 @@
                 </span></td>
             </ng-template>
           </ng-template>
+
+
+
+          <td *ngIf="planet.pl_insol==null; else pl_insolNotNull">UNK</td>
+          <ng-template #pl_insolNotNull>
+            <td *ngIf="planet.pl_insolerr2==null ||planet.pl_insolerr2=='' && planet.pl_insolerr1==null ||planet.pl_insolerr1==''; else pl_insolErr">
+              {{planet.pl_insol | number : '.2-2'}}</td>
+            <ng-template #pl_insolErr>
+              <td>{{planet.pl_insol | number : '.2-2'}} &plusmn;
+                <span class="supsub">
+                <sup class="superscript">  {{planet.pl_insolerr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.pl_insolerr2*-1 | number : '.2-2'}}</sub>
+              </span></td>
+            </ng-template>
+          </ng-template>
+
+
+
 
 
           <td *ngIf="planet.pl_dens==null; else pl_densNotNull">UNK</td>
@@ -242,17 +304,31 @@
       <table class="table table-sm table-bordered">
         <thead class="thead-dark">
         <tr>
-          <th scope="col">Transit Duration<sub>[days]</sub></th>
+          <th scope="col">Transit Duration<sub>[hrs]</sub></th>
+          <th scope="col">Transit Depth<sub>[%]</sub></th>
+          <th scope="col">Time of Conjunction<sub>[days]</sub></th>
           <th scope="col">Ratio<sub>[distance/radius<sub>star</sub>]</sub></th>
-          <th scope="col">Ratio<sub>[radius<sub>planet</sub>]/radius<sub>star</sub>]</sub></th>
+
         </tr>
         </thead>
         <tbody>
         <tr>
 
-          <td *ngIf="planet.pl_trandur==null; else pl_orbinclNotNull">UNK</td>
+          <td *ngIf="planet.pl_trandur==null; else pl_trandurNotNull">UNK</td>
           <ng-template #pl_trandurNotNull>
               <td>{{planet.pl_trandur | number : '.2-2'}}</td>
+          </ng-template>
+
+          <td *ngIf="planet.pl_trandep==null; else pl_trandepNotNull">UNK</td>
+          <ng-template #pl_trandepNotNull>
+            <td>{{planet.pl_trandep | number : '.2-2'}}</td>
+          </ng-template>
+
+
+
+          <td *ngIf="planet.pl_tranmid==null; else pl_tranmidNotNull">UNK</td>
+          <ng-template #pl_tranmidNotNull>
+            <td>{{planet.pl_tranmid | number : '.2-2'}}</td>
           </ng-template>
 
           <td *ngIf="planet.pl_ratdur==null; else pl_ratdurNotNull">UNK</td>
@@ -260,10 +336,7 @@
             <td>{{planet.pl_ratdur | number : '.2-2'}}</td>
           </ng-template>
 
-          <td *ngIf="planet.pl_ratror==null; else pl_ratrorNotNull">UNK</td>
-          <ng-template #pl_ratrorNotNull>
-            <td>{{planet.pl_ratror | number : '.2-2'}}</td>
-          </ng-template>
+
 
         </tr>
         </tbody>
@@ -284,24 +357,22 @@
         </thead>
         <tbody>
         <tr>
-          <td>{{planet.pl_discmethod}}</td>
-          <td>{{planet.pl_locale}}</td>
-          <td>{{planet.pl_facility}}</td>
-          <td>{{planet.pl_telescope}}</td>
-          <td>{{planet.pl_disc}}</td>
+          <td>{{planet.discoverymethod}}</td>
+          <td>{{planet.disc_locale}}</td>
+          <td>{{planet.disc_facility}}</td>
+          <td>{{planet.disc_telescope}}</td>
+          <td>{{planet.disc_year}}</td>
         </tr>
         </tbody>
       </table>
-      <h6 class="detail-table-name">External Links:  </h6>
-      <a class="link-external" href="{{planet.pl_pelink}}" target="_blank">EU Extrasolar Planets Encyclopedia</a>
-      <a class="link-external" href="{{planet.pl_edelink}}" target="_blank">Exoplanets Data Explorer</a>
+
     </section>
 
     <!-- Aladin Applet-->
 
     <section class="col-md-6 col-sm-8 upper-right">
-        <H4>Imagery for {{planet.pl_hostname}}</H4>
-        <app-aladin [aladinPlanetImport]="planet.pl_hostname"></app-aladin>
+        <H4>Imagery for {{planet.hostname}}</H4>
+        <app-aladin [aladinPlanetImport]="planet.hostname"></app-aladin>
         <H4 class="aladin-ack">"Aladin sky atlas" developed at Strasbourg astronomical Data Center (CDS), Strasbourg Observatory, France</H4>
     </section>
 
@@ -311,8 +382,53 @@
 
   <div class="row">
     <section class="col-md-6 col-sm-8 lower-left">
+        <h4>Star: {{planet.hostname}} </h4>
 
-        <h4>Star: {{planet.pl_hostname}}   <span class="stname-hdhip">(HD Name: {{planet.hd_name}} | HIP Name: {{planet.hip_name}})</span></h4>
+      <!-- Star Table Identification-->
+
+      <h6 class="detail-table-name">Alternative Identification Data</h6>
+      <table class="table table-sm table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">HD Name</th>
+          <th scope="col">HIP Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td *ngIf="planet.hd_name==null || planet.hd_name==''; else hd_nameNotNull">UNK</td>
+          <ng-template #hd_nameNotNull>
+            <td>{{ planet.hd_name }}</td>
+          </ng-template>
+          <td *ngIf="planet.hip_name==null || planet.hip_name==''; else hip_nameNotNull">UNK</td>
+          <ng-template #hip_nameNotNull>
+            <td>{{ planet.hip_name }}</td>
+          </ng-template>
+        </tr>
+        </tbody>
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">TIC Id</th>
+          <th scope="col">GAIA Id</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td *ngIf="planet.tic_id==null || planet.tic_id==''; else tic_idNotNull">UNK</td>
+          <ng-template #tic_idNotNull>
+            <td>{{ planet.tic_id }}</td>
+          </ng-template>
+          <td *ngIf="planet.gaia_id==null || planet.gaia_id==''; else gaia_idNotNull">UNK</td>
+          <ng-template #gaia_idNotNull>
+            <td>{{ planet.gaia_id }}</td>
+          </ng-template>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <!-- Star Table Physical Data -->
+
       <h6 class="detail-table-name">Physical Data</h6>
       <table class="table table-sm table-bordered">
         <thead class="thead-dark">
@@ -416,15 +532,15 @@
             </ng-template>
           </ng-template>
 
-          <td *ngIf="planet.st_metfe==null; else st_metfeNotNull">UNK</td>
-          <ng-template #st_metfeNotNull>
-            <td *ngIf="planet.st_metfeerr2=='' && planet.st_metfeerr1==''; else st_metfeErr">
-              {{planet.st_metfe | number : '.2-2'}}</td>
-            <ng-template #st_metfeErr>
-              <td>{{planet.st_metfe | number : '.2-2'}} &plusmn;
+          <td *ngIf="planet.st_met==null; else st_metNotNull">UNK</td>
+          <ng-template #st_metNotNull>
+            <td *ngIf="planet.st_meterr2=='' && planet.st_meterr1==''; else st_metErr">
+              {{planet.st_met | number : '.2-2'}}</td>
+            <ng-template #st_metErr>
+              <td>{{planet.st_met | number : '.2-2'}} &plusmn;
                 <span class="supsub">
-                <sup class="superscript">  {{planet.st_metfeerr1 | number : '.2-2'}}</sup>
-                <sub class="subscript">{{planet.st_metfeerr2*-1 | number : '.2-2'}}</sub>
+                <sup class="superscript">  {{planet.st_meterr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.st_meterr2*-1 | number : '.2-2'}}</sub>
               </span></td>
             </ng-template>
           </ng-template>
@@ -446,46 +562,194 @@
         <thead class="thead-dark">
         <tr>
           <th scope="col">Spectral Type</th>
-          <th scope="col">Activity S-Index</th>
-          <th scope="col">Activity log(R'HK)</th>
-          <th scope="col">X-ray Activity</th>
+          <th scope="col">Luminosity</th>
+          <th scope="col">B (Johnson)</th>
+          <th scope="col">V (Johnson)</th>
         </tr>
         </thead>
         <tbody>
         <tr>
 
-          <td *ngIf="planet.st_spstr==null || planet.st_spstr==''; else st_spstrNotNull">UNK</td>
-          <ng-template #st_spstrNotNull>
-            <td>{{planet.st_spstr}}</td>
+          <td *ngIf="planet.st_spectype==null || planet.st_spectype==''; else st_spectypeNotNull">UNK</td>
+          <ng-template #st_spectypeNotNull>
+            <td>{{planet.st_spectype}}</td>
           </ng-template>
 
-          <td *ngIf="planet.st_acts==null; else st_actsNotNull">UNK</td>
-          <ng-template #st_actsNotNull>
-            <td>{{planet.st_acts}}</td>
+          <td *ngIf="planet.st_lum==null; else st_lumNotNull">UNK</td>
+          <ng-template #st_lumNotNull>
+            <td>{{planet.st_lum}}</td>
           </ng-template>
 
-          <td *ngIf="planet.st_actr==null; else st_actrNotNull">UNK</td>
-          <ng-template #st_actrNotNull>
-            <td>{{planet.st_actr}}</td>
+          <td *ngIf="planet.sy_bmag==null; else sy_bmagNotNull">UNK</td>
+          <ng-template #sy_bmagNotNull>
+            <td>{{planet.sy_bmag}}</td>
           </ng-template>
 
-          <td *ngIf="planet.st_actlx==null; else st_actlxNotNull">UNK</td>
-          <ng-template #st_actlxNotNull>
-            <td>{{planet.st_actlx}}</td>
+          <td *ngIf="planet.sy_vmag==null; else sy_vmagNotNull">UNK</td>
+          <ng-template #sy_vmagNotNull>
+            <td>{{planet.sy_vmag}}</td>
           </ng-template>
 
         </tr>
         </tbody>
+
+        <thead class="thead-dark">
+      <tr>
+        <th scope="col">WISE W1</th>
+        <th scope="col">WISE W2</th>
+        <th scope="col">WISE W3</th>
+        <th scope="col">WISE W4</th>
+      </tr>
+      </thead>
+        <tbody>
+        <tr>
+
+          <td *ngIf="planet.sy_w1mag==null || planet.sy_w1mag==''; else sy_w1magNotNull">UNK</td>
+          <ng-template #sy_w1magNotNull>
+            <td>{{planet.sy_w1mag}}</td>
+          </ng-template>
+
+          <td *ngIf="planet.sy_w2mag==null; else sy_w2magNotNull">UNK</td>
+          <ng-template #sy_w2magNotNull>
+            <td>{{planet.sy_w2mag}}</td>
+          </ng-template>
+
+          <td *ngIf="planet.sy_w3mag==null; else sy_w3magNotNull">UNK</td>
+          <ng-template #sy_w3magNotNull>
+            <td>{{planet.sy_w3mag}}</td>
+          </ng-template>
+
+          <td *ngIf="planet.sy_w4mag==null; else sy_w4magNotNull">UNK</td>
+          <ng-template #sy_w4magNotNull>
+            <td>{{planet.sy_w4mag}}</td>
+          </ng-template>
+
+        </tr>
+        </tbody>
+
       </table>
 
-      <!-- Star Table 3 -->
+
+      <table class="table table-sm table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">2MASS J</th>
+        <th scope="col">2MASS H</th>
+        <th scope="col">2MASS Ks</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+
+        <td *ngIf="planet.sy_jmag==null || planet.sy_jmag==''; else sy_jmagNotNull">UNK</td>
+        <ng-template #sy_jmagNotNull>
+          <td>{{planet.sy_jmag}}</td>
+        </ng-template>
+
+        <td *ngIf="planet.sy_hmag==null; else sy_hmagNotNull">UNK</td>
+        <ng-template #sy_hmagNotNull>
+          <td>{{planet.sy_hmag}}</td>
+        </ng-template>
+
+        <td *ngIf="planet.sy_kmag==null; else sy_kmagNotNull">UNK</td>
+        <ng-template #sy_kmagNotNull>
+          <td>{{planet.sy_kmag}}</td>
+        </ng-template>
+      </tr>
+      </tbody>
+      </table>
+
+      <!-- Star Spectral Sloan filters -->
+
+      <table class="table table-sm table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Sloan u</th>
+          <th scope="col">Sloan g</th>
+          <th scope="col">Sloan r</th>
+          <th scope="col">Sloan i</th>
+          <th scope="col">Sloan z</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td *ngIf="planet.sy_umag==null; else sy_umagNotNull">UNK</td>
+          <ng-template #sy_umagNotNull>
+            <td *ngIf="planet.sy_umagerr2=='' && planet.sy_umagerr1==''; else sy_umagErr">
+              {{planet.sy_umag | number : '.2-2'}}</td>
+            <ng-template #sy_umagErr>
+              <td>{{planet.sy_umag | number : '.2-2'}} &plusmn;
+                <span class="supsub">
+                <sup class="superscript">  {{planet.sy_umagerr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.sy_umagerr2*-1 | number : '.2-2'}}</sub>
+              </span></td>
+            </ng-template>
+          </ng-template>
+
+          <td *ngIf="planet.sy_gmag==null; else sy_gmagNotNull">UNK</td>
+          <ng-template #sy_gmagNotNull>
+            <td *ngIf="planet.sy_gmagerr2=='' && planet.sy_gmagerr1==''; else sy_gmagErr">
+              {{planet.sy_gmag | number : '.2-2'}}</td>
+            <ng-template #sy_gmagErr>
+              <td>{{planet.sy_gmag | number : '.2-2'}} &plusmn;
+                <span class="supsub">
+                <sup class="superscript">  {{planet.sy_gmagerr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.sy_gmagerr2*-1 | number : '.2-2'}}</sub>
+              </span></td>
+            </ng-template>
+          </ng-template>
+
+          <td *ngIf="planet.sy_rmag==null; else sy_rmagNotNull">UNK</td>
+          <ng-template #sy_rmagNotNull>
+            <td *ngIf="planet.sy_rmagerr2=='' && planet.sy_rmagerr1==''; else sy_rmagErr">
+              {{planet.sy_rmag | number : '.2-2'}}</td>
+            <ng-template #sy_rmagErr>
+              <td>{{planet.sy_gmag | number : '.2-2'}} &plusmn;
+                <span class="supsub">
+                <sup class="superscript">  {{planet.sy_rmagerr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.sy_rmagerr2*-1 | number : '.2-2'}}</sub>
+              </span></td>
+            </ng-template>
+          </ng-template>
+
+          <td *ngIf="planet.sy_imag==null; else sy_imagNotNull">UNK</td>
+          <ng-template #sy_imagNotNull>
+            <td *ngIf="planet.sy_imagerr2=='' && planet.sy_imagerr1==''; else sy_imagErr">
+              {{planet.sy_imag | number : '.2-2'}}</td>
+            <ng-template #sy_imagErr>
+              <td>{{planet.sy_imag | number : '.2-2'}} &plusmn;
+                <span class="supsub">
+                <sup class="superscript">  {{planet.sy_imagerr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.sy_imagerr2*-1 | number : '.2-2'}}</sub>
+              </span></td>
+            </ng-template>
+          </ng-template>
+
+          <td *ngIf="planet.sy_zmag==null; else sy_zmagNotNull">UNK</td>
+          <ng-template #sy_zmagNotNull>
+            <td *ngIf="planet.sy_zmagerr2=='' && planet.sy_zmagerr1==''; else sy_zmagErr">
+              {{planet.sy_imag | number : '.2-2'}}</td>
+            <ng-template #sy_zmagErr>
+              <td>{{planet.sy_zmag | number : '.2-2'}} &plusmn;
+                <span class="supsub">
+                <sup class="superscript">  {{planet.sy_zmagerr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.sy_zmagerr2*-1 | number : '.2-2'}}</sub>
+              </span></td>
+            </ng-template>
+          </ng-template>
+        </tr>
+        </tbody>
+      </table>
+
+      <!-- Star Table Motion Data -->
+
       <h6 class="detail-table-name">Motion Data</h6>
       <table class="table table-sm table-bordered">
         <thead class="thead-dark">
         <tr>
           <th scope="col">Rad Velocity<sub>[km/sec]</sub></th>
           <th scope="col">Rot Velocity<sub>[km/sec]</sub></th>
-
+          <th scope="col">Rot Period<sub>[days]</sub></th>
         </tr>
         </thead>
         <tbody>
@@ -504,18 +768,35 @@
           </ng-template>
           </ng-template>
 
-          <td *ngIf="planet.st_vsini==null; else st_vsiniNotNull">UNK</td>
-          <ng-template #st_vsiniNotNull>
-          <td *ngIf="planet.st_vsinierr2=='' && planet.st_vsinierr1==''; else st_vsiniErr">
-            {{planet.st_vsini | number : '.2-2'}}</td>
-          <ng-template #st_vsiniErr>
-            <td>{{planet.st_vsini | number : '.2-2'}} &plusmn;
+          <td *ngIf="planet.st_vsin==null; else st_vsinNotNull">UNK</td>
+          <ng-template #st_vsinNotNull>
+          <td *ngIf="planet.st_vsinerr2=='' && planet.st_vsinerr1==''; else st_vsinErr">
+            {{planet.st_vsin | number : '.2-2'}}</td>
+          <ng-template #st_vsinErr>
+            <td>{{planet.st_vsin | number : '.2-2'}} &plusmn;
               <span class="supsub">
-                <sup class="superscript">  {{planet.st_vsinierr1 | number : '.2-2'}}</sup>
-                <sub class="subscript">{{planet.st_vsinierr2*-1 | number : '.2-2'}}</sub>
+                <sup class="superscript">  {{planet.st_vsinerr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.st_vsinerr2*-1 | number : '.2-2'}}</sub>
               </span></td>
           </ng-template>
           </ng-template>
+
+
+          <td *ngIf="planet.st_rotp==null; else st_rotpNotNull">UNK</td>
+          <ng-template #st_rotpNotNull>
+            <td *ngIf="planet.st_rotperr2=='' && planet.st_rotperr1==''; else st_rotpErr">
+              {{planet.st_rotp | number : '.2-2'}}</td>
+            <ng-template #st_rotpErr>
+              <td>{{planet.st_rotp | number : '.2-2'}} &plusmn;
+                <span class="supsub">
+                <sup class="superscript">  {{planet.st_rotperr1 | number : '.2-2'}}</sup>
+                <sub class="subscript">{{planet.st_rotperr2*-1 | number : '.2-2'}}</sub>
+              </span></td>
+            </ng-template>
+          </ng-template>
+
+
+
         </tr>
         </tbody>
       </table>
@@ -525,7 +806,6 @@
       <table class="table table-sm table-bordered">
         <thead class="thead-dark">
         <tr>
-          <th scope="col">Distance<sub>[pc]</sub></th>
           <th scope="col">Latitude<sub>[deg]</sub></th>
           <th scope="col">Longitude<sub>[deg]</sub></th>
           <th scope="col">RA</th>
@@ -535,27 +815,14 @@
         <tbody>
         <tr>
 
-          <td *ngIf="planet.st_dist==null; else st_distNotNull">UNK</td>
-          <ng-template #st_distNotNull>
-            <td *ngIf="planet.st_disterr2==null && planet.st_disterr1==null; else st_distErr">
-              {{planet.st_dist | number : '.2-2'}}</td>
-            <ng-template #st_distErr>
-              <td>{{planet.st_dist | number : '.2-2'}} &plusmn;
-                <span class="supsub">
-                <sup class="superscript">  {{planet.st_disterr1 | number : '.2-2'}}</sup>
-                <sub class="subscript">{{planet.st_disterr2*-1 | number : '.2-2'}}</sub>
-              </span></td>
-            </ng-template>
+          <td *ngIf="planet.glon==null; else glonNotNull">UNK</td>
+          <ng-template #glonNotNull>
+            <td>{{planet.glon}}</td>
           </ng-template>
 
-          <td *ngIf="planet.st_glon==null; else st_glonNotNull">UNK</td>
-          <ng-template #st_glonNotNull>
-            <td>{{planet.st_glon}}</td>
-          </ng-template>
-
-          <td *ngIf="planet.st_glat==null; else st_glatNotNull">UNK</td>
-          <ng-template #st_glatNotNull>
-            <td>{{planet.st_glat}}</td>
+          <td *ngIf="planet.glat==null; else glatNotNull">UNK</td>
+          <ng-template #glatNotNull>
+            <td>{{planet.glat}}</td>
           </ng-template>
 
           <td *ngIf="planet.ra==null; else raNotNull">UNK</td>

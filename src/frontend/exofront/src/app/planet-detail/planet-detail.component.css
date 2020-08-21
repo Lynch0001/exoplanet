@@ -1,5 +1,5 @@
 .container-fluid{
-  background: lightgray;
+  background: lightgrey;
 }
 .upper-left{
   border: thin solid #605F61;
@@ -7,12 +7,22 @@
   padding-right: 15px;
   padding-left: 15px;
 }
-.system-planets{
-  font-size: small;
+table{
+  margin-bottom: 2%;
+  background: white;
 }
-.stname-hdhip{
-  font-size: small;
+td{
+  padding-top: 0%;
+  padding-bottom: 0%;
 }
+
+th{
+  font-size: smaller;
+  padding-top: 0%;
+  padding-bottom: 0%;
+  font-weight: normal;
+}
+
 .detail-table-name{
   float: left;
   color: #285e8e;
@@ -32,11 +42,8 @@
 .record-number{
   text-align: right;
 }
-.record-update{
-  text-align: right;
-}
-.record-selector{
 
+.record-selector{
   border: black 1px solid;
   border-radius: 4px;
   text-decoration: none;
@@ -87,13 +94,6 @@ h6{
 svg{
   border: darkgray solid 1px;
 }
-th{
-  font-weight: normal;
-}
-.link-external{
-  margin-left: 5pc;
-}
-
 .supsub {position: absolute}
 .subscript {display:block; position:relative; left:2px; top: 19px}
 .superscript {display:block; position:relative; left:2px; top: 5px}

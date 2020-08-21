@@ -238,6 +238,50 @@ public class Planet {
 	 * Photometry
 	 */
 
+	@Column(name = "sy_bmag")
+	private Double sy_bmag;
+
+	@Column(name = "sy_vmag")
+	private Double sy_vmag;
+
+	@Column(name = "sy_jmag")
+	private Double sy_jmag;
+
+	@Column(name = "sy_hmag")
+	private Double sy_hmag;
+
+	@Column(name = "sy_kmag")
+	private Double sy_kmag;
+
+	@Column(name = "sy_w1mag")
+	private Double sy_w1mag;
+
+	@Column(name = "sy_w2mag")
+	private Double sy_w2mag;
+
+	@Column(name = "sy_w3mag")
+	private Double sy_w3mag;
+
+	@Column(name = "sy_w4mag")
+	private Double sy_w4mag;
+
+	@Column(name = "sy_umag")
+	private Double sy_umag;
+
+	@Column(name = "sy_gmag")
+	private Double sy_gmag;
+
+	@Column(name = "sy_rmag")
+	private Double sy_rmag;
+
+	@Column(name = "sy_imag")
+	private Double sy_imag;
+
+	@Column(name = "sy_zmag")
+	private Double sy_zmag;
+
+	@Column(name = "sy_kepmag")
+	private Double sy_kepmag;
 
 	/*
 	 * Dates (Verified 8/19/20)
@@ -392,6 +436,101 @@ public class Planet {
 	@Column(name = "pl_insolerr2")
 	private String pl_insolerr2;
 
+
+	/*
+	 * Photometry Error Fields
+	 */
+
+	@Column(name = "sy_bmagerr1")
+	private Double sy_bmagerr1;
+
+	@Column(name = "sy_vmagerr1")
+	private Double sy_vmagerr1;
+
+	@Column(name = "sy_jmagerr1")
+	private Double sy_jmagerr1;
+
+	@Column(name = "sy_hmagerr1")
+	private Double sy_hmagerr1;
+
+	@Column(name = "sy_kmagerr1")
+	private Double sy_kmagerr1;
+
+	@Column(name = "sy_w1magerr1")
+	private Double sy_w1magerr1;
+
+	@Column(name = "sy_w2magerr1")
+	private Double sy_w2magerr1;
+
+	@Column(name = "sy_w3magerr1")
+	private Double sy_w3magerr1;
+
+	@Column(name = "sy_w4magerr1")
+	private Double sy_w4magerr1;
+
+	@Column(name = "sy_umagerr1")
+	private Double sy_umagerr1;
+
+	@Column(name = "sy_gmagerr1")
+	private Double sy_gmagerr1;
+
+	@Column(name = "sy_rmagerr1")
+	private Double sy_rmagerr1;
+
+	@Column(name = "sy_imagerr1")
+	private Double sy_imagerr1;
+
+	@Column(name = "sy_zmagerr1")
+	private Double sy_zmagerr1;
+
+	@Column(name = "sy_kepmagerr1")
+	private Double sy_kepmagerr1;
+
+	@Column(name = "sy_bmagerr2")
+	private Double sy_bmagerr2;
+
+	@Column(name = "sy_vmagerr2")
+	private Double sy_vmagerr2;
+
+	@Column(name = "sy_jmagerr2")
+	private Double sy_jmagerr2;
+
+	@Column(name = "sy_hmagerr2")
+	private Double sy_hmagerr2;
+
+	@Column(name = "sy_kmagerr2")
+	private Double sy_kmagerr2;
+
+	@Column(name = "sy_w1magerr2")
+	private Double sy_w1magerr2;
+
+	@Column(name = "sy_w2magerr2")
+	private Double sy_w2magerr2;
+
+	@Column(name = "sy_w3magerr2")
+	private Double sy_w3magerr2;
+
+	@Column(name = "sy_w4magerr2")
+	private Double sy_w4magerr2;
+
+	@Column(name = "sy_umagerr2")
+	private Double sy_umagerr2;
+
+	@Column(name = "sy_gmagerr2")
+	private Double sy_gmagerr2;
+
+	@Column(name = "sy_rmagerr2")
+	private Double sy_rmagerr2;
+
+	@Column(name = "sy_imagerr2")
+	private Double sy_imagerr2;
+
+	@Column(name = "sy_zmagerr2")
+	private Double sy_zmagerr2;
+
+	@Column(name = "sy_kepmagerr2")
+	private Double sy_kepmagerr2;
+	
 	/*
 	 *  Constructor
 	 */
@@ -1234,6 +1373,118 @@ public class Planet {
 
 	public void setPl_insolerr2(String pl_insolerr2) {
 		this.pl_insolerr2 = pl_insolerr2;
+	}
+
+	public Double getSy_bmag() {
+		return sy_bmag;
+	}
+
+	public void setSy_bmag(Double sy_bmag) {
+		this.sy_bmag = sy_bmag;
+	}
+
+	public Double getSy_vmag() {
+		return sy_vmag;
+	}
+
+	public void setSy_vmag(Double sy_vmag) {
+		this.sy_vmag = sy_vmag;
+	}
+
+	public Double getSy_jmag() {
+		return sy_jmag;
+	}
+
+	public void setSy_jmag(Double sy_jmag) {
+		this.sy_jmag = sy_jmag;
+	}
+
+	public Double getSy_hmag() {
+		return sy_hmag;
+	}
+
+	public void setSy_hmag(Double sy_hmag) {
+		this.sy_hmag = sy_hmag;
+	}
+
+	public Double getSy_kmag() {
+		return sy_kmag;
+	}
+
+	public void setSy_kmag(Double sy_kmag) {
+		this.sy_kmag = sy_kmag;
+	}
+
+	public Double getSy_w1mag() {
+		return sy_w1mag;
+	}
+
+	public void setSy_w1mag(Double sy_w1mag) {
+		this.sy_w1mag = sy_w1mag;
+	}
+
+	public Double getSy_w2mag() {
+		return sy_w2mag;
+	}
+
+	public void setSy_w2mag(Double sy_w2mag) {
+		this.sy_w2mag = sy_w2mag;
+	}
+
+	public Double getSy_w3mag() {
+		return sy_w3mag;
+	}
+
+	public void setSy_w3mag(Double sy_w3mag) {
+		this.sy_w3mag = sy_w3mag;
+	}
+
+	public Double getSy_w4mag() {
+		return sy_w4mag;
+	}
+
+	public void setSy_w4mag(Double sy_w4mag) {
+		this.sy_w4mag = sy_w4mag;
+	}
+
+	public Double getSy_umag() {
+		return sy_umag;
+	}
+
+	public void setSy_umag(Double sy_umag) {
+		this.sy_umag = sy_umag;
+	}
+
+	public Double getSy_gmag() {
+		return sy_gmag;
+	}
+
+	public void setSy_gmag(Double sy_gmag) {
+		this.sy_gmag = sy_gmag;
+	}
+
+	public Double getSy_rmag() {
+		return sy_rmag;
+	}
+
+	public void setSy_rmag(Double sy_rmag) {
+		this.sy_rmag = sy_rmag;
+	}
+
+	public Double getSy_imag() {
+		return sy_imag;
+	}
+
+	public void setSy_imag(Double sy_imag) {
+		this.sy_imag = sy_imag;
+	}
+
+	public Double getSy_zmag() {
+		return sy_zmag;
+	}
+
+	public void setSy_zmag(Double sy_zmag) {
+		this.sy_zmag = sy_zmag;
 	}
 
 	@Override

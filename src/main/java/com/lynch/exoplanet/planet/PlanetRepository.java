@@ -31,6 +31,12 @@ public interface PlanetRepository extends JpaRepository<Planet, Long> {
   @Query("SELECT p FROM Planet p where p.pl_name LIKE 'TRAPPIST%'")
   List<Planet> getTrappistPlanets();
 
-  @Query("SELECT p FROM Planet p where p.id IN (1,2,3,4,5)")
+  @Query("SELECT p FROM Planet p where p.id IN (136,201,246,254,257,258,261,267,271,305,1097,1116,1117,1252,1260,1261,2289,2422,3619,4154)")
   List<Planet> getNasaInterestingPlanets();
+
+  @Query("SELECT p FROM Planet p where p.cb_flag = 1")
+  List<Planet> getPlanetsInBinarySystems();
+
+  @Query("SELECT p FROM Planet p where p.ima_flag = 1")
+  List<Planet> getPlanetsFoundByImaging();
 }

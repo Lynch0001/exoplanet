@@ -87,6 +87,14 @@ public class PlanetService {
 		return planetRepository.getNasaInterestingPlanets();
 	}
 
+	public List<Planet> getPlanetsFoundByImaging(){
+		log.debug("Received Planet controller request to get Planets found by imaging");
+		return planetRepository.getPlanetsFoundByImaging();
+	}
 
+	public List<Planet> getPlanetsInBinarySystems(){
+		log.debug("Received Planet controller request to get planets in Binary Star systems");
+		return planetRepository.getPlanetsInBinarySystems();
+	}
 
 }
