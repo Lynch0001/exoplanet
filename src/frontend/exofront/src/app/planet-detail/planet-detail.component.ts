@@ -13,11 +13,14 @@ import {validateConstructorDependencies} from "@angular/compiler-cli/src/ngtsc/a
 export class PlanetDetailComponent implements OnInit, OnDestroy {
 
   mySubscription: any;
-  rowId: String;
-  nextId: String;
-  previousId: String;
+  rowId: string;
+  nextId: string;
+  previousId: string;
   planet: any;
-  aladinPlanetExport: String;
+  aladinPlanetExport: string;
+  raExport: number;
+  decExport: number;
+  nameExport: string;
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) {
 
@@ -43,11 +46,8 @@ export class PlanetDetailComponent implements OnInit, OnDestroy {
 
       this.showPlanetSizeCompare(this.planet.pl_rade)
 
-    });
 
-    this.aladinPlanetExport = this.planet.pl_hostname;
-    console.log('Aladin Export Assigned: ' + this.aladinPlanetExport);
-
+    }) ;
 
   }
   showPlanetSizeCompare(rade: number){

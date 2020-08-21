@@ -31,7 +31,7 @@
         <tbody>
         <tr>
 
-          <td *ngIf="planet.sy_snum==null; else sy_snumNotNull">UNK</td>
+          <td *ngIf="planet.sy_snum==null || planet.sy_snum==''; else sy_snumNotNull">UNK</td>
           <ng-template #sy_snumNotNull>
             <td>{{planet.sy_snum}}</td>
           </ng-template>
@@ -837,17 +837,33 @@
         </tr>
         </tbody>
       </table>
-
-
     </section>
+
+
     <section class="col-md-6 col-sm-8 lower-right">
-        <h4>Size Comparison: Earth to {{planet.pl_name}}</h4>
-        <p>Radius(e): {{planet.pl_rade}}</p>
-        <svg height="300" width="700">
-          <text x="10" y="25">Earth</text>
-          <text x="315" y="25">{{planet.pl_name}}</text>
-       </svg>
+
+      <section>
+        <H4>SkyView for {{planet.hostname}}</H4>
+        <app-virtualsky [decImport]="this.planet.dec" [raImport]="this.planet.ra" [nameImport]="this.planet.hostname"></app-virtualsky>
+
+
+        <app-aladin [aladinPlanetImport]="planet.hostname"></app-aladin>
+
+
+      </section>
+
+
+
+
     </section>
+
+    <h4>Size Comparison: Earth to {{planet.pl_name}}</h4>
+    <p>Radius(e): {{planet.pl_rade}}</p>
+    <svg height="300" width="700">
+      <text x="10" y="25">Earth</text>
+      <text x="315" y="25">{{planet.pl_name}}</text>
+    </svg>
+
 
   </div>
 </div>

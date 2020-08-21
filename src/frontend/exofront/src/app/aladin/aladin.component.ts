@@ -16,10 +16,5 @@ export class AladinComponent implements OnInit {
   ngOnInit() {
     console.log('Aladin Display called on: ' + this.aladinPlanetImport);
     showAladin(this.aladinPlanetImport);
-/*
-    $('input[name=survey]').change(function() {
-      aladin.setImageSurvey($(this).val());
-    });
- */
   }
 }

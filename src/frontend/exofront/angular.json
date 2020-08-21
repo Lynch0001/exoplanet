@@ -28,9 +28,15 @@
               "./src/assets/CSS/aladin.min.css",
               "src/styles.css"
             ],
-            "scripts": ["./src/assets/JS/aladin.min.js",
+            "scripts": [
+              "./src/assets/JS/aladin.min.js",
               "./src/assets/JS/jquery-1.12.1.min.js",
-              "./src/assets/JS/showAladin.js"]
+              "./src/assets/JS/showAladin.js",
+              "./src/assets/JS/showVirtualSky.js",
+              "./src/assets/JS/virtualsky/virtualsky.js",
+              "./src/assets/JS/virtualsky/stuquery.min.js",
+              "./src/assets/JS/virtualsky/virtualsky.min.js"
+            ]
           },
           "configurations": {
             "production": {
