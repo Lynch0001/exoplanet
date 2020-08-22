@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="planet">
 
   <!-- Planet Header Data -->
 
@@ -843,7 +843,7 @@
     <section class="col-md-6 col-sm-8 lower-right">
 
       <section>
-        <H4>SkyView for {{planet.hostname}}</H4>
+        <H4>VirtualSky view for {{planet.hostname}}</H4>
         <app-virtualsky [decImport]="this.planet.dec" [raImport]="this.planet.ra" [nameImport]="this.planet.hostname"></app-virtualsky>
 
 

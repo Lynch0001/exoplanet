@@ -8,18 +8,20 @@ function showVirtualSky(ra, dec, name)
   S(document).ready(function() {
 
     planetarium = S.virtualsky({
-      id: 'starmap',
-      projection: 'planechart',
-      longitude: 38.958630,
-      latitude: -77.357002,
-      ground: false,
-      constellations: true,
-      constellationlabels: true,
-      gridlines_eq: true,
-      showstars: true,
-      showplanets: true,
-      fov: 15,
-      lang: 'en',
+      'id': 'starmap',
+      'projection': 'gnomic',
+      'ra': ra,
+      'dec': dec,
+      'longitude': 38.958630,
+      'latitude': -77.357002,
+      'ground': false,
+      'constellations': true,
+      'constellationlabels': true,
+      'gridlines_eq': true,
+      'showstars': true,
+      'showplanets': true,
+      'fov': 40,
+      'lang': 'en',
     });
     planetarium.addPointer({
       ra: ra,
