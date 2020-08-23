@@ -43,64 +43,18 @@ export class PlanetDetailComponent implements OnInit, OnDestroy {
       console.log('Fetching Planet data');
       console.log(data);
       this.planet = data;
-
-      this.showPlanetSizeCompare(this.planet.pl_rade)
-
-
     }) ;
 
   }
-  showPlanetSizeCompare(rade: number){
-    if(rade==null) {
-      d3.select("svg")
-        .append("circle")
-        .attr("cx", "25")
-        .attr("cy", "200")
-        .attr("r", "10");
 
-      d3.select("svg")
-        .append("text")
-        .attr("x", "350")
-        .attr("y", "200")
-        .attr("font-family", "Arial")
-        .attr("font-size", "10")
-        .text("No Data");
-    }else if (rade<5){
-      d3.select("svg")
-        .append("circle")
-        .attr("cx", "25")
-        .attr("cy", "200")
-        .attr("r", "10");
-      d3.select("svg")
-        .append("circle")
-        .attr("cx", "350")
-        .attr("cy", "200")
-        .attr("r", rade * 10);
-    }else{
-      d3.select("svg")
-        .append("circle")
-        .attr("cx", "25")
-        .attr("cy", "200")
-        .attr("r", "2");
-      d3.select("svg")
-        .append("circle")
-        .attr("cx", "350")
-        .attr("cy", "200")
-        .attr("r", rade * 2);
-    }
-  }
 
   getNextId(id:number){
     console.log(typeof id);
     console.log('id: ' + id);
-
-
     if(id<4154) {  // TODO compare against variable - DB Size
       this.nextId = String((id) + 1);
     }
     else{ this.nextId = String(id);}
-
-
     console.log(typeof this.nextId);
     console.log('nextId: ' + this.nextId);
     this.router.navigate(['/api/planet/', this.nextId]);
@@ -109,12 +63,10 @@ export class PlanetDetailComponent implements OnInit, OnDestroy {
   getPreviousId(id:number){
     console.log(typeof id);
     console.log('id: ' + id);
-
     if(id>1) {
       this.previousId = String((id) - 1);
     }
     else{ this.previousId = String(id);}
-
     console.log(typeof this.previousId);
     console.log('previousId: ' + this.previousId);
     this.router.navigate(['/api/planet/', this.previousId]);

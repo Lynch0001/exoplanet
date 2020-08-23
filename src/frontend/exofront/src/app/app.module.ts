@@ -15,6 +15,7 @@ import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ChartsComponent } from './charts/charts.component';
 import { VirtualskyComponent } from './virtualsky/virtualsky.component';
+import { SizeCompareComponent } from './size-compare/size-compare.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { VirtualskyComponent } from './virtualsky/virtualsky.component';
     PlanetListComponent,
     PlanetDetailComponent,
     ChartsComponent,
-    VirtualskyComponent
+    VirtualskyComponent,
+    SizeCompareComponent
 
   ],
   imports: [

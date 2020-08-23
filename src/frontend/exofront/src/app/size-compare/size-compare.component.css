@@ -1,0 +1,18 @@
+.planet-compare-container{
+  display: inline-block;
+  border: dimgray 1px solid;
+  border: dimgray 1px solid;
+
+}
+
+.star-compare-container{
+  display: block;
+  float: right;
+  border: dimgray 1px solid;
+
+}
+svg{
+  border: grey 1px solid;
+  child-align: auto;
+  padding-bottom: 1%;
+}

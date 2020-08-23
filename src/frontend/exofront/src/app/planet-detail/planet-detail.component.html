@@ -3,7 +3,7 @@
   <!-- Planet Header Data -->
 
   <div class="row">
-    <section class="col-md-6 col-sm-8 upper-left">
+    <section class="col-sm-12 col-md-6 upper-left">
       <span class="planet-info">
         <span class="selector">
           <h4 class="planet-name">Planet: {{planet.pl_name}}</h4>
@@ -370,7 +370,7 @@
 
     <!-- Aladin Applet-->
 
-    <section class="col-md-6 col-sm-8 upper-right">
+    <section class="col-sm-12 col-md-6 upper-right">
         <H4>Imagery for {{planet.hostname}}</H4>
         <app-aladin [aladinPlanetImport]="planet.hostname"></app-aladin>
         <H4 class="aladin-ack">"Aladin sky atlas" developed at Strasbourg astronomical Data Center (CDS), Strasbourg Observatory, France</H4>
@@ -381,7 +381,7 @@
   <!-- Star Data -->
 
   <div class="row">
-    <section class="col-md-6 col-sm-8 lower-left">
+    <section class="col-sm-12 col-md-6 lower-left">
         <h4>Star: {{planet.hostname}} </h4>
 
       <!-- Star Table Identification-->
@@ -840,30 +840,15 @@
     </section>
 
 
-    <section class="col-md-6 col-sm-8 lower-right">
-
+    <section class="col-sm-12 col-md-6 lower-right">
       <section>
         <H4>VirtualSky view for {{planet.hostname}}</H4>
         <app-virtualsky [decImport]="this.planet.dec" [raImport]="this.planet.ra" [nameImport]="this.planet.hostname"></app-virtualsky>
-
-
-        <app-aladin [aladinPlanetImport]="planet.hostname"></app-aladin>
-
-
       </section>
-
-
-
-
     </section>
-
-    <h4>Size Comparison: Earth to {{planet.pl_name}}</h4>
-    <p>Radius(e): {{planet.pl_rade}}</p>
-    <svg height="300" width="700">
-      <text x="10" y="25">Earth</text>
-      <text x="315" y="25">{{planet.pl_name}}</text>
-    </svg>
-
-
+    <section class="container">
+      <app-size-compare [name]="planet.pl_name" [hostname]="planet.hostname" [rads]="planet.st_rad" [rade]="planet.pl_rade"></app-size-compare>
+    </section>
   </div>
+  <hr>
 </div>
