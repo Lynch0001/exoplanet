@@ -32,7 +32,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let planet of planets">
+    <tr *ngFor="let planet of planets | paginate: {itemsPerPage:100, currentPage: page, totalItems:4200}">
       <th scope="row" ><a [routerLink]="['/api/planet/', planet.id]">{{planet.id}}</a></th>
       <td>{{planet.pl_name}}</td>
       <td [ngSwitch]="true">
@@ -77,8 +77,11 @@
     </tr>
   </tbody>
   </table>
+    <pagination-controls align="center" (pageChange)="pageChanged($event)" maxSize="10"></pagination-controls>
 </div>
+
   </div>
+  <p></p>
 </div>
 
 

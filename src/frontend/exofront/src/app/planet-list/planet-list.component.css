@@ -1,3 +1,9 @@
+html {
+  height: auto !important;
+  padding-bottom: 700px !important;
+}
+
+
 body{
   background-color: red;
 }

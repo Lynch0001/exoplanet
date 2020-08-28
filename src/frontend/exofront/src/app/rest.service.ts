@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable} from "rxjs";
-import { HttpClient, HttpHeaders, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {map} from "rxjs/operators";
 
 
@@ -29,8 +29,9 @@ export class RestService {
       map(this.extractData));
   }
 
-  getPlanets(): Observable<any>{
-    return this.http.get(this.endpoint + 'planets').pipe(
+  getPlanets(page): Observable<any>{
+    let params = new HttpParams().set('page', page);
+    return this.http.get(this.endpoint + 'planets/page', {params: params}).pipe(
       map(this.extractData));
   }
 

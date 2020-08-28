@@ -10,16 +10,21 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class PlanetListComponent implements OnInit {
 
   planets: any = [];
+  itemsPerPage: 5;
+  currentPage: number;
   @Input() records: number =0;
+  page: number = 0;
 
-  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) {
+
+  }
 
   ngOnInit() {
-    this.getPlanets();
+    this.getPlanets(this.page);
   }
-  getPlanets(){
+  getPlanets(page){
     this.planets = [];
-    this.rest.getPlanets().subscribe((data: {}) => {
+    this.rest.getPlanets(page).subscribe((data: {}) => {
       console.log(data);
       this.planets = data;
       this.records = this.planets.length
@@ -37,5 +42,9 @@ export class PlanetListComponent implements OnInit {
     });
   }
 
-
+  pageChanged(event){
+    console.log(this.page, event); // old page & new page
+    this.page = event;
+    this.getPlanets(this.page-1);
+  }
 }

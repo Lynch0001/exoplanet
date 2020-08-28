@@ -31,7 +31,7 @@ public class PlanetController {
 
 	 */
 
-	@GetMapping(value ="/planets")
+	@GetMapping(value ="/planets/page")
 	public List<Planet> getAllPlanets(Pageable pageable) {
 		log.debug("Received REST request for All Planets");
 		 Page<Planet> page = planetService.getAllPlanets(pageable);
