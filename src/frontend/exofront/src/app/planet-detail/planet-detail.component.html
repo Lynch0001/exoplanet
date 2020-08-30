@@ -427,7 +427,7 @@
       </table>
 
 
-      <!-- Star Table Physical Data -->
+      <!-- Star Table Physical Data 1 -->
 
       <h6 class="detail-table-name">Physical Data</h6>
       <table class="table table-sm table-bordered">
@@ -491,7 +491,7 @@
         </tbody>
       </table>
 
-      <!-- Star Table 2a -->
+      <!-- Star Table Physical Data 2 -->
 
 
       <table class="table table-sm table-bordered">
@@ -555,7 +555,7 @@
       </table>
 
 
-      <!-- Star Table 2b -->
+      <!-- Star Table Spectral Data -->
 
       <h6 class="detail-table-name">Spectral Data</h6>
       <table class="table table-sm table-bordered">
@@ -589,11 +589,12 @@
           <ng-template #sy_vmagNotNull>
             <td>{{planet.sy_vmag}}</td>
           </ng-template>
-
         </tr>
         </tbody>
+      </table>
 
-        <thead class="thead-dark">
+    <table class="table table-sm table-bordered">
+      <thead class="thead-dark">
       <tr>
         <th scope="col">WISE W1</th>
         <th scope="col">WISE W2</th>
@@ -601,34 +602,32 @@
         <th scope="col">WISE W4</th>
       </tr>
       </thead>
-        <tbody>
-        <tr>
+      <tbody>
+      <tr>
 
-          <td *ngIf="planet.sy_w1mag==null || planet.sy_w1mag==''; else sy_w1magNotNull">UNK</td>
-          <ng-template #sy_w1magNotNull>
-            <td>{{planet.sy_w1mag}}</td>
-          </ng-template>
+        <td *ngIf="planet.sy_w1mag==null || planet.sy_w1mag==''; else sy_w1magNotNull">UNK</td>
+        <ng-template #sy_w1magNotNull>
+          <td>{{planet.sy_w1mag}}</td>
+        </ng-template>
 
-          <td *ngIf="planet.sy_w2mag==null; else sy_w2magNotNull">UNK</td>
-          <ng-template #sy_w2magNotNull>
-            <td>{{planet.sy_w2mag}}</td>
-          </ng-template>
+        <td *ngIf="planet.sy_w2mag==null; else sy_w2magNotNull">UNK</td>
+        <ng-template #sy_w2magNotNull>
+          <td>{{planet.sy_w2mag}}</td>
+        </ng-template>
 
-          <td *ngIf="planet.sy_w3mag==null; else sy_w3magNotNull">UNK</td>
-          <ng-template #sy_w3magNotNull>
-            <td>{{planet.sy_w3mag}}</td>
-          </ng-template>
+        <td *ngIf="planet.sy_w3mag==null; else sy_w3magNotNull">UNK</td>
+        <ng-template #sy_w3magNotNull>
+          <td>{{planet.sy_w3mag}}</td>
+        </ng-template>
 
-          <td *ngIf="planet.sy_w4mag==null; else sy_w4magNotNull">UNK</td>
-          <ng-template #sy_w4magNotNull>
-            <td>{{planet.sy_w4mag}}</td>
-          </ng-template>
+        <td *ngIf="planet.sy_w4mag==null; else sy_w4magNotNull">UNK</td>
+        <ng-template #sy_w4magNotNull>
+          <td>{{planet.sy_w4mag}}</td>
+        </ng-template>
 
-        </tr>
-        </tbody>
-
-      </table>
-
+      </tr>
+      </tbody>
+    </table>
 
       <table class="table table-sm table-bordered">
       <thead class="thead-dark">
@@ -847,7 +846,7 @@
       </section>
     </section>
     <section class="container">
-      <app-size-compare [name]="planet.pl_name" [hostname]="planet.hostname" [rads]="planet.st_rad" [rade]="planet.pl_rade"></app-size-compare>
+      <app-size-compare [name]="planet.pl_name" [hostname]="planet.hostname" [rads]="planet.st_rad" [rade]="planet.pl_rade"  [specType]="planet.st_spectype"></app-size-compare>
     </section>
   </div>
   <hr>

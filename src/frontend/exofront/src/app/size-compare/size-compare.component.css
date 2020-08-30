@@ -1,7 +1,8 @@
 .planet-compare-container{
   display: inline-block;
   border: dimgray 1px solid;
-  border: dimgray 1px solid;
+  padding-bottom: 2%;
+
 
 }
 
@@ -9,10 +10,12 @@
   display: block;
   float: right;
   border: dimgray 1px solid;
+  padding-bottom: 2%;
 
 }
 svg{
   border: grey 1px solid;
   child-align: auto;
-  padding-bottom: 1%;
+
 }
+
