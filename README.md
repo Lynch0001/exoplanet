@@ -18,7 +18,7 @@
   <h3 align="center">Exoplanet Data Explorer</h3>
 
   <p align="center">
-    App to explore NASA exoplanet data and facilitate learning on Spring Security and PostgreSQL integration
+    App to explore NASA Exoplanet data because I am curious and interested in All-Things-Space
     <br />
     <a href="https://github.com/lynch0001/exoplanet"><strong>Explore the docs »</strong></a>
     <br />
@@ -53,7 +53,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot2]](https://example.com)
 
 
 
@@ -74,45 +74,60 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+1. Download and prepare the data 
 
-* NASA Exoplanet Data (Availible at https://exoplanetarchive.ipac.caltech.edu/docs/data.html)
-```sh
-download Confirmed Planets Table (in CSV Format with defaults or all columns/all rows)
-```
+    * Go to https://exoplanetarchive.ipac.caltech.edu/docs/data.html
+    * Select the Planetary Systems Composite Data Table
+    * Under the 'Download Table' option: select CSV Format and Download all Columns/all Rows
+    * Open the file and remove column description information and rename the 'rowid' column to 'id'
+    * Note: you'll have to update the schema.xml file with the path and filename
 
-* npm
-```sh
-npm install npm@latest -g
-```
+2. Setup the DB (if you choose something other than PostgreSQL, you will need to tweak the Schema SQL language)
 
 ### Installation
  
-1. Clone the repo
-```sh
-git clone https://github.com/lynch0001/exoplanet.git
-```
-2. Install NPM packages
-```sh
-npm install
-```
-
-
+1. Clone the repo.
+    ```sh
+    git clone https://github.com/lynch0001/exoplanet.git
+    ```
+2. Install NPM packages.
+    ```sh
+    npm install
+    ```
+3. Run the backend.
+    ```sh
+    mvn spring-boot:run
+    ```
+4. Run the frontend.
+    ```sh
+    ng serve
+    ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Current functionality (8/31/2020) allows users to:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+* View a paginated list of the 4201 currently reported exoplanets and select characteristics (Note: I derived the characteristics from the underlying data to make it easier for me to consume (some are overly simplified and probably off mark))
+* View result lists of selected queries
+* View details of each exoplanet and its star highlighting imagery, location, and size comparison data
+
+[product-screenshot1]: https://user-images.githubusercontent.com/35854692/91747909-0da42a00-eb8d-11ea-85da-d850c71fb74f.png
+
+[product-screenshot2]: https://user-images.githubusercontent.com/35854692/91747999-375d5100-eb8d-11ea-804a-840708d35799.PNG
+
+[product-screenshot3]: https://user-images.githubusercontent.com/35854692/91748084-5cea5a80-eb8d-11ea-952a-b4e503e96bcd.PNG
+
+[product-screenshot4]: https://user-images.githubusercontent.com/35854692/91748116-6ecbfd80-eb8d-11ea-9dd8-e75467f5a4dd.PNG
+
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/lynch0001/exoplanet/issues) for a list of proposed features (and known issues).
 
+See the [open issues](https://github.com/lynch0001/exoplanet/issues) for a list of proposed features (and known issues).
 
 
 <!-- CONTRIBUTING -->
@@ -178,4 +193,9 @@ Project Link: [https://github.com/lynch0001/exoplanet](https://github.com/lynch0
 [license-url]: https://github.com/lynch0001/exoplanet/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/timothy-j-lynch/
-[product-screenshot]: https://user-images.githubusercontent.com/35854692/89050448-c4a84e00-d320-11ea-9b8e-0d50bbee69f4.PNG
+
+[product-screenshot1]: https://user-images.githubusercontent.com/35854692/91747909-0da42a00-eb8d-11ea-85da-d850c71fb74f.png
+[product-screenshot2]: https://user-images.githubusercontent.com/35854692/91747999-375d5100-eb8d-11ea-804a-840708d35799.PNG
+[product-screenshot3]: https://user-images.githubusercontent.com/35854692/91748084-5cea5a80-eb8d-11ea-952a-b4e503e96bcd.PNG
+[product-screenshot4]: https://user-images.githubusercontent.com/35854692/91748116-6ecbfd80-eb8d-11ea-9dd8-e75467f5a4dd.PNG
+
