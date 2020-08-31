@@ -107,23 +107,6 @@ public class Planet {
 	@Column(name = "pl_radj")
 	private Double pl_radj;
 
-	@Column(name = "pl_masse")
-	private Double pl_masse;
-
-	@Column(name = "pl_massj")
-	private Double pl_massj;
-
-	@Column(name = "pl_msinie")
-	private Double pl_msinie;
-
-	@Column(name = "pl_msinij")
-	private Double pl_msinij;
-
-	@Column(name = "pl_cmasse")
-	private Double pl_cmasse;
-
-	@Column(name = "pl_cmassj")
-	private Double pl_cmassj;
 
 	@Column(name = "pl_bmasse")
 	private Double pl_bmasse;
@@ -282,15 +265,6 @@ public class Planet {
 
 	@Column(name = "sy_kepmag")
 	private Double sy_kepmag;
-
-	/*
-	 * Dates (Verified 8/19/20)
-	 */
-
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@Column(name = "rowupdate")
-	private Date rowupdate;
-
 
 	/*
 	 * System Error Fields
@@ -719,53 +693,6 @@ public class Planet {
 		this.pl_radj = pl_radj;
 	}
 
-	public Double getPl_masse() {
-		return pl_masse;
-	}
-
-	public void setPl_masse(Double pl_masse) {
-		this.pl_masse = pl_masse;
-	}
-
-	public Double getPl_massj() {
-		return pl_massj;
-	}
-
-	public void setPl_massj(Double pl_massj) {
-		this.pl_massj = pl_massj;
-	}
-
-	public Double getPl_msinie() {
-		return pl_msinie;
-	}
-
-	public void setPl_msinie(Double pl_msinie) {
-		this.pl_msinie = pl_msinie;
-	}
-
-	public Double getPl_msinij() {
-		return pl_msinij;
-	}
-
-	public void setPl_msinij(Double pl_msinij) {
-		this.pl_msinij = pl_msinij;
-	}
-
-	public Double getPl_cmasse() {
-		return pl_cmasse;
-	}
-
-	public void setPl_cmasse(Double pl_cmasse) {
-		this.pl_cmasse = pl_cmasse;
-	}
-
-	public Double getPl_cmassj() {
-		return pl_cmassj;
-	}
-
-	public void setPl_cmassj(Double pl_cmassj) {
-		this.pl_cmassj = pl_cmassj;
-	}
 
 	public Double getPl_bmasse() {
 		return pl_bmasse;
@@ -1015,13 +942,6 @@ public class Planet {
 		this.glat = glat;
 	}
 
-	public Date getRowupdate() {
-		return rowupdate;
-	}
-
-	public void setRowupdate(Date rowupdate) {
-		this.rowupdate = rowupdate;
-	}
 
 	public String getSy_disterr1() {
 		return sy_disterr1;
