@@ -112,13 +112,14 @@ Current functionality (8/31/2020) allows users to:
 * View result lists of selected queries
 * View details of each exoplanet and its star highlighting imagery, location, and size comparison data
 
-[product-screenshot1]: https://user-images.githubusercontent.com/35854692/91747909-0da42a00-eb8d-11ea-85da-d850c71fb74f.png
+ 
+[![Product Screen Shot1][product-screenshot1]]
 
-[product-screenshot2]: https://user-images.githubusercontent.com/35854692/91747999-375d5100-eb8d-11ea-804a-840708d35799.PNG
+[![Product Screen Shot2][product-screenshot2]]
 
-[product-screenshot3]: https://user-images.githubusercontent.com/35854692/91748084-5cea5a80-eb8d-11ea-952a-b4e503e96bcd.PNG
+[![Product Screen Shot3][product-screenshot3]]
 
-[product-screenshot4]: https://user-images.githubusercontent.com/35854692/91748116-6ecbfd80-eb8d-11ea-9dd8-e75467f5a4dd.PNG
+[![Product Screen Shot4][product-screenshot4]]
 
 
 
