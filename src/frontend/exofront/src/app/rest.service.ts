@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable} from "rxjs";
 import {HttpClient, HttpHeaders, HttpErrorResponse, HttpParams} from "@angular/common/http";
-import {map} from "rxjs/operators";
+import {concatMap, map} from "rxjs/operators";
 
 
 
@@ -26,6 +26,11 @@ export class RestService {
 
   getQuery(id): Observable<any>{
     return this.http.get(this.endpoint + 'planets/query/' + id).pipe(
+      map(this.extractData));
+  }
+
+  getAllPlanets(): Observable<any>{
+    return this.http.get(this.endpoint + 'planets').pipe(
       map(this.extractData));
   }
 

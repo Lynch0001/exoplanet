@@ -19,18 +19,13 @@ public class PlanetService {
 	@Autowired
 	private PlanetRepository planetRepository;
 
-	/*  Retain while testing pagination
 
 	public List<Planet> getAllPlanets(){
 		log.debug("Received Planet controller request to get all Planets");
 		return planetRepository.findAll();
 	}
 
-	*/
-
-	// Implement Paging for Planet List
-
-	public Page<Planet> getAllPlanets(Pageable pageable){
+	public Page<Planet> getAllPlanetsByPage(Pageable pageable){
 		log.debug("Received Planet controller request to get all Planets");
 		return planetRepository.findAll(pageable);
 	}

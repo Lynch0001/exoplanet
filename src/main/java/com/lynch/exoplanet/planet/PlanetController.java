@@ -21,7 +21,7 @@ public class PlanetController {
 	@Autowired
 	private PlanetService planetService;
 
-	/*  Retain while testing pagination
+
 
 	@GetMapping(value ="/planets")
 	public List<Planet> getAllPlanets() {
@@ -29,12 +29,12 @@ public class PlanetController {
 		return planetService.getAllPlanets();
 	}
 
-	 */
+
 
 	@GetMapping(value ="/planets/page")
-	public List<Planet> getAllPlanets(Pageable pageable) {
+	public List<Planet> getAllPlanetsByPage(Pageable pageable) {
 		log.debug("Received REST request for All Planets");
-		 Page<Planet> page = planetService.getAllPlanets(pageable);
+		 Page<Planet> page = planetService.getAllPlanetsByPage(pageable);
 		return page.getContent();
 	}
 
