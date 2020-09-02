@@ -113,11 +113,11 @@ Current functionality (8/31/2020) allows users to:
 * View details of each exoplanet and its star highlighting imagery, location, and size comparison data
 
  
-[![Product Screen Shot1][product-screenshot1]]
+![Product Screen Shot1][product-screenshot1]
 
 Figure 1: List Component
 
-[![Product Screen Shot2][product-screenshot2]]
+![Product Screen Shot2][product-screenshot2]
 
 Figure 2: Detail Component (System/Planet data and stellar imagery)
 
@@ -125,11 +125,11 @@ Figure 2: Detail Component (System/Planet data and stellar imagery)
 
 Figure 3: Detail Component (Stellar data and relative location in the night sky)
 
-[![Product Screen Shot4][product-screenshot4]]
+![Product Screen Shot4][product-screenshot4]
 
 Figure 4: Detail Component (Planet/Star size comparisons)
 
-[![Product Screen Shot5][product-screenshot5]]
+![Product Screen Shot5][product-screenshot5]
 
 Figure 5: Chart from the Chart Component 
 
