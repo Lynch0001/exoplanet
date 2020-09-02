@@ -121,7 +121,7 @@ Figure 1: List Component
 
 Figure 2: Detail Component (System/Planet data and stellar imagery)
 
-[![Product Screen Shot3][product-screenshot3]]
+![Product Screen Shot3][product-screenshot3]
 
 Figure 3: Detail Component (Stellar data and relative location in the night sky)
 
