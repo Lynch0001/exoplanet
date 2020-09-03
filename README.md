@@ -25,9 +25,9 @@
     <br />
     <a href="https://youtu.be/iloIcZxSmcw">View Video Demo (YouTube)</a>
     ·
-    <a href="https://github.com/lynch0001/exoplanet/issues">Report Bug</a>
+    <a href="https://github.com/lynch0001/exoplanet/issues">Report a Bug</a>
     ·
-    <a href="https://github.com/lynch0001/exoplanet/issues">Request Feature</a>
+    <a href="https://github.com/lynch0001/exoplanet/issues">Request a Feature</a>
   </p>
 </p>
 
