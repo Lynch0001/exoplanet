@@ -53,7 +53,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot2]](https://example.com)
+[![Product Name Screen Shot][product-screenshot0]](https://example.com)
 
 
 
@@ -208,6 +208,7 @@ Project Link: [https://github.com/lynch0001/exoplanet](https://github.com/lynch0
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/timothy-j-lynch/
 
+[product-screenshot0]: https://user-images.githubusercontent.com/35854692/92127947-d96c7b80-edcf-11ea-8b72-5bebb83273e3.png
 [product-screenshot1]: https://user-images.githubusercontent.com/35854692/92127210-11bf8a00-edcf-11ea-940e-cc2d35cbd7fc.png
 [product-screenshot2]: https://user-images.githubusercontent.com/35854692/92127026-e50b7280-edce-11ea-9f28-d08f8a44dc5e.png
 [product-screenshot3]: https://user-images.githubusercontent.com/35854692/92044104-80f39a80-ed4b-11ea-94de-19f2c29e3d26.png
