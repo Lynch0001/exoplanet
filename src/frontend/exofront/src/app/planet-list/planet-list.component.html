@@ -22,10 +22,10 @@
   <thead>
     <tr>
       <th scope="col">Record</th>
-      <th scope="col">Name</th>
-      <th scope="col">Size</th>
-      <th scope="col">Temp</th>
-      <th scope="col">Density</th>
+      <th scope="col">Planet Name</th>
+      <th scope="col">Planet Size</th>
+      <th scope="col">Planet Temp</th>
+      <th scope="col">Planet Density</th>
       <th scope="col">Star Type</th>
       <th scope="col">Distance from Star</th>
       <th scope="col">Discovered</th>
@@ -50,9 +50,13 @@
         <span *ngSwitchDefault>{{planet.pl_eqt  | number : '.0-0'}}</span>
       </td>
       <td [ngSwitch]="true">
-        <span *ngSwitchCase="planet.pl_dens >=25 && planet.pl_dens < 34"><button class="button-met button-sm rounded">Degenerate</button></span>
-        <span *ngSwitchCase="planet.pl_dens >=3.6 && planet.pl_dens < 13.4"><button class="button-ice button-sm rounded">Iron/Rock</button></span>
-        <span *ngSwitchCase="planet.pl_dens && planet.pl_dens < .7"><button class="button-gas button-sm rounded">Ice/Gas</button></span>
+        <!-- Analytically ~ 32 -->
+        <span *ngSwitchCase="planet.pl_dens >=25"><button class="button-met button-sm rounded">Brown Dwarf</button></span>
+        <!-- Analytically ~ 3 -->
+        <span *ngSwitchCase="planet.pl_dens >=1.5 && planet.pl_dens < 25"><button class="button-ice button-sm rounded">Iron/Rock</button></span>
+        <!-- Analytically ~ .7 -->
+        <span *ngSwitchCase="planet.pl_dens && planet.pl_dens < 1.5"><button class="button-gas button-sm rounded">Ice/Gas</button></span>
+        <!-- Anything Else -->
         <span *ngSwitchDefault>{{planet.pl_dens  | number : '.0-0'}}</span>
       </td>
       <td [ngSwitch]="true">
@@ -78,10 +82,10 @@
   </tbody>
   </table>
     <pagination-controls align="center" (pageChange)="pageChanged($event)" maxSize="10"></pagination-controls>
-</div>
+    <div class="spacer" align="center">...</div>
+  </div>
 
   </div>
-  <p></p>
 </div>
 
 

@@ -18,14 +18,14 @@
   <h3 align="center">Exoplanet Data Explorer</h3>
 
   <p align="center">
-    App to explore NASA Exoplanet data because I am curious and interested in All-Things-Space
+    Spring/Angular App to explore NASA Exoplanet data 
     <br />
     <a href="https://github.com/lynch0001/exoplanet"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/lynch0001/exoplanet">View Demo</a>
     ·
-    <a href="https://github.com/lynch0001/exoplanet">Report Bug</a>
+    <a href="https://github.com/lynch0001/exoplanet/issues">Report Bug</a>
     ·
     <a href="https://github.com/lynch0001/exoplanet/issues">Request Feature</a>
   </p>
@@ -106,32 +106,35 @@ To get a local copy up and running follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Current functionality (8/31/2020) allows users to:
+Functionality allows users to:
 
-* View a paginated list of the 4201 currently reported exoplanets and select characteristics (Note: I derived the characteristics from the underlying data to make it easier for me to consume (some are overly simplified and probably off mark))
-* View result lists of selected queries
-* View details of each exoplanet and its star highlighting imagery, location, and size comparison data
+* View data associated with the 4201 exoplanets currently reported by NASA
+* View full exoplanet list and select queries
+* View details of each exoplanet and its star 
+* View imagery of exoplanet associated star
+* View planet/star location in the sky (based on my location - Northern VA, USA)
+* View charts depicting field comparisons for the full data set
 
  
 ![Product Screen Shot1][product-screenshot1]
 
-Figure 1: List Component
+Figure 1: List page
 
 ![Product Screen Shot2][product-screenshot2]
 
-Figure 2: Detail Component (System/Planet data and stellar imagery)
+Figure 2: Detail page (system/planet data and stellar imagery)
 
 ![Product Screen Shot3][product-screenshot3]
 
-Figure 3: Detail Component (Stellar data and relative location in the night sky)
+Figure 3: Detail page (stellar data and relative location in the night sky)
 
 ![Product Screen Shot4][product-screenshot4]
 
-Figure 4: Detail Component (Planet/Star size comparisons)
+Figure 4: Detail page (planet/stellar size comparisons)
 
 ![Product Screen Shot5][product-screenshot5]
 
-Figure 5: Chart from the Chart Component 
+Figure 5: Example chart from the Charts page 
 
 
 <!-- ROADMAP -->
@@ -205,8 +208,8 @@ Project Link: [https://github.com/lynch0001/exoplanet](https://github.com/lynch0
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/timothy-j-lynch/
 
-[product-screenshot1]: https://user-images.githubusercontent.com/35854692/91747909-0da42a00-eb8d-11ea-85da-d850c71fb74f.png
-[product-screenshot2]: https://user-images.githubusercontent.com/35854692/92044066-6faa8e00-ed4b-11ea-9c20-24382ced953b.png
+[product-screenshot1]: https://user-images.githubusercontent.com/35854692/92127210-11bf8a00-edcf-11ea-940e-cc2d35cbd7fc.png
+[product-screenshot2]: https://user-images.githubusercontent.com/35854692/92127026-e50b7280-edce-11ea-9f28-d08f8a44dc5e.png
 [product-screenshot3]: https://user-images.githubusercontent.com/35854692/92044104-80f39a80-ed4b-11ea-94de-19f2c29e3d26.png
 [product-screenshot4]: https://user-images.githubusercontent.com/35854692/92044119-86e97b80-ed4b-11ea-8b6b-72fdebbba2b0.png
 [product-screenshot5]: https://user-images.githubusercontent.com/35854692/92044127-8b159900-ed4b-11ea-8d31-db50deb92873.png
