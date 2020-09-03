@@ -122,11 +122,11 @@ Figure 1: List page
 
 ![Product Screen Shot2][product-screenshot2]
 
-Figure 2: Detail page (system/planet data and stellar imagery)
+Figure 2: Detail page (system/planet data and stellar imagery (from Aladin Lite))
 
 ![Product Screen Shot3][product-screenshot3]
 
-Figure 3: Detail page (stellar data and relative location in the night sky)
+Figure 3: Detail page (stellar data and relative location in the night sky(from VirtualSky))
 
 ![Product Screen Shot4][product-screenshot4]
 
