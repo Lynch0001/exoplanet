@@ -23,7 +23,7 @@
     <a href="https://github.com/lynch0001/exoplanet"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/lynch0001/exoplanet">View Demo</a>
+    <a href="https://youtu.be/iloIcZxSmcw">View Video Demo (YouTube)</a>
     ·
     <a href="https://github.com/lynch0001/exoplanet/issues">Report Bug</a>
     ·
