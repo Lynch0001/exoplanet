@@ -13,6 +13,8 @@ export class ChartsComponent implements OnInit {
   private svg1;
   private svg2;
   private svg3;
+  private svg4;
+  private svg5;
   private margin = 50;
   private width = 750 - (this.margin * 2);
   private height = 400 - (this.margin * 2);
@@ -29,6 +31,8 @@ export class ChartsComponent implements OnInit {
     this.createSvg1();
     this.createSvg2();
     this.createSvg3();
+    this.createSvg4();
+    this.createSvg5();
     console.log('End of init');
   }
 
@@ -39,6 +43,8 @@ export class ChartsComponent implements OnInit {
       this.drawPlot1();
       this.drawPlot2();
       this.drawPlot3();
+      this.drawPlot4();
+      this.drawPlot5();
     });
   }
 
@@ -301,5 +307,178 @@ export class ChartsComponent implements OnInit {
       .attr("transform","translate(" + (this.width/2-this.margin) + "," + (this.height+this.margin) + ")");
 
   }
+  /* *************************************************************************
+   *  Create Scatter Plot 4 - Pl Mass vs Semi-Major Axis
+   * *************************************************************************
+   */
 
+  private createSvg4(): void {
+    this.svg4 = d3.select("figure#scatter4")
+      .append("svg")
+      .attr("width", this.width + (this.margin * 2))
+      .attr("height", this.height + (this.margin * 2))
+      .append("g")
+      .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+  }
+
+
+  private drawPlot4(): void {
+    // Add X axis
+    const x = d3.scaleLinear()
+      .domain([0, 10])
+      .range([0, this.width]);
+    this.svg4.append("g")
+      .attr("transform", "translate(0," + this.height + ")")
+      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+
+    // Add Y axis
+    const y = d3.scaleLinear()
+      .domain([0, 10])
+      .range([this.height, 0]);
+    this.svg4.append("g")
+      .call(d3.axisLeft(y));
+
+    // Filter data
+
+    this.planetsFiltered = this.planets
+      .filter(d => d.pl_orbsmax != null && d.pl_orbsmax > 0 && d.pl_orbsmax < 10 &&
+        d.pl_bmassj != null && d.pl_bmassj > 0 && d.pl_bmassj < 10
+      );
+
+    // Add dots
+    console.log("Data at addDots method: " + this.planets.type);
+    const dots = this.svg4.append('g');
+
+    dots.selectAll("dot")
+      .data(this.planetsFiltered)
+      .enter()
+      .append("circle")
+      .attr("cx", d => x(d.pl_orbsmax))
+      .attr("cy", d => y(d.pl_bmassj))
+      .attr("r", 3)
+      .style("fill", function (d) {
+        if (d.pl_orbeccen < 0.2) {return '#69b3a2';}
+        else if(d.pl_orbeccen < 0.4){return '#0784BA';}
+        else if(d.pl_orbeccen < 0.6){return '#E90039';}
+        else if(d.pl_orbeccen < 0.8){return '#000000';}
+        else{return '#7A7A7A';}
+      });
+
+    // Axis Labels
+    this.svg4.append("text")
+      .text("Planet Mass[M(j)]")
+      .attr("transform","translate(" + -this.margin + "," + (this.height/2-this.margin) + ") rotate(90)")
+      .attr("class", "y-axis4");
+
+    this.svg4.append("text")
+      .attr("class", "x-axis4")
+      .text("Semi-Major Axis (AU)")
+      .attr("transform","translate(" + (this.width/2-this.margin) + "," + (this.height+this.margin) + ")");
+
+    let dataset = [
+      {label: 'Eccentricity 0.0-0.2', color: '#69b3a2'},
+      {label: 'Eccentricity 0.2-0.4', color: '#0784BA'},
+      {label: 'Eccentricity 0.4-0.6', color: '#E90039'},
+      {label: 'Eccentricity 0.6-0.8', color: '#000000'},
+      {label: 'Eccentricity 0.8-1.0', color: '#7A7A7A'}
+    ];
+
+    var legendRectSize = 14;
+    var legendSpacing = 3;
+
+    var legend = this.svg4.selectAll('.legend')
+      .data(dataset)
+      .enter()
+      .append('g')
+      .attr('class', 'legend')
+      .attr('transform', function(d, i) {                     // NEW
+        var height = legendRectSize + legendSpacing;
+        var offset = 20;
+        var horz = 500;
+        var vert = i * height - offset;
+        return 'translate(' + horz + ',' + vert + ')';
+      });
+
+    legend.append('rect')
+      .attr('width', legendRectSize)
+      .attr('height', legendRectSize)
+      .style('fill', function (d) {
+        return d.color;
+      })
+      .style('stroke', 'grey');
+
+    legend.append('text')
+      .attr('x', legendRectSize + legendSpacing)
+      .attr('y', legendRectSize - legendSpacing)
+      .text(function (d) {
+        return d.label;
+      });
+
+  } // End of Scatter Plot 4
+
+  /* *************************************************************************
+    *  Create Scatter Plot 5 - Pl Mass vs Pl Radius
+    * *************************************************************************
+    */
+
+  private createSvg5(): void {
+    this.svg5 = d3.select("figure#scatter5")
+      .append("svg")
+      .attr("width", this.width + (this.margin * 2))
+      .attr("height", this.height + (this.margin * 2))
+      .append("g")
+      .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+  }
+
+
+  private drawPlot5(): void {
+    // Add X axis
+    const x = d3.scaleLinear()
+      .domain([0, 150])
+      .range([0, this.width]);
+    this.svg5.append("g")
+      .attr("transform", "translate(0," + this.height + ")")
+      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+
+    // Add Y axis
+    const y = d3.scaleLinear()
+      .domain([0, 24])
+      .range([this.height, 0]);
+    this.svg5.append("g")
+      .call(d3.axisLeft(y));
+
+    // Filter data
+
+    this.planetsFiltered = this.planets
+      .filter(d => d.pl_rade != null && d.pl_rade > 0 &&
+        d.pl_bmasse != null && d.pl_bmasse > 0 && d.pl_bmasse < 150
+      );
+
+    // Add dots
+    console.log("Data at addDots method: " + this.planets.type);
+    const dots = this.svg5.append('g');
+
+    dots.selectAll("dot")
+      .data(this.planetsFiltered)
+      .enter()
+      .append("circle")
+      .attr("cx", d => x(d.pl_bmasse))
+      .attr("cy", d => y(d.pl_rade))
+      .attr("r", 3)
+      .style("fill", '#69b3a2');
+
+    // Axis Labels
+    this.svg5.append("text")
+      .text("Planet Radius [R(e)]")
+      .attr("transform","translate(" + -this.margin + "," + (this.height/2-this.margin) + ") rotate(90)")
+      .attr("class", "y-axis5");
+
+    this.svg5.append("text")
+      .attr("class", "x-axis5")
+      .text("Planet Mass [M(e)]")
+      .attr("transform","translate(" + (this.width/2-this.margin) + "," + (this.height+this.margin) + ")");
+
+
+
+  } // End of Scatter Plot 5
 }
