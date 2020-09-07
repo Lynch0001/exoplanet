@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class PlanetController {
 
+	private final PlanetService planetService;
+
 	private final Logger log = LoggerFactory.getLogger(PlanetController.class);
 
 	@Autowired
-	private PlanetService planetService;
+	public PlanetController(PlanetService planetService){
+		this.planetService = planetService;
+	}
 
 
 
