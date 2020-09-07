@@ -14,10 +14,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlanetService {
 
+	private final PlanetRepository planetRepository;
+
 	private final Logger log = LoggerFactory.getLogger(PlanetService.class);
 
 	@Autowired
-	private PlanetRepository planetRepository;
+	public PlanetService(PlanetRepository planetRepository){
+		this.planetRepository = planetRepository;
+	}
 
 
 	public List<Planet> getAllPlanets(){
