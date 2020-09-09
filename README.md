@@ -6,7 +6,7 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-![CodeFactor](https://www.codefactor.io/repository/github/signalr/signalr/badge?style=flat-square)
+![CodeFactor](https://www.codefactor.io/repository/github/Lynch0001/exoplanet/badge?style=flat-square)
 
 <!-- PROJECT LOGO -->
 <br />
