@@ -8,7 +8,7 @@ declare const showAladin: any;
 })
 export class AladinComponent implements OnInit {
 
-  @Input() aladinPlanetImport: String;
+  @Input() aladinPlanetImport: string;
 
   constructor() {
   }

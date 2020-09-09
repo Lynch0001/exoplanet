@@ -32,7 +32,7 @@ export class SizeCompareComponent implements OnInit {
 
   getStarColor(specType){
     let color: string;
-    let spec = specType.charAt(0);
+    const spec = specType.charAt(0);
     console.log('spectype' + specType);
     console.log('spec' + spec);
 
@@ -84,15 +84,18 @@ export class SizeCompareComponent implements OnInit {
     showPlanetSizeCompare(){
       if(this.rade==null) {
 
-        // TODO Add Line of text indicating planet radius not available
+        const svg = d3.select('.planet-compare'),
+          width = + svg.attr('width'),
+          height = +svg.attr('height'),
+          g = svg.append('text').text('No radius data available.').attr('transform', 'translate(' + (width/2 - 50) + ',' + height / 2 + ')');
 
-      }else if (this.rade < 1){ // TODO display smaller planet in front of Earth
+      }else if (this.rade < 1){
 
         this.rEarth=10;
         this.factor=10;
         this.drawSmallerComparison();
 
-      }else if (this.rade >= 1 && this.rade < 3){ // TODO check breakpoints
+      }else if (this.rade >= 1 && this.rade < 3){
 
         this.rEarth=7;
         this.factor=5;
@@ -116,7 +119,7 @@ export class SizeCompareComponent implements OnInit {
         this.factor=1;
         this.drawLargerComparison();
 
-      }else{                                   // TODO HD100546 77+
+      }else{
 
         this.rEarth=4;
         this.factor=.5;
@@ -127,24 +130,24 @@ export class SizeCompareComponent implements OnInit {
 
     drawSmallerComparison(){
       // size earth for foreground
-      let arc2 = d3.arc()
+      const arc2 = d3.arc()
         .innerRadius(0)
         .outerRadius(this.rEarth * this.rade * this.factor)
         .startAngle(0);
 
       // size comparison planet for background
-      let arc1 = d3.arc()
+      const arc1 = d3.arc()
         .innerRadius(0)
         .outerRadius(this.rEarth * this.factor)
         .startAngle(0);
 
-      let svg = d3.select('.planet-compare'),
+      const svg = d3.select('.planet-compare'),
         width = + svg.attr('width'),
         height = +svg.attr('height'),
         g = svg.append('g').attr('transform', 'translate(' + width /2 + ',' + height / 2 + ') rotate(180)');
 
       // Add the earth in blue
-      let background = g.append('path')
+      const background = g.append('path')
         .datum({endAngle: 3.14})
         .style('fill', 'rgb(66, 182, 245)')
         .style('stroke', 'rgb(0, 0, 0)')
@@ -152,7 +155,7 @@ export class SizeCompareComponent implements OnInit {
         .attr('d', arc1);
 
       // Add the comparison planet in green
-      let foreground = g.append('path')
+      const foreground = g.append('path')
         .datum({endAngle: -3.14})
         .style('fill', 'rgb(62, 156, 72)')
         .style('stroke', 'rgb(0, 0, 0)')
@@ -163,24 +166,24 @@ export class SizeCompareComponent implements OnInit {
 
     drawLargerComparison(){
       // size comparison planet for background
-      let arc1 = d3.arc()
+      const arc1 = d3.arc()
         .innerRadius(0)
         .outerRadius(this.rEarth * this.rade * this.factor)
         .startAngle(0);
 
       // size earth for foreground
-      let arc2 = d3.arc()
+      const arc2 = d3.arc()
         .innerRadius(0)
         .outerRadius(this.rEarth * this.factor)
         .startAngle(0);
 
-      let svg = d3.select('.planet-compare'),
+      const svg = d3.select('.planet-compare'),
         width = + svg.attr('width'),
         height = +svg.attr('height'),
         g = svg.append('g').attr('transform', 'translate(' + width /2 + ',' + height / 2 + ') rotate(180)');
 
       // Add the comparison on right in green
-      let background = g.append('path')
+      const background = g.append('path')
         .datum({endAngle: -3.14})
         .style('fill', 'rgb(62, 156, 72)')
         .style('stroke', 'rgb(0, 0, 0)')
@@ -188,7 +191,7 @@ export class SizeCompareComponent implements OnInit {
         .attr('d', arc1);
 
       // Add the earth on left in blue
-      let foreground = g.append('path')
+      const foreground = g.append('path')
         .datum({endAngle: 3.14})
         .style('fill', 'rgb(66, 182, 245)')
         .style('stroke', 'rgb(0, 0, 0)')
@@ -204,7 +207,10 @@ export class SizeCompareComponent implements OnInit {
   showStarSizeCompare(color){
     if(this.rads==null) {
 
-      // TODO Add Line of text indicating star radius not available
+      const svg = d3.select('.star-compare'),
+        width = + svg.attr('width'),
+        height = + svg.attr('height'),
+        g = svg.append('text').text('No radius data available.').attr('transform', 'translate(' + (width/2 - 50) + ',' + height / 2 + ')');
 
     }else if (this.rads < 1){ // TODO display smaller planet in front of Earth
 
@@ -247,24 +253,24 @@ export class SizeCompareComponent implements OnInit {
 
   drawSmallerStarComparison(color){
     // size comparison star
-    let arc4 = d3.arc()
+    const arc4 = d3.arc()
       .innerRadius(0)
       .outerRadius(this.rSun * this.rads * this.factor)
       .startAngle(0);
 
     // size the Sun
-    let arc3 = d3.arc()
+    const arc3 = d3.arc()
       .innerRadius(0)
       .outerRadius(this.rSun * this.factor)
       .startAngle(0);
 
-    let svg2 = d3.select('.star-compare'),
+    const svg2 = d3.select('.star-compare'),
       width = + svg2.attr('width'),
       height = +svg2.attr('height'),
       g2 = svg2.append('g').attr('transform', 'translate(' + width /2 + ',' + height / 2 + ') rotate(180)');
 
     // Add the Sun in white
-    let background = g2.append('path')
+    const background = g2.append('path')
       .datum({endAngle: 3.14})
       .style('fill', 'white')
       .style('stroke', 'rgb(0, 0, 0)')
@@ -272,7 +278,7 @@ export class SizeCompareComponent implements OnInit {
       .attr('d', arc3);
 
     // Add the Comparison star in Red
-    let foreground2 = g2.append('path')
+    const foreground2 = g2.append('path')
       .datum({endAngle: -3.14})
       .style('fill', color)
       .style('stroke', 'rgb(0, 0, 0)')
@@ -283,25 +289,25 @@ export class SizeCompareComponent implements OnInit {
 
   drawLargerStarComparison(color){
     // size comparison planet for background
-    let arc3 = d3.arc()
+    const arc3 = d3.arc()
       .innerRadius(0)
       .outerRadius(this.rSun * this.rads * this.factor)
       .startAngle(0);
 
     // size earth for foreground
-    let arc4 = d3.arc()
+    const arc4 = d3.arc()
       .innerRadius(0)
       .outerRadius(this.rSun * this.factor)
       .startAngle(0);
 
-    let svg = d3.select('.star-compare'),
+    const svg = d3.select('.star-compare'),
       width = + svg.attr('width'),
       height = +svg.attr('height'),
       g = svg.append('g').attr('transform', 'translate(' + width /2 + ',' + height / 2 + ') rotate(180)');
 
 
     // Add comparison star on right red
-    let background = g.append('path')
+    const background = g.append('path')
       .datum({endAngle: -3.14})
       .style('fill', color)
       .style('stroke', 'rgb(0, 0, 0)')
@@ -309,7 +315,7 @@ export class SizeCompareComponent implements OnInit {
       .attr('d', arc3);
 
     // Add sun on left in white
-    let foreground = g.append('path')
+    const foreground = g.append('path')
       .datum({endAngle: 3.14})
       .style('fill', 'white')
       .style('stroke', 'rgb(0, 0, 0)')

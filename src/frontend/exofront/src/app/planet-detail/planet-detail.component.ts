@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {RestService} from "../rest.service";
-import * as d3 from "d3";
-import {validateConstructorDependencies} from "@angular/compiler-cli/src/ngtsc/annotations/src/util";
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {RestService} from '../rest.service';
+import * as d3 from 'd3';
+import {validateConstructorDependencies} from '@angular/compiler-cli/src/ngtsc/annotations/src/util';
 
 
 @Component({

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {RestService} from "../rest.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {RestService} from '../rest.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-planet-list',
@@ -12,8 +12,8 @@ export class PlanetListComponent implements OnInit {
   planets: any = [];
   itemsPerPage: 5;
   currentPage: number;
-  @Input() records: number =0;
-  page: number = 0;
+  @Input() records =0;
+  page = 0;
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) {
 

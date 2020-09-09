@@ -13,7 +13,7 @@ import { MainComponent } from './main/main.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlanetListComponent } from './planet-list/planet-list.component';
 import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import { ChartsComponent } from './charts/charts.component';
 import { VirtualskyComponent } from './virtualsky/virtualsky.component';
 import { SizeCompareComponent } from './size-compare/size-compare.component';
