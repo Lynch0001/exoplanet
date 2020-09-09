@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable} from "rxjs";
-import {HttpClient, HttpHeaders, HttpErrorResponse, HttpParams} from "@angular/common/http";
-import {concatMap, map} from "rxjs/operators";
+import { Observable} from 'rxjs';
+import {HttpClient, HttpHeaders, HttpErrorResponse, HttpParams} from '@angular/common/http';
+import {concatMap, map} from 'rxjs/operators';
 
 
 
@@ -20,7 +20,7 @@ export class RestService {
   };
 
   private extractData(res: Response){
-    let body = res;
+    const body = res;
     return body || { };
   }
 
@@ -35,8 +35,8 @@ export class RestService {
   }
 
   getPlanets(page): Observable<any>{
-    let params = new HttpParams().set('page', page);
-    return this.http.get(this.endpoint + 'planets/page', {params: params}).pipe(
+    const params = new HttpParams().set('page', page);
+    return this.http.get(this.endpoint + 'planets/page', {params}).pipe(
       map(this.extractData));
   }
 

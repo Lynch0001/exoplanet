@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as d3 from 'd3';
-import {RestService} from "../rest.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {RestService} from '../rest.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-charts',
@@ -135,7 +135,7 @@ export class ChartsComponent implements OnInit {
     // Plot 1 legend
 
 
-    let dataset = [
+    const dataset = [
       {label: 'Imaging', color: '#000000'},
       {label: 'Transit', color: '#69b3a2'},
       {label: 'Microlensing', color: '#0784BA'},
@@ -146,16 +146,16 @@ export class ChartsComponent implements OnInit {
     const legendRectSize = 14;
     const legendSpacing = 3;
 
-    let legend = this.svg1.selectAll('.legend')
+    const legend = this.svg1.selectAll('.legend')
       .data(dataset)
       .enter()
       .append('g')
       .attr('class', 'legend')
       .attr('transform', function(d, i) {                     // NEW
-        let height = legendRectSize + legendSpacing;
-        let offset = 20;
-        let horz = 500;
-        let vert = i * height - offset;
+        const height = legendRectSize + legendSpacing;
+        const offset = 20;
+        const horz = 500;
+        const vert = i * height - offset;
         return 'translate(' + horz + ',' + vert + ')';
       });
 
@@ -209,7 +209,7 @@ export class ChartsComponent implements OnInit {
     // Filter data
 
     this.planetsFiltered = this.planets
-      .filter( d => d.st_lum != null || d.st_lum != '' &&
+      .filter( d => d.st_lum != null || d.st_lum !== '' &&
         d.st_mass != null || d.st_mass > 0
 
       );
@@ -275,7 +275,7 @@ export class ChartsComponent implements OnInit {
     // Filter data
 
     this.planetsFiltered = this.planets
-      .filter( d => d.st_rad != null && d.st_rad != '' &&
+      .filter( d => d.st_rad != null && d.st_rad !== '' &&
         d.pl_rade != null && d.pl_rade > 0
 
       );
@@ -375,7 +375,7 @@ export class ChartsComponent implements OnInit {
       .text('Semi-Major Axis (AU)')
       .attr('transform','translate(' + (this.width/2-this.margin) + ',' + (this.height+this.margin) + ')');
 
-    let dataset = [
+    const dataset = [
       {label: 'Eccentricity 0.0-0.2', color: '#69b3a2'},
       {label: 'Eccentricity 0.2-0.4', color: '#0784BA'},
       {label: 'Eccentricity 0.4-0.6', color: '#E90039'},
@@ -386,16 +386,16 @@ export class ChartsComponent implements OnInit {
     const legendRectSize = 14;
     const legendSpacing = 3;
 
-    let legend = this.svg4.selectAll('.legend')
+    const legend = this.svg4.selectAll('.legend')
       .data(dataset)
       .enter()
       .append('g')
       .attr('class', 'legend')
       .attr('transform', function(d, i) {                     // NEW
-        let height = legendRectSize + legendSpacing;
-        let offset = 20;
-        let horz = 500;
-        let vert = i * height - offset;
+        const height = legendRectSize + legendSpacing;
+        const offset = 20;
+        const horz = 500;
+        const vert = i * height - offset;
         return 'translate(' + horz + ',' + vert + ')';
       });
 
