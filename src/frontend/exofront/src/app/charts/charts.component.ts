@@ -26,7 +26,7 @@ export class ChartsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("Staring Init");
+    console.log('Staring Init');
     this.getPlanetData();
     this.createSvg1();
     this.createSvg2();
@@ -54,12 +54,12 @@ export class ChartsComponent implements OnInit {
    */
 
   private createSvg1(): void {
-    this.svg1 = d3.select("figure#scatter1")
-      .append("svg")
-      .attr("width", this.width + (this.margin * 2))
-      .attr("height", this.height + (this.margin * 2))
-      .append("g")
-      .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+    this.svg1 = d3.select('figure#scatter1')
+      .append('svg')
+      .attr('width', this.width + (this.margin * 2))
+      .attr('height', this.height + (this.margin * 2))
+      .append('g')
+      .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
   }
 
 
@@ -68,15 +68,15 @@ export class ChartsComponent implements OnInit {
     const x = d3.scaleLinear()
       .domain([0, 9000])
       .range([0, this.width]);
-    this.svg1.append("g")
-      .attr("transform", "translate(0," + this.height + ")")
-      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+    this.svg1.append('g')
+      .attr('transform', 'translate(0,' + this.height + ')')
+      .call(d3.axisBottom(x).tickFormat(d3.format('d')));
 
     // Add Y axis
     const y = d3.scaleLinear()
       .domain([0, 26])
       .range([this.height, 0]);
-    this.svg1.append("g")
+    this.svg1.append('g')
       .call(d3.axisLeft(y));
 
     // Filter data
@@ -87,17 +87,17 @@ export class ChartsComponent implements OnInit {
       );
 
     // Add dots
-    console.log("Data at addDots method: " + this.planets.type);
+    console.log('Data at addDots method: ' + this.planets.type);
     const dots = this.svg1.append('g');
 
-    dots.selectAll("dot")
+    dots.selectAll('dot')
       .data(this.planetsFiltered)
       .enter()
-      .append("circle")
-      .attr("cx", d => x(d.sy_dist))
-      .attr("cy", d => y(d.pl_rade))
-      .attr("r", 3)
-      .style("fill", function (d) {
+      .append('circle')
+      .attr('cx', d => x(d.sy_dist))
+      .attr('cy', d => y(d.pl_rade))
+      .attr('r', 3)
+      .style('fill', function (d) {
         switch (d.discoverymethod) {
           case 'Radial Velocity':
             return '#E90039';
@@ -117,18 +117,18 @@ export class ChartsComponent implements OnInit {
       });
 
     // Axis Labels
-    d3.select("svg")
-      .append("text")
-      .text("Planet Radius [R(e)]")
-      .attr("transform", "translate(0," + (this.height / 2) + ") rotate(90)")
-      .attr("class", "y-axis1");
+    d3.select('svg')
+      .append('text')
+      .text('Planet Radius [R(e)]')
+      .attr('transform', 'translate(0,' + (this.height / 2) + ') rotate(90)')
+      .attr('class', 'y-axis1');
 
 
-    d3.select("svg")
-      .append("text")
-      .attr("class", "x-axis1")
-      .text("Distance (pc)")
-      .attr("transform", "translate(" + (this.width / 2 + this.margin) + "," + (this.height + this.margin * 2 - 10) + ")");
+    d3.select('svg')
+      .append('text')
+      .attr('class', 'x-axis1')
+      .text('Distance (pc)')
+      .attr('transform', 'translate(' + (this.width / 2 + this.margin) + ',' + (this.height + this.margin * 2 - 10) + ')');
 
 
 
@@ -143,19 +143,19 @@ export class ChartsComponent implements OnInit {
       {label: 'Other', color: '#7A7A7A'}
     ];
 
-    var legendRectSize = 14;
-    var legendSpacing = 3;
+    const legendRectSize = 14;
+    const legendSpacing = 3;
 
-    var legend = this.svg1.selectAll('.legend')
+    let legend = this.svg1.selectAll('.legend')
       .data(dataset)
       .enter()
       .append('g')
       .attr('class', 'legend')
       .attr('transform', function(d, i) {                     // NEW
-        var height = legendRectSize + legendSpacing;
-        var offset = 20;
-        var horz = 500;
-        var vert = i * height - offset;
+        let height = legendRectSize + legendSpacing;
+        let offset = 20;
+        let horz = 500;
+        let vert = i * height - offset;
         return 'translate(' + horz + ',' + vert + ')';
       });
 
@@ -181,12 +181,12 @@ export class ChartsComponent implements OnInit {
   */
 
   private createSvg2(): void {
-    this.svg2 = d3.select("figure#scatter2")
-      .append("svg")
-      .attr("width", this.width + (this.margin * 2))
-      .attr("height", this.height + (this.margin * 2))
-      .append("g")
-      .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+    this.svg2 = d3.select('figure#scatter2')
+      .append('svg')
+      .attr('width', this.width + (this.margin * 2))
+      .attr('height', this.height + (this.margin * 2))
+      .append('g')
+      .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
   }
 
 
@@ -195,15 +195,15 @@ export class ChartsComponent implements OnInit {
     const x2 = d3.scaleLinear()
       .domain([0,15])
       .range([ 0, this.width ]);
-    this.svg2.append("g")
-      .attr("transform", "translate(0," + this.height + ")")
-      .call(d3.axisBottom(x2).tickFormat(d3.format("d")));
+    this.svg2.append('g')
+      .attr('transform', 'translate(0,' + this.height + ')')
+      .call(d3.axisBottom(x2).tickFormat(d3.format('d')));
 
     // Add Y axis
     const y2 = d3.scaleLinear()
       .domain([-8, 5])
       .range([ this.height, 0]);
-    this.svg2.append("g")
+    this.svg2.append('g')
       .call(d3.axisLeft(y2));
 
     // Filter data
@@ -215,31 +215,31 @@ export class ChartsComponent implements OnInit {
       );
 
     // Add dots
-    console.log("Data at addDots method: " + this.planets.type);
+    console.log('Data at addDots method: ' + this.planets.type);
     const dots = this.svg2.append('g');
-    dots.selectAll("dot")
+    dots.selectAll('dot')
       .data(this.planetsFiltered)
       .enter()
-      .append("circle")
-      .attr("cx", d => x2(d.st_mass))
-      .attr("cy", d => y2(d.st_lum))
-      .attr("r", 3)
-      .style("opacity", 1)
-      .style("fill", "#69b3a2");
+      .append('circle')
+      .attr('cx', d => x2(d.st_mass))
+      .attr('cy', d => y2(d.st_lum))
+      .attr('r', 3)
+      .style('opacity', 1)
+      .style('fill', '#69b3a2');
 
 
     // Axis Labels
 
-      this.svg2.append("text")
-      .attr("class", "y-axis2")
-      .text("Stellar Luminosity")
-      .attr("transform","translate(" + -this.margin + "," + (this.height/2-this.margin) + ") rotate(90)");
+      this.svg2.append('text')
+      .attr('class', 'y-axis2')
+      .text('Stellar Luminosity')
+      .attr('transform','translate(' + -this.margin + ',' + (this.height/2-this.margin) + ') rotate(90)');
 
 
-      this.svg2.append("text")
-      .attr("class", "x-axis2")
-      .text("Stellar Mass [m(s)]")
-      .attr("transform","translate(" + (this.width/2-this.margin) + "," + (this.height+this.margin) + ")");
+      this.svg2.append('text')
+      .attr('class', 'x-axis2')
+      .text('Stellar Mass [m(s)]')
+      .attr('transform','translate(' + (this.width/2-this.margin) + ',' + (this.height+this.margin) + ')');
   }
 
   /* *************************************************************************
@@ -248,12 +248,12 @@ export class ChartsComponent implements OnInit {
     */
 
   private createSvg3(): void {
-    this.svg3 = d3.select("figure#scatter3")
-      .append("svg")
-      .attr("width", this.width + (this.margin * 2))
-      .attr("height", this.height + (this.margin * 2))
-      .append("g")
-      .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+    this.svg3 = d3.select('figure#scatter3')
+      .append('svg')
+      .attr('width', this.width + (this.margin * 2))
+      .attr('height', this.height + (this.margin * 2))
+      .append('g')
+      .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
   }
 
   private drawPlot3(): void {
@@ -261,15 +261,15 @@ export class ChartsComponent implements OnInit {
     const x = d3.scaleLinear()
       .domain([0,85])
       .range([ 0, this.width ]);
-    this.svg3.append("g")
-      .attr("transform", "translate(0," + this.height + ")")
-      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+    this.svg3.append('g')
+      .attr('transform', 'translate(0,' + this.height + ')')
+      .call(d3.axisBottom(x).tickFormat(d3.format('d')));
 
     // Add Y axis
     const y = d3.scaleLinear()
       .domain([0, 35])
       .range([ this.height, 0]);
-    this.svg3.append("g")
+    this.svg3.append('g')
       .call(d3.axisLeft(y));
 
     // Filter data
@@ -281,30 +281,30 @@ export class ChartsComponent implements OnInit {
       );
 
     // Add dots
-    console.log("Data at addDots method: " + this.planets.type);
+    console.log('Data at addDots method: ' + this.planets.type);
     const dots = this.svg3.append('g');
-    dots.selectAll("dot")
+    dots.selectAll('dot')
       .data(this.planetsFiltered)
       .enter()
-      .append("circle")
-      .attr("cx", d => x(d.st_rad))
-      .attr("cy", d => y(d.pl_rade))
-      .attr("r", 3)
-      .style("opacity", 1)
-      .style("fill", "#69b3a2");
+      .append('circle')
+      .attr('cx', d => x(d.st_rad))
+      .attr('cy', d => y(d.pl_rade))
+      .attr('r', 3)
+      .style('opacity', 1)
+      .style('fill', '#69b3a2');
 
 
     // Axis Labels
 
-      this.svg3.append("text")
-      .text("Planet Radius [r(e)]")
-      .attr("transform","translate(" + -this.margin + "," + (this.height/2-this.margin) + ") rotate(90)")
-      .attr("class", "y-axis3");
+      this.svg3.append('text')
+      .text('Planet Radius [r(e)]')
+      .attr('transform','translate(' + -this.margin + ',' + (this.height/2-this.margin) + ') rotate(90)')
+      .attr('class', 'y-axis3');
 
-      this.svg3.append("text")
-      .attr("class", "x-axis3")
-      .text("Stellar Radius [r(sun)]")
-      .attr("transform","translate(" + (this.width/2-this.margin) + "," + (this.height+this.margin) + ")");
+      this.svg3.append('text')
+      .attr('class', 'x-axis3')
+      .text('Stellar Radius [r(sun)]')
+      .attr('transform','translate(' + (this.width/2-this.margin) + ',' + (this.height+this.margin) + ')');
 
   }
   /* *************************************************************************
@@ -313,12 +313,12 @@ export class ChartsComponent implements OnInit {
    */
 
   private createSvg4(): void {
-    this.svg4 = d3.select("figure#scatter4")
-      .append("svg")
-      .attr("width", this.width + (this.margin * 2))
-      .attr("height", this.height + (this.margin * 2))
-      .append("g")
-      .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+    this.svg4 = d3.select('figure#scatter4')
+      .append('svg')
+      .attr('width', this.width + (this.margin * 2))
+      .attr('height', this.height + (this.margin * 2))
+      .append('g')
+      .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
   }
 
 
@@ -327,15 +327,15 @@ export class ChartsComponent implements OnInit {
     const x = d3.scaleLinear()
       .domain([0, 10])
       .range([0, this.width]);
-    this.svg4.append("g")
-      .attr("transform", "translate(0," + this.height + ")")
-      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+    this.svg4.append('g')
+      .attr('transform', 'translate(0,' + this.height + ')')
+      .call(d3.axisBottom(x).tickFormat(d3.format('d')));
 
     // Add Y axis
     const y = d3.scaleLinear()
       .domain([0, 10])
       .range([this.height, 0]);
-    this.svg4.append("g")
+    this.svg4.append('g')
       .call(d3.axisLeft(y));
 
     // Filter data
@@ -346,17 +346,17 @@ export class ChartsComponent implements OnInit {
       );
 
     // Add dots
-    console.log("Data at addDots method: " + this.planets.type);
+    console.log('Data at addDots method: ' + this.planets.type);
     const dots = this.svg4.append('g');
 
-    dots.selectAll("dot")
+    dots.selectAll('dot')
       .data(this.planetsFiltered)
       .enter()
-      .append("circle")
-      .attr("cx", d => x(d.pl_orbsmax))
-      .attr("cy", d => y(d.pl_bmassj))
-      .attr("r", 3)
-      .style("fill", function (d) {
+      .append('circle')
+      .attr('cx', d => x(d.pl_orbsmax))
+      .attr('cy', d => y(d.pl_bmassj))
+      .attr('r', 3)
+      .style('fill', function (d) {
         if (d.pl_orbeccen < 0.2) {return '#69b3a2';}
         else if(d.pl_orbeccen < 0.4){return '#0784BA';}
         else if(d.pl_orbeccen < 0.6){return '#E90039';}
@@ -365,15 +365,15 @@ export class ChartsComponent implements OnInit {
       });
 
     // Axis Labels
-    this.svg4.append("text")
-      .text("Planet Mass[M(j)]")
-      .attr("transform","translate(" + -this.margin + "," + (this.height/2-this.margin) + ") rotate(90)")
-      .attr("class", "y-axis4");
+    this.svg4.append('text')
+      .text('Planet Mass[M(j)]')
+      .attr('transform','translate(' + -this.margin + ',' + (this.height/2-this.margin) + ') rotate(90)')
+      .attr('class', 'y-axis4');
 
-    this.svg4.append("text")
-      .attr("class", "x-axis4")
-      .text("Semi-Major Axis (AU)")
-      .attr("transform","translate(" + (this.width/2-this.margin) + "," + (this.height+this.margin) + ")");
+    this.svg4.append('text')
+      .attr('class', 'x-axis4')
+      .text('Semi-Major Axis (AU)')
+      .attr('transform','translate(' + (this.width/2-this.margin) + ',' + (this.height+this.margin) + ')');
 
     let dataset = [
       {label: 'Eccentricity 0.0-0.2', color: '#69b3a2'},
@@ -383,19 +383,19 @@ export class ChartsComponent implements OnInit {
       {label: 'Eccentricity 0.8-1.0', color: '#7A7A7A'}
     ];
 
-    var legendRectSize = 14;
-    var legendSpacing = 3;
+    const legendRectSize = 14;
+    const legendSpacing = 3;
 
-    var legend = this.svg4.selectAll('.legend')
+    let legend = this.svg4.selectAll('.legend')
       .data(dataset)
       .enter()
       .append('g')
       .attr('class', 'legend')
       .attr('transform', function(d, i) {                     // NEW
-        var height = legendRectSize + legendSpacing;
-        var offset = 20;
-        var horz = 500;
-        var vert = i * height - offset;
+        let height = legendRectSize + legendSpacing;
+        let offset = 20;
+        let horz = 500;
+        let vert = i * height - offset;
         return 'translate(' + horz + ',' + vert + ')';
       });
 
@@ -422,12 +422,12 @@ export class ChartsComponent implements OnInit {
     */
 
   private createSvg5(): void {
-    this.svg5 = d3.select("figure#scatter5")
-      .append("svg")
-      .attr("width", this.width + (this.margin * 2))
-      .attr("height", this.height + (this.margin * 2))
-      .append("g")
-      .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+    this.svg5 = d3.select('figure#scatter5')
+      .append('svg')
+      .attr('width', this.width + (this.margin * 2))
+      .attr('height', this.height + (this.margin * 2))
+      .append('g')
+      .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
   }
 
 
@@ -436,15 +436,15 @@ export class ChartsComponent implements OnInit {
     const x = d3.scaleLinear()
       .domain([0, 150])
       .range([0, this.width]);
-    this.svg5.append("g")
-      .attr("transform", "translate(0," + this.height + ")")
-      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+    this.svg5.append('g')
+      .attr('transform', 'translate(0,' + this.height + ')')
+      .call(d3.axisBottom(x).tickFormat(d3.format('d')));
 
     // Add Y axis
     const y = d3.scaleLinear()
       .domain([0, 24])
       .range([this.height, 0]);
-    this.svg5.append("g")
+    this.svg5.append('g')
       .call(d3.axisLeft(y));
 
     // Filter data
@@ -455,28 +455,28 @@ export class ChartsComponent implements OnInit {
       );
 
     // Add dots
-    console.log("Data at addDots method: " + this.planets.type);
+    console.log('Data at addDots method: ' + this.planets.type);
     const dots = this.svg5.append('g');
 
-    dots.selectAll("dot")
+    dots.selectAll('dot')
       .data(this.planetsFiltered)
       .enter()
-      .append("circle")
-      .attr("cx", d => x(d.pl_bmasse))
-      .attr("cy", d => y(d.pl_rade))
-      .attr("r", 3)
-      .style("fill", '#69b3a2');
+      .append('circle')
+      .attr('cx', d => x(d.pl_bmasse))
+      .attr('cy', d => y(d.pl_rade))
+      .attr('r', 3)
+      .style('fill', '#69b3a2');
 
     // Axis Labels
-    this.svg5.append("text")
-      .text("Planet Radius [R(e)]")
-      .attr("transform","translate(" + -this.margin + "," + (this.height/2-this.margin) + ") rotate(90)")
-      .attr("class", "y-axis5");
+    this.svg5.append('text')
+      .text('Planet Radius [R(e)]')
+      .attr('transform','translate(' + -this.margin + ',' + (this.height/2-this.margin) + ') rotate(90)')
+      .attr('class', 'y-axis5');
 
-    this.svg5.append("text")
-      .attr("class", "x-axis5")
-      .text("Planet Mass [M(e)]")
-      .attr("transform","translate(" + (this.width/2-this.margin) + "," + (this.height+this.margin) + ")");
+    this.svg5.append('text')
+      .attr('class', 'x-axis5')
+      .text('Planet Mass [M(e)]')
+      .attr('transform','translate(' + (this.width/2-this.margin) + ',' + (this.height+this.margin) + ')');
 
 
 
