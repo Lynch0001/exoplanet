@@ -26,6 +26,7 @@
       <th scope="col">Planet Size</th>
       <th scope="col">Planet Temp</th>
       <th scope="col">Planet Density</th>
+      <th scope="col">Planet Gravity</th>
       <th scope="col">Star Type</th>
       <th scope="col">Distance from Star</th>
       <th scope="col">Discovered</th>
@@ -59,6 +60,19 @@
         <!-- Anything Else -->
         <span *ngSwitchDefault>{{planet.pl_dens  | number : '.0-0'}}</span>
       </td>
+
+      <!-- Planet Gravity -->
+
+      <td [ngSwitch]="true">
+        <!-- Analytically ~ 32 -->
+        <span *ngSwitchCase="planet.pl_logg >=25"><button class="button-met button-sm rounded">Brown Dwarf</button></span>
+        <!-- Analytically ~ 3 -->
+        <span *ngSwitchCase="planet.pl_dens >=1.5 && planet.pl_dens < 25"><button class="button-ice button-sm rounded">Iron/Rock</button></span>
+        <!-- Analytically ~ .7 -->
+        <span *ngSwitchCase="planet.pl_dens && planet.pl_dens < 1.5"><button class="button-gas button-sm rounded">Ice/Gas</button></span>
+        <!-- Anything Else -->
+        <span *ngSwitchDefault>{{planet.pl_dens  | number : '.0-0'}}</span>
+      </td>
       <td [ngSwitch]="true">
         <span *ngSwitchCase="planet.st_spectype.startsWith('T')"><button class="button-rs button-sm rounded">Red Star</button></span>
         <span *ngSwitchCase="planet.st_spectype.startsWith('L')"><button class="button-br button-sm rounded">Brown Star</button></span>
@@ -69,7 +83,7 @@
         <span *ngSwitchCase="planet.st_spectype.startsWith('A')"><button class="button-bl1 button-sm rounded">Blue Star</button></span>
         <span *ngSwitchCase="planet.st_spectype.startsWith('B')"><button class="button-bl2 button-sm rounded">Blue Star</button></span>
         <span *ngSwitchCase="planet.st_spectype.startsWith('O')"><button class="button-bl3 button-sm rounded">Blue Star</button></span>
-        <span *ngSwitchDefault>{{planet.st_spectype  | number : '.0-0'}}</span>
+        <span *ngSwitchDefault>{{this.planet.st_spectype}}</span>
       </td>
       <td [ngSwitch]="true">
         <span *ngSwitchCase="planet.pl_orbsmax > 2"><button class="button-cold button-sm rounded">>2 AU</button></span>
