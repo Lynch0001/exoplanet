@@ -51,19 +51,34 @@
           </ng-template>
           </ng-template>
 
-          <td *ngIf="planet.sy_dist==null; else sy_distNotNull">UNK</td>
-          <ng-template #sy_distNotNull>
-            <td *ngIf="planet.sy_disterr2==null && planet.sy_disterr1==null; else sy_distErr">
-              {{planet.sy_dist | number : '.2-2'}}</td>
-            <ng-template #sy_distErr>
-              <td>{{planet.sy_dist | number : '.2-2'}} &plusmn;
+          <td *ngIf="planet.sy_dist==null; else sy_distHighNull">UNK</td>
+          <ng-template #sy_distHighNull>
+            <td *ngIf="planet.sy_dist >= 1000 && planet.sy_disterr2==null && planet.sy_disterr1==null || planet.sy_disterr2 < 0.01 && planet.sy_disterr1 <0.01; else sy_distHighErr">
+              {{planet.sy_dist | number : '.0-0'}}</td>
+
+            <ng-template #sy_distHighErr>
+              <td *ngIf="planet.sy_dist >= 1000 && planet.sy_disterr2!=null && planet.sy_disterr1!=null;  else sy_distLowErr">
+                {{planet.sy_dist | number : '.0-0'}} &plusmn;
                 <span class="supsub">
-                <sup class="superscript">  {{planet.sy_disterr1 | number : '.2-2'}}</sup>
-                <sub class="subscript">{{planet.sy_disterr2*-1 | number : '.2-2'}}</sub>
-              </span></td>
+                  <sup class="superscript">  {{planet.sy_disterr1 | number : '.0-0'}}</sup>
+                  <sub class="subscript">{{(planet.sy_disterr2 * -1) | number : '.0-0'}}</sub>
+                </span></td>
+
+              <ng-template #sy_distLowErr>
+                <td *ngIf="planet.sy_dist < 1000 && planet.sy_disterr2!=null && planet.sy_disterr1!=null; else sy_distLowNull">
+                  {{planet.sy_dist | number : '.2-2'}} &plusmn;
+                  <span class="supsub">
+                  <sup class="superscript">  {{planet.sy_disterr1  | number : '.2-2'}}</sup>
+                  <sub class="subscript">{{(planet.sy_disterr2 * -1) | number : '.2-2'}}</sub>
+                </span></td>
+
+                <ng-template #sy_distLowNull>
+                  <td>{{planet.sy_dist | number : '.2-2'}}</td>
+
+                </ng-template>
+              </ng-template>
             </ng-template>
           </ng-template>
-
         </tr>
         </tbody>
       </table>
@@ -84,11 +99,11 @@
 
               <td *ngIf="planet.pl_bmasse==null; else pl_bmasseHighNull">UNK</td>
               <ng-template #pl_bmasseHighNull>
-                <td *ngIf="planet.pl_bmasse >= 1000 && planet.pl_bmasseerr2==null && planet.pl_bmasseerr1==null; else pl_bmasseHighErr">
-                  {{planet.pl_bmasse | number : '.0'}}</td>
+                <td *ngIf="planet.pl_bmasse >= 1000 && planet.pl_bmasseerr2==null && planet.pl_bmasseerr1==null || planet.pl_bmasseerr2 < 0.01 && planet.pl_bmasseerr1 <0.01; else pl_bmasseHighErr">
+                  {{planet.pl_bmasse | number : '.0-0'}}</td>
 
                 <ng-template #pl_bmasseHighErr>
-                  <td *ngIf="planet.pl_bmasse >= 1000 && planet.pl_bmasseerr2!=null && planet.pl_bmasseerr1!=null; else pl_bmasseLowErr">
+                  <td *ngIf="planet.pl_bmasse >= 1000 && planet.pl_bmasseerr2!=null && planet.pl_bmasseerr1!=null;  else pl_bmasseLowErr">
                     {{planet.pl_bmasse | number : '.0-0'}} &plusmn;
                     <span class="supsub">
                   <sup class="superscript">  {{planet.pl_bmasseerr1 | number : '.0-0'}}</sup>
@@ -294,17 +309,33 @@
         <tbody>
         <tr>
 
-          <td *ngIf="planet.pl_orbper==null; else pl_orbperNotNull">UNK</td>
-          <ng-template #pl_orbperNotNull>
-          <td *ngIf="planet.pl_orbpererr2==null && planet.pl_orbpererr1==null || planet.pl_orbpererr2 < 0.01 && planet.pl_orbpererr1 < 0.01; else pl_orbperErr">
-            {{planet.pl_orbper | number : '.2-2'}}</td>
-          <ng-template #pl_orbperErr>
-            <td>{{planet.pl_orbper | number : '.2-2'}} &plusmn;
-              <span class="supsub">
-                <sup class="superscript">  {{planet.pl_orbpererr1 | number : '.2-2'}}</sup>
-                <sub class="subscript">{{planet.pl_orbpererr2*-1 | number : '.2-2'}}</sub>
-              </span></td>
-          </ng-template>
+          <td *ngIf="planet.pl_orbper==null; else pl_orbperHighNull">UNK</td>
+          <ng-template #pl_orbperHighNull>
+            <td *ngIf="planet.pl_orbper >= 1000 && planet.pl_orbpererr2==null && planet.pl_orbpererr1==null || planet.pl_orbpererr2 < 0.01 && planet.pl_orbpererr1 <0.01; else pl_orbperHighErr">
+              {{planet.pl_orbper | number : '.0-0'}}</td>
+
+            <ng-template #pl_orbperHighErr>
+              <td *ngIf="planet.pl_orbper >= 1000 && planet.pl_orbpererr2!=null && planet.pl_orbpererr1!=null;  else pl_orbperLowErr">
+                {{planet.pl_orbper | number : '.0-0'}} &plusmn;
+                <span class="supsub">
+                  <sup class="superscript">  {{planet.pl_orbpererr1 | number : '.0-0'}}</sup>
+                  <sub class="subscript">{{(planet.pl_orbpererr2 * -1) | number : '.0-0'}}</sub>
+                </span></td>
+
+              <ng-template #pl_orbperLowErr>
+                <td *ngIf="planet.pl_orbper < 1000 && planet.pl_orbpererr2!=null && planet.pl_orbpererr1!=null; else pl_orbperLowNull">
+                  {{planet.pl_orbper | number : '.2-2'}} &plusmn;
+                  <span class="supsub">
+                  <sup class="superscript">  {{planet.pl_orbpererr1  | number : '.2-2'}}</sup>
+                  <sub class="subscript">{{(planet.pl_orbpererr2 * -1) | number : '.2-2'}}</sub>
+                </span></td>
+
+                <ng-template #pl_orbperLowNull>
+                  <td>{{planet.pl_orbper | number : '.2-2'}}</td>
+
+                </ng-template>
+              </ng-template>
+            </ng-template>
           </ng-template>
 
           <td *ngIf="planet.pl_orbsmax==null; else pl_orbsmaxNotNull">UNK</td>
