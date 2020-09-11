@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {RestService} from '../rest.service';
-import * as d3 from 'd3';
-import {validateConstructorDependencies} from '@angular/compiler-cli/src/ngtsc/annotations/src/util';
 
 
 @Component({
@@ -18,9 +16,6 @@ export class PlanetDetailComponent implements OnInit, OnDestroy {
   previousId: string;
   planet: any;
   aladinPlanetExport: string;
-  raExport: number;
-  decExport: number;
-  nameExport: string;
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) {
 
@@ -36,8 +31,6 @@ export class PlanetDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
-    const rowId: string = this.route.snapshot.params.id;
 
     this.rest.getPlanet(this.route.snapshot.params['id']).subscribe((data: {}) => {
       console.log('Fetching Planet data');

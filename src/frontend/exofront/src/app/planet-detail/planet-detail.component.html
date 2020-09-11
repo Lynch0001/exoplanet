@@ -1,9 +1,10 @@
 <div class="container-fluid" *ngIf="planet">
 
-  <!-- Planet Header Data -->
-
   <div class="row">
-    <section class="col-sm-12 col-md-6 upper-left">
+
+    <!-- Planet Header Data -->
+
+    <section class="col-sm-12 col-md-6 upper-left">  <!-- Start Planet data Section -->
       <span class="planet-info">
         <span class="selector">
           <h4 class="planet-name">Planet: {{planet.pl_name}}</h4>
@@ -18,8 +19,8 @@
 
       <!-- System Data -->
 
-      <h6 class="detail-table-name">System Data</h6>
       <table class="table table-sm table-bordered">
+        <caption>System Data</caption>
         <thead class="thead-dark">
         <tr>
           <th scope="col">Stars</th>
@@ -68,8 +69,8 @@
 
       <!-- Physical Planet Data -->
 
-      <h6 class="detail-table-name">Physical Data</h6>
         <table class="table table-sm table-bordered">
+          <caption>Physical Data</caption>
           <thead class="thead-dark">
             <tr>
               <th scope="col">Mass<sub>[Mearth]</sub></th>
@@ -231,8 +232,8 @@
 
       <!-- Orbital Planet Data -->
 
-      <h6 class="detail-table-name">Orbital Data</h6>
       <table class="table table-sm table-bordered">
+        <caption>Orbital Data</caption>
         <thead class="thead-dark">
         <tr>
           <th scope="col">Period<sub>[days]</sub></th>
@@ -344,8 +345,8 @@
 
       <!-- Planet Discovery Data -->
 
-      <h6 class="detail-table-name">Discovery Data</h6>
       <table class="table table-sm table-bordered">
+        <caption>Discovery Data</caption>
         <thead class="thead-dark">
         <tr>
           <th scope="col">Discovery Method</th>
@@ -366,28 +367,29 @@
         </tbody>
       </table>
 
-    </section>
+    </section>  <!-- End Planet data Section -->
 
     <!-- Aladin Applet-->
 
-    <section class="col-sm-12 col-md-6 upper-right">
+    <section class="col-sm-12 col-md-6 upper-right">    <!-- Start Aladin data Section -->
         <H4>Imagery for {{planet.hostname}}</H4>
         <app-aladin [aladinPlanetImport]="planet.hostname"></app-aladin>
         <H4 class="aladin-ack">"Aladin sky atlas" developed at Strasbourg astronomical Data Center (CDS), Strasbourg Observatory, France</H4>
-    </section>
+    </section>  <!-- End Aladin data Section -->
 
   </div>
 
-  <!-- Star Data -->
-
   <div class="row">
-    <section class="col-sm-12 col-md-6 lower-left">
+
+    <!-- Star Data -->
+
+    <section class="col-sm-12 col-md-6 lower-left"> <!-- Start Star data Section -->
         <h4>Star: {{planet.hostname}} </h4>
 
       <!-- Star Table Identification-->
 
-      <h6 class="detail-table-name">Alternative Identification Data</h6>
       <table class="table table-sm table-bordered">
+        <caption>Alternative Identification Data</caption>
         <thead class="thead-dark">
         <tr>
           <th scope="col">HD Name</th>
@@ -429,8 +431,8 @@
 
       <!-- Star Table Physical Data 1 -->
 
-      <h6 class="detail-table-name">Physical Data</h6>
       <table class="table table-sm table-bordered">
+        <caption>Physical Data</caption>
         <thead class="thead-dark">
         <tr>
           <th scope="col">Mass<sub>[Msun]</sub></th>
@@ -557,8 +559,10 @@
 
       <!-- Star Table Spectral Data -->
 
-      <h6 class="detail-table-name">Spectral Data</h6>
+      <!-- General / Star Spectral Johnson filters -->
+
       <table class="table table-sm table-bordered">
+        <caption>Spectral Data</caption>
         <thead class="thead-dark">
         <tr>
           <th scope="col">Spectral Type</th>
@@ -593,7 +597,9 @@
         </tbody>
       </table>
 
-    <table class="table table-sm table-bordered">
+      <!-- Star Spectral WISE filters -->
+
+     <table class="table table-sm table-bordered">
       <thead class="thead-dark">
       <tr>
         <th scope="col">WISE W1</th>
@@ -628,6 +634,8 @@
       </tr>
       </tbody>
     </table>
+
+      <!-- Star Spectral 2MASS filters -->
 
       <table class="table table-sm table-bordered">
       <thead class="thead-dark">
@@ -742,8 +750,8 @@
 
       <!-- Star Table Motion Data -->
 
-      <h6 class="detail-table-name">Motion Data</h6>
       <table class="table table-sm table-bordered">
+        <caption>Motion Data</caption>
         <thead class="thead-dark">
         <tr>
           <th scope="col">Rad Velocity<sub>[km/sec]</sub></th>
@@ -801,8 +809,9 @@
       </table>
 
       <!-- Star Table 4 -->
-      <h6 class="detail-table-name">Location Data</h6>
+
       <table class="table table-sm table-bordered">
+        <caption>Location Data</caption>
         <thead class="thead-dark">
         <tr>
           <th scope="col">Latitude<sub>[deg]</sub></th>
@@ -836,17 +845,25 @@
         </tr>
         </tbody>
       </table>
-    </section>
 
 
-    <section class="col-sm-12 col-md-6 lower-right">
+    </section>  <!-- End Star data Section -->
+
+    <!-- Virtualsky Component -->
+
+    <section class="col-sm-12 col-md-6 lower-right">    <!-- Start VirtualSky data Section -->
       <section>
         <H4>VirtualSky view for {{planet.hostname}}</H4>
         <app-virtualsky [decImport]="this.planet.dec" [raImport]="this.planet.ra" [nameImport]="this.planet.hostname"></app-virtualsky>
       </section>
-    </section>
-    <section class="container">
+    </section>   <!-- End VirtualSky data Section  -->
+
+    <!-- Planet/Star Size Compare -->
+
+    <section class="container">  <!-- Start Size Compare data Section  -->
       <app-size-compare [name]="planet.pl_name" [hostname]="planet.hostname" [rads]="planet.st_rad" [rade]="planet.pl_rade"  [specType]="planet.st_spectype"></app-size-compare>
-    </section>
+    </section>   <!-- End Size Compare data Section -->
+
   </div>
+
 </div>

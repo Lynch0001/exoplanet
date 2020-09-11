@@ -23,8 +23,8 @@ th{
   font-weight: normal;
 }
 
-.detail-table-name{
-  float: left;
+caption{
+  caption-side: top;
   color: #285e8e;
   font-weight: bold;
 }
