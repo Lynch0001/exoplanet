@@ -1,4 +1,4 @@
-.aladin-container{position:relative;border:1px solid #ddd;height:100%}
+.aladin-container{position:relative;border:1px solid #ddd;height:100%;width:100%}
 .aladin-imageCanvas{position:absolute;z-index:1;left:0;top:0}
 .aladin-catalogCanvas{position:absolute;z-index:2;left:0;top:0}
 .aladin-reticleCanvas{position:absolute;z-index:3;left:0;top:0}

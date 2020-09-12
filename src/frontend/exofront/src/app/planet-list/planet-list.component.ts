@@ -50,16 +50,4 @@ export class PlanetListComponent implements OnInit {
     this.getPlanets(this.page-1);
   }
 
-  getStarType(starType:string){
-    console.log('getStarType called by list.');
-    let st_color = starType.charAt(0);
-    switch(st_color){
-      case 'T':
-        this.star_desc = 'Red';
-        break;
-      default:
-        this.star_desc = 'Unknown Type';
-    return this.star_desc;
-    }
-  }
 }

@@ -1,21 +1,23 @@
-.planet-compare-container{
+.planet-compare-container {
+  border: black 1px solid;
   display: inline-block;
-  border: dimgray 1px solid;
-  padding-bottom: 2%;
-
-
+  position: relative;
+  width: 100%;
+  padding-bottom: 10%;
+  vertical-align: middle;
+  overflow: hidden;
 }
 
 .star-compare-container{
-  display: block;
-  float: right;
-  border: dimgray 1px solid;
-  padding-bottom: 2%;
-
+  border: black 1px solid;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 10%;
+  vertical-align: middle;
+  align-self: center;
+  overflow: hidden;
 }
-svg{
-  border: grey 1px solid;
-  child-align: auto;
 
-}
+
 
