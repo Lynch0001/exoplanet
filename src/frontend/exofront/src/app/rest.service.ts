@@ -44,4 +44,16 @@ export class RestService {
     return this.http.get(this.endpoint + 'planets/' + id).pipe(
       map(this.extractData));
   }
+
+  getPlanetsStartingWith(nameStarts): Observable<any>{
+    const params = new HttpParams().set('nameStarts', nameStarts);
+    return this.http.get(this.endpoint + 'planets/starts', {params}).pipe(
+      map(this.extractData));
+  }
+
+  getPlanetsNamesContaining(nameContains): Observable<any>{
+    const params = new HttpParams().set('nameContains', nameContains);
+    return this.http.get(this.endpoint + 'planets/contains', {params}).pipe(
+      map(this.extractData));
+  }
 }

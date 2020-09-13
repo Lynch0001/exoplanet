@@ -11,10 +11,12 @@ export class PlanetListComponent implements OnInit {
 
   planet: any;
   planets: any = [];
-  star_desc: string;
   itemsPerPage: 5;
+  star_desc: string;
   currentPage: number;
-  @Input() records =0;
+  @Input() startsWith: string;
+  @Input() nameContains: string;
+  @Input() records = 0;
   page = 0;
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) {
@@ -34,6 +36,27 @@ export class PlanetListComponent implements OnInit {
     });
   }
 
+  getPlanetsStartingWith(startsWith: string){
+    this.router.navigate(['api/planets']);
+    this.planets = [];
+    this.rest.getPlanetsStartingWith(startsWith).subscribe((data: {}) => {
+      console.log(data);
+      this.planets = data;
+      this.records = this.planets.length
+      console.log(this.records);
+    });
+  }
+
+  getPlanetsNamesContaining(nameContains: string){
+    this.planets = [];
+    this.rest.getPlanetsNamesContaining(nameContains).subscribe((data: {}) => {
+      console.log(data);
+      this.planets = data;
+      this.records = this.planets.length
+      console.log(this.records);
+    });
+  }
+
   getQuery(id){
     this.planets = [];
     this.rest.getQuery(id).subscribe((data: {}) => {
@@ -42,6 +65,64 @@ export class PlanetListComponent implements OnInit {
       this.records = this.planets.length
       console.log(this.planets.length);
     });
+  }
+
+  getGravity(planet:any):number{
+    return planet.pl_bmasse/(planet.pl_rade * planet.pl_rade);
+  }
+
+  getStarType(spectype:string):string{
+    let star_desc:string = '';
+    console.log(spectype);
+    switch(spectype.substr(0,1)){
+      case 'T':
+        star_desc = 'Cool Brown'
+        break;
+      case 'L':
+        star_desc = 'Cool Red'
+        break;
+      case 'M':
+        star_desc = 'Orange Red'
+        break;
+      case 'K':
+        star_desc = 'Light Orange'
+        break;
+      case 'G':
+        star_desc = 'Yellow'
+        break;
+      case 'F':
+        star_desc = 'Yellow White'
+        break;
+      case 'A':
+        star_desc = 'White'
+        break;
+      case 'B':
+        star_desc = 'Blue White'
+        break;
+      case 'O':
+        star_desc = 'Blue'
+        break;
+    }
+
+    if (spectype.includes('VII')) {
+      star_desc = star_desc + ' Dwarf'
+    } else if (spectype.includes('VI')) {
+      star_desc = star_desc + ' Sub Dwarf'
+    } else if (spectype.includes('V')) {
+      star_desc = star_desc + ' MS'
+    } else if (spectype.includes('IV')) {
+      star_desc = star_desc + ' Sub Giant'
+    } else if (spectype.includes('III')) {
+      star_desc = star_desc + ' Giant'
+    } else if (spectype.includes('II')) {
+      star_desc = star_desc + ' Giant'
+    } else if (spectype.includes('I')) {
+      star_desc = star_desc + ' Super Giant'
+    } else {
+      star_desc = star_desc + ' DEFAULT'
+    }
+    console.log(star_desc);
+    return star_desc;
   }
 
   pageChanged(event){

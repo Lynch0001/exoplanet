@@ -2,6 +2,7 @@ package com.lynch.exoplanet.planet;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,18 @@ public class PlanetController {
 		return planetService.getAllPlanets();
 	}
 
+	@GetMapping(value ="/planets/starts")
+	public List<Planet> getAllPlanetsStartingWith(@RequestParam String beginsWith) {
+		log.debug("Received REST request for All Planets starting with beginsWith");
+		List<Planet> tempList =  planetService.getAllPlanets();
+		return null;
+	}
 
+	@GetMapping(value ="/planets/contains")
+	public List<Planet> getAllPlanetsContaining(@RequestParam String containsInName, @RequestParam Pageable pageable) {
+		log.debug("Received REST request for All Planets starting with beginsWith");
+		return null;
+	}
 
 	@GetMapping(value ="/planets/page")
 	public List<Planet> getAllPlanetsByPage(Pageable pageable) {
@@ -121,4 +133,7 @@ public class PlanetController {
 	public List<Planet> getPlanetsInBinarySystems() {
 		log.debug("Received REST SQL Query request to get planets in Binary Star systems");
 		return planetService.getPlanetsInBinarySystems(); }
+
+
+
 }

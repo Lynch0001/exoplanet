@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ChartsComponent } from './charts/charts.component';
 import { VirtualskyComponent } from './virtualsky/virtualsky.component';
 import { SizeCompareComponent } from './size-compare/size-compare.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -34,12 +35,13 @@ import { SizeCompareComponent } from './size-compare/size-compare.component';
     SizeCompareComponent
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgxPaginationModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NgxPaginationModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
