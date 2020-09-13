@@ -2,6 +2,7 @@ package com.lynch.exoplanet.planet;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Service
@@ -109,4 +111,8 @@ public class PlanetService {
 		return planetRepository.getPlanetsInBinarySystems();
 	}
 
+
+	public List<Planet> getAllPlanetsContaining(String containsInName, Pageable pageable){
+		return planetRepository.findAll().stream().filter(planet -> planet.getPl_name().toLowerCase().contains(containsInName)).collect(Collectors.toList());
+	}
 }

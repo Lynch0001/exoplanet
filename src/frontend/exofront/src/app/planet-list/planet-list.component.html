@@ -1,20 +1,37 @@
 <div class="container-fluid">
   <div class="row-fluid">
-  <div class="container-queries col-lg-2 col-md-2 col-sm-12">
-  <h4 align="center">Queries</h4>
-  <button class="button-query button-sm rounded" (click)=getQuery(1)>Closest(w/i 5 pc)</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(2)>Rocky Planets</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(3)>Planets w/i 1-2 AU of Star</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(4)>Earth Sized Planets</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(5)>Multiple Planet Systems</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(6)>KEPLER Planets</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(7)>TRAPPIST Planets</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(8)>Super Earths</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(9)>NASA Interesting List</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(10)>Planets found by Imaging</button>
-  <button class="button-query button-sm rounded"(click)=getQuery(11)>Planets in Binary Systems</button>
-  <button class="button-query button-sm rounded"(click)=getPlanets()>Full List</button>
-</div>
+    <div class="container-queries col-lg-2 col-md-2 col-sm-12">
+      <h4 align="center">Find Planets</h4>
+      <div class="input-group mb-3" align="center" >
+        <input type="text" class="form-control-small" id="startVar" [(ngModel)]="startsWith" placeholder="Name Starts With" aria-label="Name Starts With" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" (click)="getPlanetsStartingWith(startsWith)" id="button-addon1">Submit</button>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control-small" id="containVar" [(ngModel)]="nameContains" placeholder="Name Contains" aria-label="Name Contains" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" (click)="getPlanetsNamesContaining(nameContains)" id="button-addon2">Submit</button>
+        </div>
+      </div>
+
+
+      <h4 align="center">Queries</h4>
+      <button class="button-query button-sm rounded" (click)=getQuery(1)>Closest(w/i 5 pc)</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(2)>Rocky Planets</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(3)>Planets w/i 1-2 AU of Star</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(4)>Earth Sized Planets</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(5)>Multiple Planet Systems</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(6)>KEPLER Planets</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(7)>TRAPPIST Planets</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(8)>Super Earths</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(9)>NASA Interesting List</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(10)>Planets found by Imaging</button>
+      <button class="button-query button-sm rounded"(click)=getQuery(11)>Planets in Binary Systems</button>
+      <button class="button-query button-sm rounded"(click)=getPlanets()>Full List</button>
+
+    </div>
+
   <div class="container-table col-lg-10 col-md-10 col-sm-12">
   <h2 align="center">ExoSolar Planets and Select Characteristics</h2>
   <hr><p>Records: {{this.records}}</p>
@@ -35,7 +52,10 @@
   <tbody>
     <tr *ngFor="let planet of planets | paginate: {itemsPerPage:100, currentPage: page, totalItems:4200}">
       <th scope="row" ><a [routerLink]="['/api/planet/', planet.id]">{{planet.id}}</a></th>
-      <td>{{planet.pl_name}}</td>
+      <td>{{planet.pl_name}}
+
+        <!-- Planet Size -->
+
       <td [ngSwitch]="true">
         <span *ngSwitchCase="planet.pl_rade > 15"><button class="button-sj button-sm rounded">Super Jupiter</button></span>
         <span *ngSwitchCase="planet.pl_rade > 6.00 && planet.pl_rade <= 15.00"><button class="button-jl button-sm rounded">Jupiter-Sized</button></span>
@@ -44,12 +64,18 @@
         <span *ngSwitchCase="planet.pl_rade && planet.pl_rade <= 1.25"><button class="button-el button-sm rounded">Earth-Sized</button></span>
         <span *ngSwitchDefault>{{planet.pl_rade  | number : '.0-0'}}</span>
       </td>
+
+      <!-- Planet Temp -->
+
       <td [ngSwitch]="true">
         <span *ngSwitchCase="planet.pl_eqt > 338"><button class="button-hot button-sm rounded">Very Hot</button></span>
         <span *ngSwitchCase="planet.pl_eqt >=200 && planet.pl_eqt <= 338"><button class="button-gl button-sm rounded">Temperate</button></span>
         <span *ngSwitchCase="planet.pl_eqt && planet.pl_eqt < 200"><button class="button-cold button-sm rounded">Very Cold</button></span>
         <span *ngSwitchDefault>{{planet.pl_eqt  | number : '.0-0'}}</span>
       </td>
+
+      <!-- Planet Density -->
+
       <td [ngSwitch]="true">
         <!-- Analytically ~ 32 -->
         <span *ngSwitchCase="planet.pl_dens >=25"><button class="button-met button-sm rounded">Brown Dwarf</button></span>
@@ -63,34 +89,41 @@
 
       <!-- Planet Gravity -->
 
+      <td *ngIf="planet.pl_rade==null || planet.pl_bmasse==null ; else pl_gravityNotNull"></td>
+      <ng-template #pl_gravityNotNull>
+        <td [ngSwitch]="true">
+          <span *ngSwitchCase="getGravity(planet) < 1.0"><button class="button-ws button-sm rounded"> < 1.0G </button></span>
+          <span *ngSwitchCase="getGravity(planet) >= 1.0 && getGravity(planet) <= 4.0"><button class="button-gl button-sm rounded"> 1-4G </button></span>
+          <span *ngSwitchCase="getGravity(planet) > 4.0"><button class="button-hot button-sm rounded"> > 4.0G </button></span>
+        </td>
+      </ng-template>
+
+      <!-- Planet Star Type -->
+
       <td [ngSwitch]="true">
-        <!-- Analytically ~ 32 -->
-        <span *ngSwitchCase="planet.pl_logg >=25"><button class="button-met button-sm rounded">Brown Dwarf</button></span>
-        <!-- Analytically ~ 3 -->
-        <span *ngSwitchCase="planet.pl_dens >=1.5 && planet.pl_dens < 25"><button class="button-ice button-sm rounded">Iron/Rock</button></span>
-        <!-- Analytically ~ .7 -->
-        <span *ngSwitchCase="planet.pl_dens && planet.pl_dens < 1.5"><button class="button-gas button-sm rounded">Ice/Gas</button></span>
-        <!-- Anything Else -->
-        <span *ngSwitchDefault>{{planet.pl_dens  | number : '.0-0'}}</span>
-      </td>
-      <td [ngSwitch]="true">
-        <span *ngSwitchCase="planet.st_spectype.startsWith('T')"><button class="button-rs button-sm rounded">Red Star</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('L')"><button class="button-br button-sm rounded">Brown Star</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('M')"><button class="button-os button-sm rounded">Orange Star</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('K')"><button class="button-ys button-sm rounded">Yellow Star</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('G')"><button class="button-ws button-sm rounded">White Star</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('F')"><button class="button-ws button-sm rounded">White Star</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('A')"><button class="button-bl1 button-sm rounded">Blue Star</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('B')"><button class="button-bl2 button-sm rounded">Blue Star</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('O')"><button class="button-bl3 button-sm rounded">Blue Star</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('T')"><button class="button-rs button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('L')"><button class="button-br button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('M')"><button class="button-os button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('K')"><button class="button-ys button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('G')"><button class="button-ws button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('F')"><button class="button-ws button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('A')"><button class="button-bl1 button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('B')"><button class="button-bl2 button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('O')"><button class="button-bl3 button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
         <span *ngSwitchDefault>{{this.planet.st_spectype}}</span>
       </td>
+
+      <!-- Planet Distance from Sun -->
+
       <td [ngSwitch]="true">
         <span *ngSwitchCase="planet.pl_orbsmax > 2"><button class="button-cold button-sm rounded">>2 AU</button></span>
         <span *ngSwitchCase="planet.pl_orbsmax >=1 && planet.pl_orbsmax <= 2"><button class="button-gl button-sm rounded">1-2 AU</button></span>
         <span *ngSwitchCase="planet.pl_orbsmax && planet.pl_orbsmax < 1"><button class="button-hot button-sm rounded"><1 AU</button></span>
         <span *ngSwitchDefault>{{planet.pl_orbsmax | number : '.2-2'}}</span>
       </td>
+
+      <!-- Planet Discovery Year -->
+
       <td  align="center">{{planet.disc_year}}</td>
     </tr>
   </tbody>
