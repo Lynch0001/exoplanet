@@ -39,7 +39,8 @@ export class PlanetListComponent implements OnInit {
   getPlanetsStartingWith(startsWith: string){
     this.router.navigate(['api/planets']);
     this.planets = [];
-    this.rest.getPlanetsStartingWith(startsWith).subscribe((data: {}) => {
+    let pageS = 0;
+    this.rest.getPlanetsStartingWith(startsWith, pageS).subscribe((data: {}) => {
       console.log(data);
       this.planets = data;
       this.records = this.planets.length
@@ -49,7 +50,8 @@ export class PlanetListComponent implements OnInit {
 
   getPlanetsNamesContaining(nameContains: string){
     this.planets = [];
-    this.rest.getPlanetsNamesContaining(nameContains).subscribe((data: {}) => {
+    let pageC = 0;
+    this.rest.getPlanetsNamesContaining(nameContains, pageC).subscribe((data: {}) => {
       console.log(data);
       this.planets = data;
       this.records = this.planets.length
@@ -105,21 +107,21 @@ export class PlanetListComponent implements OnInit {
     }
 
     if (spectype.includes('VII')) {
-      star_desc = star_desc + ' Dwarf'
+      star_desc = 'White Dwarf'
     } else if (spectype.includes('VI')) {
       star_desc = star_desc + ' Sub Dwarf'
     } else if (spectype.includes('V')) {
-      star_desc = star_desc + ' MS'
+      star_desc = star_desc + ' Dwarf'
     } else if (spectype.includes('IV')) {
       star_desc = star_desc + ' Sub Giant'
     } else if (spectype.includes('III')) {
       star_desc = star_desc + ' Giant'
     } else if (spectype.includes('II')) {
-      star_desc = star_desc + ' Giant'
+      star_desc = star_desc + ' Bright Giant'
     } else if (spectype.includes('I')) {
       star_desc = star_desc + ' Super Giant'
     } else {
-      star_desc = star_desc + ' DEFAULT'
+      star_desc = star_desc + ' Star'
     }
     console.log(star_desc);
     return star_desc;

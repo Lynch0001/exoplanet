@@ -11,7 +11,7 @@ body{
 
 .container-queries{
   display: inline-block;
-  align-self: center;
+  align-content: center;
   font-size: .75em;
 }
 
@@ -34,10 +34,11 @@ td{
   font-size: .75em;
 
 }
-
 .button-query{
   text-align: center;
   width: 90%;
+  padding-right: 1em;
+
 }
 
 .button-se{
@@ -78,28 +79,37 @@ td{
   background: white;
 }
 
-.button-rs{
-  background: #ed969e;
+.button-spect{
+  background: #a85d23;
 }
 
-.button-os{
-  background: #ffb84d;
+.button-specl{
+  background: #e03719;
 }
 
-.button-ys{
-  background: #ffff66;
+.button-specm{
+  background: #fc8003;
 }
 
-.button-bl1{
-  background: #9fcdff;
+.button-speck{
+  background: #fcca03;
 }
 
-.button-bl2{
-  background: #7abaff;
+.button-specg{
+  background: #fcfb8b;
 }
 
-.button-bl3{
-  background: #428bca;
+.button-specf{
+  background: #f5f4bc;
+}
+.button-speca{
+  background: #a1cbf0;
+}
+.button-specb{
+  background: #91baf2;
+}
+.button-speco{
+  background: #91a0f2;
 }
 
 .button-br{
@@ -120,10 +130,6 @@ td{
 
 .button-ri{
   background: #ffdf7e;
-}
-
-.button-ice{
-  background: white;
 }
 
 .button-gas{

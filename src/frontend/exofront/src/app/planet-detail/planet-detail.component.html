@@ -757,7 +757,7 @@
         <tr>
           <td *ngIf="planet.sy_umag==null; else sy_umagNotNull">UNK</td>
           <ng-template #sy_umagNotNull>
-            <td *ngIf="planet.sy_umagerr2=='' && planet.sy_umagerr1==''; else sy_umagErr">
+            <td *ngIf="planet.sy_umagerr2==null && planet.sy_umagerr1==null; else sy_umagErr">
               {{planet.sy_umag | number : '.2-2'}}</td>
             <ng-template #sy_umagErr>
               <td>{{planet.sy_umag | number : '.2-2'}} &plusmn;
@@ -770,7 +770,7 @@
 
           <td *ngIf="planet.sy_gmag==null; else sy_gmagNotNull">UNK</td>
           <ng-template #sy_gmagNotNull>
-            <td *ngIf="planet.sy_gmagerr2=='' && planet.sy_gmagerr1==''; else sy_gmagErr">
+            <td *ngIf="planet.sy_gmagerr2==null && planet.sy_gmagerr1==null; else sy_gmagErr">
               {{planet.sy_gmag | number : '.2-2'}}</td>
             <ng-template #sy_gmagErr>
               <td>{{planet.sy_gmag | number : '.2-2'}} &plusmn;
@@ -783,7 +783,7 @@
 
           <td *ngIf="planet.sy_rmag==null; else sy_rmagNotNull">UNK</td>
           <ng-template #sy_rmagNotNull>
-            <td *ngIf="planet.sy_rmagerr2=='' && planet.sy_rmagerr1==''; else sy_rmagErr">
+            <td *ngIf="planet.sy_rmagerr2==null && planet.sy_rmagerr1==null; else sy_rmagErr">
               {{planet.sy_rmag | number : '.2-2'}}</td>
             <ng-template #sy_rmagErr>
               <td>{{planet.sy_gmag | number : '.2-2'}} &plusmn;
@@ -796,7 +796,7 @@
 
           <td *ngIf="planet.sy_imag==null; else sy_imagNotNull">UNK</td>
           <ng-template #sy_imagNotNull>
-            <td *ngIf="planet.sy_imagerr2=='' && planet.sy_imagerr1==''; else sy_imagErr">
+            <td *ngIf="planet.sy_imagerr2==null && planet.sy_imagerr1==null; else sy_imagErr">
               {{planet.sy_imag | number : '.2-2'}}</td>
             <ng-template #sy_imagErr>
               <td>{{planet.sy_imag | number : '.2-2'}} &plusmn;
@@ -809,7 +809,7 @@
 
           <td *ngIf="planet.sy_zmag==null; else sy_zmagNotNull">UNK</td>
           <ng-template #sy_zmagNotNull>
-            <td *ngIf="planet.sy_zmagerr2=='' && planet.sy_zmagerr1==''; else sy_zmagErr">
+            <td *ngIf="planet.sy_zmagerr2==null && planet.sy_zmagerr1==null; else sy_zmagErr">
               {{planet.sy_imag | number : '.2-2'}}</td>
             <ng-template #sy_zmagErr>
               <td>{{planet.sy_zmag | number : '.2-2'}} &plusmn;
