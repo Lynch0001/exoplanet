@@ -35,16 +35,17 @@ public class PlanetController {
 	}
 
 	@GetMapping(value ="/planets/starts")
-	public List<Planet> getAllPlanetsStartingWith(@RequestParam String beginsWith) {
-		log.debug("Received REST request for All Planets starting with beginsWith");
-		List<Planet> tempList =  planetService.getAllPlanets();
-		return null;
+	public List<Planet> getAllPlanetsStartingWith(@RequestParam String nameStarts) {
+		log.debug("Received REST request for All Planets with names starting with -> {}", nameStarts);
+		return planetService.getAllPlanetsStartingWith(nameStarts);
+
 	}
 
 	@GetMapping(value ="/planets/contains")
-	public List<Planet> getAllPlanetsContaining(@RequestParam String containsInName, @RequestParam Pageable pageable) {
-		log.debug("Received REST request for All Planets starting with beginsWith");
-		return null;
+	public List<Planet> getAllPlanetsContaining(@RequestParam String nameContains, Pageable pageable) {
+		log.debug("Received REST request for All Planets with names containing -> {}", nameContains);
+		Page<Planet> page = planetService.getAllPlanetsByPage(pageable);
+		return planetService.getAllPlanetsContaining(nameContains);
 	}
 
 	@GetMapping(value ="/planets/page")
