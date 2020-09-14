@@ -2,16 +2,16 @@
   <div class="row-fluid">
     <div class="container-queries col-lg-2 col-md-2 col-sm-12">
       <h4 align="center">Find Planets</h4>
-      <div class="input-group mb-3" align="center" >
+      <div class="input-group mb-1" >
         <input type="text" class="form-control-small" id="startVar" [(ngModel)]="startsWith" placeholder="Name Starts With" aria-label="Name Starts With" aria-describedby="button-addon2">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" (click)="getPlanetsStartingWith(startsWith)" id="button-addon1">Submit</button>
+          <button class="button-query button-sm rounded" id="startVarbtn" type="button" (click)="getPlanetsStartingWith(startsWith)" id="button-addon1">Submit  </button>
         </div>
       </div>
       <div class="input-group mb-3">
         <input type="text" class="form-control-small" id="containVar" [(ngModel)]="nameContains" placeholder="Name Contains" aria-label="Name Contains" aria-describedby="button-addon2">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" (click)="getPlanetsNamesContaining(nameContains)" id="button-addon2">Submit</button>
+          <button class="button-query button-sm rounded" type="button" (click)="getPlanetsNamesContaining(nameContains)" id="button-addon2">Submit  </button>
         </div>
       </div>
 
@@ -80,7 +80,7 @@
         <!-- Analytically ~ 32 -->
         <span *ngSwitchCase="planet.pl_dens >=25"><button class="button-met button-sm rounded">Brown Dwarf</button></span>
         <!-- Analytically ~ 3 -->
-        <span *ngSwitchCase="planet.pl_dens >=1.5 && planet.pl_dens < 25"><button class="button-ice button-sm rounded">Iron/Rock</button></span>
+        <span *ngSwitchCase="planet.pl_dens >=1.5 && planet.pl_dens < 25"><button class="button-rock button-sm rounded">Iron/Rock</button></span>
         <!-- Analytically ~ .7 -->
         <span *ngSwitchCase="planet.pl_dens && planet.pl_dens < 1.5"><button class="button-gas button-sm rounded">Ice/Gas</button></span>
         <!-- Anything Else -->
@@ -101,15 +101,15 @@
       <!-- Planet Star Type -->
 
       <td [ngSwitch]="true">
-        <span *ngSwitchCase="planet.st_spectype.startsWith('T')"><button class="button-rs button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('L')"><button class="button-br button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('M')"><button class="button-os button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('K')"><button class="button-ys button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('G')"><button class="button-ws button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('F')"><button class="button-ws button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('A')"><button class="button-bl1 button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('B')"><button class="button-bl2 button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
-        <span *ngSwitchCase="planet.st_spectype.startsWith('O')"><button class="button-bl3 button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('T')"><button class="button-spect button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('L')"><button class="button-specl button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('M')"><button class="button-specm button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('K')"><button class="button-speck button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('G')"><button class="button-specg button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('F')"><button class="button-specf button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('A')"><button class="button-speca button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('B')"><button class="button-specb button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
+        <span *ngSwitchCase="planet.st_spectype.startsWith('O')"><button class="button-speco button-sm rounded">{{getStarType(this.planet.st_spectype)}}</button></span>
         <span *ngSwitchDefault>{{this.planet.st_spectype}}</span>
       </td>
 

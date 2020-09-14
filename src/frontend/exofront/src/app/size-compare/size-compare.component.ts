@@ -38,39 +38,39 @@ export class SizeCompareComponent implements OnInit {
 
     switch(spec) {
       case 'T':
-        color = 'red';
+        color = '#a85d23';
         return color;
         break;
       case 'L':
-        color = 'brown';
+        color = '#e03719';
         return color;
         break;
       case 'M':
-        color = 'orange';
+        color = '#fc8003';
         return color;
         break;
       case 'K':
-        color = 'yellow';
+        color = '#fcca03';
         return color;
         break;
       case 'G':
-        color = 'white';
+        color = '#fcfb8b';
         return color;
         break;
       case 'F':
-        color = 'white';
+        color = '#f5f4bc';
         return color;
         break;
       case 'A':
-        color = 'rgb(71, 216, 252)';
+        color = '#a1cbf0';
         return color;
         break;
       case 'B':
-        color = 'rgb(87, 128, 230)';
+        color = '#91baf2';
         return color;
         break;
       case 'O':
-        color = 'blue';
+        color = '#91a0f2';
         return color;
         break;
       default:
@@ -272,7 +272,7 @@ export class SizeCompareComponent implements OnInit {
     // Add the Sun in white
     const background = g2.append('path')
       .datum({endAngle: 3.14})
-      .style('fill', 'white')
+      .style('fill', '#fcfb8b')
       .style('stroke', 'rgb(0, 0, 0)')
       .attr('stroke-width', 1)
       .attr('d', arc3);
@@ -317,7 +317,7 @@ export class SizeCompareComponent implements OnInit {
     // Add sun on left in white
     const foreground = g.append('path')
       .datum({endAngle: 3.14})
-      .style('fill', 'white')
+      .style('fill', '#fcfb8b')
       .style('stroke', 'rgb(0, 0, 0)')
       .attr('stroke-width', 1)
       .attr('d', arc4);
