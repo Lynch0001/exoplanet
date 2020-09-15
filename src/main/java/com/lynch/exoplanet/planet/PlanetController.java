@@ -35,7 +35,7 @@ public class PlanetController {
 	}
 
 	@GetMapping(value ="/planets/starts")
-	public List<Planet> getAllPlanetsStartingWith(@RequestParam String nameStarts) {
+	public List<Planet> getAllPlanetsStartingWith(@RequestParam String nameStarts, Pageable pageable) {
 		log.debug("Received REST request for All Planets with names starting with -> {}", nameStarts);
 		return planetService.getAllPlanetsStartingWith(nameStarts);
 
@@ -44,7 +44,6 @@ public class PlanetController {
 	@GetMapping(value ="/planets/contains")
 	public List<Planet> getAllPlanetsContaining(@RequestParam String nameContains, Pageable pageable) {
 		log.debug("Received REST request for All Planets with names containing -> {}", nameContains);
-		Page<Planet> page = planetService.getAllPlanetsByPage(pageable);
 		return planetService.getAllPlanetsContaining(nameContains);
 	}
 

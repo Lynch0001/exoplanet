@@ -112,10 +112,10 @@ public class PlanetService {
 	}
 
 	public List<Planet> getAllPlanetsStartingWith(String nameStarts){
-		return planetRepository.findAll().stream().filter(planet -> planet.getPl_name().startsWith(nameStarts)).collect(Collectors.toList());
+		return planetRepository.findAll().stream().filter(planet -> planet.getPl_name().toLowerCase().startsWith(nameStarts)).collect(Collectors.toList());
 	}
 
 	public List<Planet> getAllPlanetsContaining(String containsInName){
-		return planetRepository.findAll().stream().filter(planet -> planet.getPl_name().contains(containsInName)).collect(Collectors.toList());
+		return planetRepository.findAll().stream().filter(planet -> planet.getPl_name().toLowerCase().contains(containsInName)).collect(Collectors.toList());
 	}
 }
