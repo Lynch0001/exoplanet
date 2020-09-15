@@ -14,8 +14,8 @@ export class PlanetListComponent implements OnInit {
   itemsPerPage: 5;
   star_desc: string;
   currentPage: number;
-  @Input() startsWith: string;
-  @Input() nameContains: string;
+  @Input() startsWith: string = '';
+  @Input() nameContains: string = '';
   @Input() records = 0;
   page = 0;
 
@@ -29,33 +29,32 @@ export class PlanetListComponent implements OnInit {
   getPlanets(page){
     this.planets = [];
     this.rest.getPlanets(page).subscribe((data: {}) => {
-      console.log(data);
+      // console.log(data);
       this.planets = data;
       this.records = this.planets.length
-      console.log(this.records);
+      // console.log(this.records);
     });
   }
 
   getPlanetsStartingWith(startsWith: string){
-    this.router.navigate(['api/planets']);
     this.planets = [];
     let pageS = 0;
-    this.rest.getPlanetsStartingWith(startsWith, pageS).subscribe((data: {}) => {
+    this.rest.getPlanetsStartingWith(startsWith.toLowerCase(), pageS).subscribe((data: {}) => {
       console.log(data);
       this.planets = data;
       this.records = this.planets.length
-      console.log(this.records);
+      this.startsWith = '';
     });
   }
 
   getPlanetsNamesContaining(nameContains: string){
     this.planets = [];
     let pageC = 0;
-    this.rest.getPlanetsNamesContaining(nameContains, pageC).subscribe((data: {}) => {
+    this.rest.getPlanetsNamesContaining(nameContains.toLowerCase(), pageC).subscribe((data: {}) => {
       console.log(data);
       this.planets = data;
       this.records = this.planets.length
-      console.log(this.records);
+      this.nameContains = '';
     });
   }
 
@@ -75,7 +74,7 @@ export class PlanetListComponent implements OnInit {
 
   getStarType(spectype:string):string{
     let star_desc:string = '';
-    console.log(spectype);
+    // console.log(spectype);
     switch(spectype.substr(0,1)){
       case 'T':
         star_desc = 'Cool Brown'
@@ -123,7 +122,7 @@ export class PlanetListComponent implements OnInit {
     } else {
       star_desc = star_desc + ' Star'
     }
-    console.log(star_desc);
+    // console.log(star_desc);
     return star_desc;
   }
 
