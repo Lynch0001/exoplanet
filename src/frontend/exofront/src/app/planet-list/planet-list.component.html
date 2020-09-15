@@ -46,6 +46,7 @@
       <th scope="col">Planet Gravity</th>
       <th scope="col">Star Type</th>
       <th scope="col">Distance from Star</th>
+      <th scope="col">Distance to Earth</th>
       <th scope="col">Discovered</th>
     </tr>
   </thead>
@@ -121,6 +122,18 @@
         <span *ngSwitchCase="planet.pl_orbsmax && planet.pl_orbsmax < 1"><button class="button-hot button-sm rounded"><1 AU</button></span>
         <span *ngSwitchDefault>{{planet.pl_orbsmax | number : '.2-2'}}</span>
       </td>
+
+      <!-- Distance to Earth -->
+
+      <td [ngSwitch]="true">
+        <span *ngSwitchCase="planet.sy_dist < 10"><button class="button-gl button-sm rounded">{{ planet.sy_dist | number: '.0-0'}} pc</button></span>
+        <span *ngSwitchCase="planet.sy_dist >= 10 && planet.sy_dist < 1000"><button class="button-specg button-sm rounded">{{ planet.sy_dist | number: '.0-0' }} pc</button></span>
+        <span *ngSwitchCase="planet.sy_dist >= 1000 && planet.sy_dist < 2000"><button class="button-speck button-sm rounded">{{ planet.sy_dist | number: '.0-0' }} pc</button></span>
+        <span *ngSwitchCase="planet.sy_dist >= 2000 && planet.sy_dist < 3000"><button class="button-specm button-sm rounded">{{ planet.sy_dist | number: '.0-0' }} pc</button></span>
+        <span *ngSwitchCase="planet.sy_dist >= 3000"><button class="button-specl button-sm rounded">{{ planet.sy_dist | number: '.0-0' }} pc</button></span>
+        <span *ngSwitchDefault>{{planet.sy_dist  | number : '.0-0'}}</span>
+      </td>
+
 
       <!-- Planet Discovery Year -->
 
