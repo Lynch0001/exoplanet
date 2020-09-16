@@ -9,62 +9,26 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.OngoingStubbing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class PlanetServiceTest {
 
-  @Autowired
+  @Mock
   PlanetRepository planetRepository;
 
-  private Planet planet1;
-  private Planet planet2;
-
-  // Setup and Teardown
-
-  @BeforeAll
-  static void beforeAll() {
-    System.out.println("Connect to the database");
-  }
-
-  @BeforeEach
-  public void beforeEach() {
-    System.out.println("Load the schema");
-    Planet planet1 = new Planet();
-    Planet planet2 = new Planet();
-    planet1.setId(9990l);
-    planet2.setId(9991l);
-    planet1.setPl_name("TestPlanet1");
-    planet2.setPl_name("TestPlanet1");
-    planet1.setHostname("TestPlanet1Star");
-    planet2.setHostname("TestPlanet2Star");
-  }
-
-  @AfterEach
-  void afterEach() {
-    System.out.println("Drop the schema");
-  }
-
-  @AfterAll
-  static void afterAll() {
-    System.out.println("Disconnect from the database");
-  }
-
-  // Test Methods
-
-  @Test
-  void getAllPlanets() {
-
-  }
-
-  @Test
-  void getAllPlanetsByPage() {
-  }
+  @InjectMocks
+  PlanetService planetService;
 
   @Test
   void addPlanet() {
@@ -72,74 +36,4 @@ class PlanetServiceTest {
 
   }
 
-  @Test
-  void getPlanet() {
-    Optional<Planet> planet = planetRepository.findById(9990L);
-    System.out.println("Found planet" + planet.toString());
-    // Validate the response
-    assertNotNull(planet);
-  }
-
-  @Test
-  void editPlanet() {
-  }
-
-  @Test
-  void deletePlanet() {
-  }
-
-  @Test
-  void getPlanetsWithin5Parsecs() {
-
-  }
-
-  @Test
-  void getRockyPlanets() {
-
-
-  }
-
-  @Test
-  void get12AuPlanets() {
-  }
-
-  @Test
-  void getEarthSizePlanets() {
-  }
-
-  @Test
-  void getMultiPlanetSystems() {
-  }
-
-  @Test
-  void getKeplerPlanets() {
-  }
-
-  @Test
-  void getTrappistPlanets() {
-  }
-
-  @Test
-  void getSuperEarthSizePlanets() {
-  }
-
-  @Test
-  void getNasaInterestingPlanets() {
-  }
-
-  @Test
-  void getPlanetsFoundByImaging() {
-  }
-
-  @Test
-  void getPlanetsInBinarySystems() {
-  }
-
-  @Test
-  void getAllPlanetsStartingWith() {
-  }
-
-  @Test
-  void getAllPlanetsContaining() {
-  }
 }

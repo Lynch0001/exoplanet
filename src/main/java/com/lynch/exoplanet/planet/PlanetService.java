@@ -36,9 +36,9 @@ public class PlanetService {
 		return planetRepository.findAll(pageable);
 	}
 
-	public void addPlanet(Planet planet) {
+	public Planet addPlanet(Planet planet) {
 		log.debug("Received Planet controller request to add Planet: {}", planet);
-		planetRepository.save(planet);
+		return planetRepository.save(planet);
 	}
 	
 	public Optional<Planet> getPlanet(Long id) {
