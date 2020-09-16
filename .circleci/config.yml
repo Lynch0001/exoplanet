@@ -1,3 +1,7 @@
+# Java Maven CircleCI 2.1 configuration file
+#
+# Reference https://circleci.com/docs/2.0/language-java-maven/
+#
 version: 2.1
 
 orbs:

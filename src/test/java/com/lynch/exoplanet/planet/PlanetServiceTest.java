@@ -7,6 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.OngoingStubbing;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -14,14 +16,14 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 class PlanetServiceTest {
 
-  @Mock
+  @Autowired
   PlanetRepository planetRepository;
 
-  @InjectMocks
-  PlanetService planetService;
+  private Planet planet1;
+  private Planet planet2;
 
   // Setup and Teardown
 
@@ -31,8 +33,16 @@ class PlanetServiceTest {
   }
 
   @BeforeEach
-  void beforeEach() {
+  public void beforeEach() {
     System.out.println("Load the schema");
+    Planet planet1 = new Planet();
+    Planet planet2 = new Planet();
+    planet1.setId(9990l);
+    planet2.setId(9991l);
+    planet1.setPl_name("TestPlanet1");
+    planet2.setPl_name("TestPlanet1");
+    planet1.setHostname("TestPlanet1Star");
+    planet2.setHostname("TestPlanet2Star");
   }
 
   @AfterEach
@@ -58,12 +68,14 @@ class PlanetServiceTest {
 
   @Test
   void addPlanet() {
+
+
   }
 
   @Test
   void getPlanet() {
-    Optional<Planet> planet = planetService.getPlanet(1l);
-
+    Optional<Planet> planet = planetRepository.findById(9990L);
+    System.out.println("Found planet" + planet.toString());
     // Validate the response
     assertNotNull(planet);
   }
@@ -78,24 +90,13 @@ class PlanetServiceTest {
 
   @Test
   void getPlanetsWithin5Parsecs() {
-    List<Planet> within5Parsecs = planetService.getPlanetsWithin5Parsecs();
 
-    // Validate the response
-    Assertions.assertNotNull(within5Parsecs);
-    Assertions.assertEquals(0, within5Parsecs.size());
-    Assertions.assertNotNull(within5Parsecs.get(0));
   }
 
   @Test
   void getRockyPlanets() {
 
-    // Execute the service that uses the mocked repository
-    List<Planet> rockyPlanets = planetService.getRockyPlanets();
 
-    // Validate the response
-    Assertions.assertNotNull(rockyPlanets);
-    Assertions.assertEquals(0, rockyPlanets.size());
-    Assertions.assertNotNull(rockyPlanets.get(0));
   }
 
   @Test
