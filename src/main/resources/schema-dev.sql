@@ -1,5 +1,5 @@
 CREATE TABLE public.planetarysystemstable (
-                                              id INT8,
+                                              id INT8 ,
                                               pl_name VARCHAR(50),
                                               hostname VARCHAR(50),
                                               pl_letter VARCHAR(1),

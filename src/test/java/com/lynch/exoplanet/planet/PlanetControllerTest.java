@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
+
+@WebMvcTest
 class PlanetControllerTest {
 
   @MockBean
