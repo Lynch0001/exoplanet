@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as d3 from 'd3';
 import {RestService} from '../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -101,16 +101,12 @@ export class ChartsComponent implements OnInit {
         switch (d.discoverymethod) {
           case 'Radial Velocity':
             return '#E90039';
-            break;
           case 'Transit':
             return '#69b3a2';
-            break;
           case 'Microlensing':
             return '#0784BA';
-            break;
           case 'Imaging':
             return '#000000';
-            break;
           default:
             return '#7A7A7A';
         }
