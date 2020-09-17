@@ -6,7 +6,8 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-![CodeFactor](https://www.codefactor.io/repository/github/Lynch0001/exoplanet/badge?style=flat-square)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Lynch0001_exoplanet&metric=alert_status)](https://sonarcloud.io/dashboard?id=Lynch0001_exoplanet)
 
 <!-- PROJECT LOGO -->
 <br />
