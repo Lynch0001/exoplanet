@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AppComponent} from './app.component';
 import {MainComponent} from './main/main.component';
 import {PlanetListComponent} from './planet-list/planet-list.component';
 import {PlanetDetailComponent} from './planet-detail/planet-detail.component';
