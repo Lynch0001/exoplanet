@@ -125,15 +125,17 @@
 
       <!-- Distance to Earth -->
 
+      <td *ngIf="planet.sy_dist==null; else sy_distNotNull"></td>
+      <ng-template #sy_distNotNull>
       <td [ngSwitch]="true">
         <span *ngSwitchCase="planet.sy_dist < 10"><button class="button-gl button-sm rounded">{{ planet.sy_dist | number: '.0-0'}} pc</button></span>
         <span *ngSwitchCase="planet.sy_dist >= 10 && planet.sy_dist < 1000"><button class="button-specg button-sm rounded">{{ planet.sy_dist | number: '.0-0' }} pc</button></span>
         <span *ngSwitchCase="planet.sy_dist >= 1000 && planet.sy_dist < 2000"><button class="button-speck button-sm rounded">{{ planet.sy_dist | number: '.0-0' }} pc</button></span>
         <span *ngSwitchCase="planet.sy_dist >= 2000 && planet.sy_dist < 3000"><button class="button-specm button-sm rounded">{{ planet.sy_dist | number: '.0-0' }} pc</button></span>
         <span *ngSwitchCase="planet.sy_dist >= 3000"><button class="button-specl button-sm rounded">{{ planet.sy_dist | number: '.0-0' }} pc</button></span>
-        <span *ngSwitchDefault>{{planet.sy_dist  | number : '.0-0'}}</span>
+        <span *ngSwitchDefault>{{planet.sy_dist  | number : '.0-0'}}??</span>
       </td>
-
+      </ng-template>
 
       <!-- Planet Discovery Year -->
 
