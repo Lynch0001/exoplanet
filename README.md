@@ -116,6 +116,7 @@ Functionality allows users to:
 * View planet/star location in the sky (based on my location - Northern VA, USA)
 * View charts depicting field comparisons for the full data set
 
+ ## Selected Views
  
 ![Product Screen Shot1][product-screenshot1]
 
